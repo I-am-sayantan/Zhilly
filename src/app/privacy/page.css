@@ -1,8 +1,6 @@
 /* Privacy · Zhilly — page-only styles, scoped to this page's shell. */
 /* ---------- same draft-document layout as policies.html: contents on a short trail at the side ---------- */
 :where([data-page="privacy"]) .doc{position:relative;display:grid;grid-template-columns:minmax(0,270px) minmax(0,1fr);gap:clamp(40px,6vw,104px);padding-top:clamp(72px,8vw,120px);padding-bottom:clamp(80px,9vw,140px)}
-:where([data-page="privacy"]) .draftstamp{position:absolute;z-index:5;right:var(--gut);top:-62px;margin:0;transform:rotate(-4deg);padding:12px 22px 13px;border:3px solid #A8432F;color:#A8432F;background:rgba(247,243,230,.97);box-shadow:inset 0 0 0 4px rgba(247,243,230,.97),inset 0 0 0 6px #A8432F;font-family:var(--mono);font-weight:600;font-size:13px;letter-spacing:.1em;text-transform:uppercase;line-height:1.35;text-align:center;filter:url(#inked)}
-:where([data-page="privacy"]) .draftstamp b{display:block;font-family:var(--sans);font-weight:900;font-variation-settings:"wdth" 125;font-size:44px;letter-spacing:.06em;line-height:1}
 :where([data-page="privacy"]) .toc{position:relative;z-index:1}
 :where([data-page="privacy"]) .toc .in{position:sticky;top:28px}
 :where([data-page="privacy"]) .toc ol{list-style:none;margin:12px 0 0;padding:0;position:relative}
@@ -41,11 +39,8 @@
   :where([data-page="privacy"]) .toc ol{columns:2;column-gap:28px}
   :where([data-page="privacy"]) .toc ol::before{display:none}
   :where([data-page="privacy"]) .toc li{break-inside:avoid}
-  :where([data-page="privacy"]) .draftstamp{top:-50px}
 }
 @media (max-width:640px){
-  :where([data-page="privacy"]) .draftstamp{position:relative;right:auto;top:auto;display:block;width:max-content;max-width:100%;margin:-26px 0 0 auto;transform:rotate(-3deg);font-size:11.5px}
-  :where([data-page="privacy"]) .draftstamp b{font-size:34px}
   :where([data-page="privacy"]) .doc{padding-top:30px}
   :where([data-page="privacy"]) .toc ol{columns:1}
   :where([data-page="privacy"]) .short{grid-template-columns:1fr}

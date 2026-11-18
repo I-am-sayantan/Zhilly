@@ -1,18 +1,18 @@
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
+import JsonLd from "@/components/JsonLd";
+import { pageMeta, breadcrumbLd } from "@/lib/seo";
 import Link from "next/link";
 import CloseBand from "@/components/CloseBand";
 import PageShell from "@/components/PageShell";
 import "./page.css";
 
-export const metadata: Metadata = {
-  title: "Around Kalimpong · Zhilly",
-  description: "What's around Zhilly in Kalimpong: Deolo Hill, the gompas, the nurseries, the haat bazaar, and day trips to Lava, Lolegaon, Rishyap, Pedong, Sillery Gaon and Ichhey Gaon.",
-};
+export const metadata: Metadata = pageMeta("/around-kalimpong/", "Things to do in and around Kalimpong · Zhilly", "What to see from Zhilly hostel in Kalimpong: Deolo Hill, the gompas, nurseries, the haat bazaar, and day trips to Lava, Lolegaon, Rishyap and Sillery Gaon.");
 
 export default function AroundPage() {
   return (
     <PageShell page="around-kalimpong" nav="around">
+      <JsonLd data={breadcrumbLd("/around-kalimpong/", "Around Kalimpong")} />
       <svg width="0" height="0" aria-hidden="true" focusable="false" style={{ position: "absolute" }}>
         <defs>
           <symbol id="k-hill" viewBox="0 0 24 24">
@@ -55,7 +55,7 @@ export default function AroundPage() {
         </defs>
       </svg>
       <section className="phero" aria-labelledby="h1">
-        <img src="/photos/forest-slope.jpg" srcSet="/photos/forest-slope-sm.jpg 960w, /photos/forest-slope.jpg 2000w" sizes="100vw" width="2000" height="1500" fetchPriority="high" alt="Forest falling away down a slope at Zhilly: tall thin trunks, bamboo and ferns, with sunlight on the grass in front." />
+        <img src="/photos/forest-slope.jpg" srcSet="/photos/forest-slope-sm.jpg 800w, /photos/forest-slope.jpg 1600w" sizes="100vw" width="1600" height="1200" fetchPriority="high" alt="Forest falling away down a slope at Zhilly: tall thin trunks, bamboo and ferns, with sunlight on the grass in front." />
         <div className="wrap">
           <nav className="crumb" aria-label="Breadcrumb">
             <Link href="/">Zhilly</Link>
@@ -202,7 +202,7 @@ export default function AroundPage() {
                 </p>
                 <figure className="plate">
                   <div className="frame">
-                    <img src="/photos/flower-path-sm.jpg" srcSet="/photos/flower-path-sm.jpg 634w, /photos/flower-path.jpg 1320w" sizes="(max-width:640px) 80vw, 340px" width="1320" height="2000" loading="lazy" alt="A red flower in the foreground with a forest path on the Zhilly grounds rising into hazy light." />
+                    <img src="/photos/flower-path-sm.jpg" srcSet="/photos/flower-path-sm.jpg 634w, /photos/flower-path.jpg 1056w" sizes="(max-width:640px) 80vw, 340px" width="1056" height="1600" loading="lazy" alt="A red flower in the foreground with a forest path on the Zhilly grounds rising into hazy light." />
                   </div>
                   <figcaption className="cap">Plate · A path on our own grounds, not in town.</figcaption>
                 </figure>

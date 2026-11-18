@@ -1,21 +1,21 @@
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
+import JsonLd from "@/components/JsonLd";
+import { pageMeta, breadcrumbLd } from "@/lib/seo";
 import Link from "next/link";
 import CloseBand from "@/components/CloseBand";
 import PageShell from "@/components/PageShell";
 import { mail, site, wa } from "@/lib/site";
 import "./page.css";
 
-export const metadata: Metadata = {
-  title: "Stay · Zhilly, Kalimpong",
-  description: "Dorm beds at Zhilly, a small social hostel with a café in Kalimpong (eight dorm beds and a private room): who it suits, the beds and prices, the shared spaces, and check-in.",
-};
+export const metadata: Metadata = pageMeta("/stay/", "Dorm beds and a private room in Kalimpong · Zhilly", "Stay at Zhilly, a hostel and homestay-style cottage in Kalimpong: a mixed dorm (₹800 a bed with breakfast) and a private room with its own bathroom (₹1,500).");
 
 export default function StayPage() {
   return (
     <PageShell page="stay" nav="stay">
+      <JsonLd data={breadcrumbLd("/stay/", "Stay")} />
       <section className="phero" aria-labelledby="h1" style={{ "--pos": "50% 34%" } as CSSProperties}>
-        <img src="/photos/cottage-angle.jpg" srcSet="/photos/cottage-angle-sm.jpg 720w, /photos/cottage-angle.jpg 1500w" sizes="100vw" width="1500" height="2000" fetchPriority="high" alt="The Zhilly cottage seen from the corner of the lawn: green tin roof, white lace trim along the eaves, a lattice gable and a wooden verandah rail, with tall trees behind." />
+        <img src="/photos/cottage-angle.jpg" srcSet="/photos/cottage-angle-sm.jpg 720w, /photos/cottage-angle.jpg 1200w" sizes="100vw" width="1200" height="1600" fetchPriority="high" alt="The Zhilly cottage seen from the corner of the lawn: green tin roof, white lace trim along the eaves, a lattice gable and a wooden verandah rail, with tall trees behind." />
         <div className="wrap">
           <nav className="crumb" aria-label="Breadcrumb">
             <Link href="/">Zhilly</Link>
@@ -325,7 +325,7 @@ export default function StayPage() {
             <div className="s-yard">
               <figure className="plate a">
                 <div className="frame">
-                  <img src="/photos/deck-close-sm.jpg" srcSet="/photos/deck-close-sm.jpg 960w, /photos/deck-close.jpg 2000w" sizes="(max-width:980px) 88vw, 52vw" width="2000" height="1500" loading="lazy" alt="The bamboo-pole deck: a lattice frame with two tyre rings on posts, a low bench, and hostas in painted-tyre planters, under tall trunks." />
+                  <img src="/photos/deck-close-sm.jpg" srcSet="/photos/deck-close-sm.jpg 800w, /photos/deck-close.jpg 1600w" sizes="(max-width:980px) 88vw, 52vw" width="1600" height="1200" loading="lazy" alt="The bamboo-pole deck: a lattice frame with two tyre rings on posts, a low bench, and hostas in painted-tyre planters, under tall trunks." />
                 </div>
                 <figcaption className="cap">
                   Plate 3 · The bamboo deck. Lattice frame, tyre planters, hostas.
@@ -333,13 +333,13 @@ export default function StayPage() {
               </figure>
               <figure className="plate b">
                 <div className="frame">
-                  <img src="/photos/cottage-lawn-2-sm.jpg" srcSet="/photos/cottage-lawn-2-sm.jpg 720w, /photos/cottage-lawn-2.jpg 1500w" sizes="(max-width:640px) 88vw, (max-width:980px) 44vw, 26vw" width="1500" height="2000" loading="lazy" alt="The cottage across the mown lawn, tall trees and bamboo standing behind it." />
+                  <img src="/photos/cottage-lawn-2-sm.jpg" srcSet="/photos/cottage-lawn-2-sm.jpg 720w, /photos/cottage-lawn-2.jpg 1200w" sizes="(max-width:640px) 88vw, (max-width:980px) 44vw, 26vw" width="1200" height="1600" loading="lazy" alt="The cottage across the mown lawn, tall trees and bamboo standing behind it." />
                 </div>
                 <figcaption className="cap">Plate 4 · The lawn, in front of the cottage.</figcaption>
               </figure>
               <figure className="plate c">
                 <div className="frame">
-                  <img src="/photos/verandah-up-sm.jpg" srcSet="/photos/verandah-up-sm.jpg 960w, /photos/verandah-up.jpg 2000w" sizes="(max-width:640px) 88vw, (max-width:980px) 44vw, 32vw" width="2000" height="1500" loading="lazy" alt="Looking up at the verandah: the white lace trim along the eaves, the lattice gable and the treetops above." />
+                  <img src="/photos/verandah-up-sm.jpg" srcSet="/photos/verandah-up-sm.jpg 800w, /photos/verandah-up.jpg 1600w" sizes="(max-width:640px) 88vw, (max-width:980px) 44vw, 32vw" width="1600" height="1200" loading="lazy" alt="Looking up at the verandah: the white lace trim along the eaves, the lattice gable and the treetops above." />
                 </div>
                 <figcaption className="cap">Plate 5 · The verandah, looking up.</figcaption>
               </figure>

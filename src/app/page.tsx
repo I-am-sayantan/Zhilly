@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import CloseBand from "@/components/CloseBand";
 import PageShell from "@/components/PageShell";
 import { mail, site, wa } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Zhilly · hostel and café in Kalimpong",
-  description: "Zhilly is a small social hostel with a café (eight dorm beds and a private room) in a cottage among very tall trees in Kalimpong, West Bengal.",
-};
+export const metadata: Metadata = pageMeta("/", "Zhilly · hostel and café in Kalimpong, Darjeeling hills", "Zhilly is a small social hostel and café in Kalimpong, West Bengal: eight dorm beds and a private room in a cottage under tall trees. Dorm bed ₹800 a night.", "Check out Zhilly · hostel and café in Kalimpong");
 
 export default function HomePage() {
   return (
@@ -15,7 +13,7 @@ export default function HomePage() {
       <section className="hero" aria-labelledby="h1">
         <p className="wm on-page" aria-hidden="true">Zhilly</p>
         <div className="photo">
-          <img src="/photos/canopy-sky.jpg" srcSet="/photos/canopy-sky-sm.jpg 720w, /photos/canopy-sky.jpg 1500w" sizes="100vw" width="1500" height="2000" fetchPriority="high" alt="Looking straight up from the lawn at Zhilly: the dark crowns of very tall trees ring a wide patch of clear blue sky." />
+          <img src="/photos/canopy-sky.jpg" srcSet="/photos/canopy-sky-sm.jpg 720w, /photos/canopy-sky.jpg 1200w" sizes="100vw" width="1200" height="1600" fetchPriority="high" alt="Looking straight up from the lawn at Zhilly: the dark crowns of very tall trees ring a wide patch of clear blue sky." />
           {" "}
           <svg className="bunting" data-flags="30" viewBox="0 0 1600 120" preserveAspectRatio="none" aria-hidden="true">
             <path d="M-10 14 Q800 96 1610 22" fill="none" stroke="#E9E4D6" strokeWidth="1.5" />
@@ -28,7 +26,7 @@ export default function HomePage() {
           <h1 id="h1">Eight beds, a private room, a café, and a lot of very tall trees.</h1>
         </div>
         <figure className="postcard">
-          <img src="/photos/cottage-front.jpg" srcSet="/photos/cottage-front-sm.jpg 720w, /photos/cottage-front.jpg 1500w" sizes="(max-width:900px) 86vw, 27vw" width="1500" height="2000" alt="The Zhilly cottage head-on: green tin roof, white lace trim along the eaves, a lattice gable and a wooden verandah rail, with tall trees behind." />
+          <img src="/photos/cottage-front.jpg" srcSet="/photos/cottage-front-sm.jpg 720w, /photos/cottage-front.jpg 1200w" sizes="(max-width:900px) 86vw, 27vw" width="1200" height="1600" alt="The Zhilly cottage head-on: green tin roof, white lace trim along the eaves, a lattice gable and a wooden verandah rail, with tall trees behind." />
           <figcaption><span className="hand">The cottage, from the lawn.</span></figcaption>
           <div className="pstamp" aria-hidden="true">
             <svg viewBox="0 0 72 90">
@@ -93,7 +91,7 @@ export default function HomePage() {
               </div>
               <figure className="plate">
                 <div className="frame">
-                  <img src="/photos/cottage-clearing-sm.jpg" srcSet="/photos/cottage-clearing-sm.jpg 688w, /photos/cottage-clearing.jpg 1433w" sizes="(max-width:980px) 92vw, 40vw" width="1433" height="2000" loading="lazy" alt="The cottage seen small across a wide sunlit clearing, with a mown lawn in front and a tall forest of trees and bamboo rising behind it." />
+                  <img src="/photos/cottage-clearing-sm.jpg" srcSet="/photos/cottage-clearing-sm.jpg 688w, /photos/cottage-clearing.jpg 1146w" sizes="(max-width:980px) 92vw, 40vw" width="1146" height="1600" loading="lazy" alt="The cottage seen small across a wide sunlit clearing, with a mown lawn in front and a tall forest of trees and bamboo rising behind it." />
                 </div>
                 <figcaption className="cap">Plate 1 · The cottage in its clearing.</figcaption>
               </figure>
@@ -167,7 +165,7 @@ export default function HomePage() {
             <p className="mono">Waypoint 03</p>
             <div className="panel">
               <figure className="photo">
-                <img src="/photos/dining-shed.jpg" srcSet="/photos/dining-shed-sm.jpg 720w, /photos/dining-shed.jpg 1500w" sizes="(max-width:980px) 92vw, 46vw" width="1500" height="2000" loading="lazy" alt="Inside the bamboo dining shed: a woven bamboo ceiling on pole rafters, bamboo-slat walls, chairs at a covered table and a turquoise-painted post in front." />
+                <img src="/photos/dining-shed.jpg" srcSet="/photos/dining-shed-sm.jpg 720w, /photos/dining-shed.jpg 1200w" sizes="(max-width:980px) 92vw, 46vw" width="1200" height="1600" loading="lazy" alt="Inside the bamboo dining shed: a woven bamboo ceiling on pole rafters, bamboo-slat walls, chairs at a covered table and a turquoise-painted post in front." />
                 <figcaption className="cap">The dining shed, morning</figcaption>
               </figure>
               <svg className="culm" viewBox="0 0 56 900" preserveAspectRatio="xMidYMin slice" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round">
@@ -209,19 +207,19 @@ export default function HomePage() {
             <div className="gallery">
               <figure className="feat">
                 <div className="frame">
-                  <img src="/photos/grounds-wide.jpg" srcSet="/photos/grounds-wide-sm.jpg 960w, /photos/grounds-wide.jpg 2000w" sizes="(max-width:980px) 92vw, 58vw" width="2000" height="1167" loading="lazy" alt="The lawn in sunshine, the bamboo deck behind a woven fence on the left and the green-roofed cottage on the right, under very tall trees." />
+                  <img src="/photos/grounds-wide.jpg" srcSet="/photos/grounds-wide-sm.jpg 800w, /photos/grounds-wide.jpg 1600w" sizes="(max-width:980px) 92vw, 58vw" width="1600" height="934" loading="lazy" alt="The lawn in sunshine, the bamboo deck behind a woven fence on the left and the green-roofed cottage on the right, under very tall trees." />
                 </div>
                 <figcaption className="cap">Plate 3 · The lawn. Deck on the left, cottage on the right.</figcaption>
               </figure>
               <figure>
                 <div className="frame">
-                  <img src="/photos/deck-wide-sm.jpg" srcSet="/photos/deck-wide-sm.jpg 960w, /photos/deck-wide.jpg 2000w" sizes="(max-width:980px) 46vw, 28vw" width="2000" height="1500" loading="lazy" alt="The bamboo-pole deck with its lattice frame, two tyre rings on posts and hostas in painted-tyre planters, under tall trunks." />
+                  <img src="/photos/deck-wide-sm.jpg" srcSet="/photos/deck-wide-sm.jpg 800w, /photos/deck-wide.jpg 1600w" sizes="(max-width:980px) 46vw, 28vw" width="1600" height="1200" loading="lazy" alt="The bamboo-pole deck with its lattice frame, two tyre rings on posts and hostas in painted-tyre planters, under tall trunks." />
                 </div>
                 <figcaption className="cap">The bamboo deck.</figcaption>
               </figure>
               <figure>
                 <div className="frame">
-                  <img src="/photos/verandah-up-sm.jpg" srcSet="/photos/verandah-up-sm.jpg 960w, /photos/verandah-up.jpg 2000w" sizes="(max-width:980px) 46vw, 28vw" width="2000" height="1500" loading="lazy" alt="Looking up at the verandah: the white lace trim along the eaves, the lattice gable and treetops above." />
+                  <img src="/photos/verandah-up-sm.jpg" srcSet="/photos/verandah-up-sm.jpg 800w, /photos/verandah-up.jpg 1600w" sizes="(max-width:980px) 46vw, 28vw" width="1600" height="1200" loading="lazy" alt="Looking up at the verandah: the white lace trim along the eaves, the lattice gable and treetops above." />
                 </div>
                 <figcaption className="cap">The lace trim on the eaves.</figcaption>
               </figure>
@@ -243,7 +241,7 @@ export default function HomePage() {
                   <figcaption className="cap">A path through the bamboo</figcaption>
                 </figure>
                 <figure>
-                  <img src="/photos/side-path-sm.jpg" width="960" height="720" loading="lazy" decoding="async" alt="A gravel path along the side of the cottage with a bamboo railing and forest beyond." />
+                  <img src="/photos/side-path-sm.jpg" width="800" height="600" loading="lazy" decoding="async" alt="A gravel path along the side of the cottage with a bamboo railing and forest beyond." />
                   <figcaption className="cap">Along the side of the cottage</figcaption>
                 </figure>
                 <figure>
@@ -251,11 +249,11 @@ export default function HomePage() {
                   <figcaption className="cap">Red flowers by the path</figcaption>
                 </figure>
                 <figure>
-                  <img src="/photos/forest-slope-sm.jpg" width="960" height="720" loading="lazy" decoding="async" alt="Forest falling away down a slope: tall thin trunks, bamboo and ferns." />
+                  <img src="/photos/forest-slope-sm.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Forest falling away down a slope: tall thin trunks, bamboo and ferns." />
                   <figcaption className="cap">Where the forest drops away</figcaption>
                 </figure>
                 <figure>
-                  <img src="/photos/treeline-sm.jpg" width="960" height="720" loading="lazy" decoding="async" alt="A hedge and very tall trees against a bright sky." />
+                  <img src="/photos/treeline-sm.jpg" width="800" height="600" loading="lazy" decoding="async" alt="A hedge and very tall trees against a bright sky." />
                   <figcaption className="cap">The treeline at the edge of the lawn</figcaption>
                 </figure>
               </div>

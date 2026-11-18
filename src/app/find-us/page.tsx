@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import JsonLd from "@/components/JsonLd";
+import { pageMeta, breadcrumbLd } from "@/lib/seo";
 import Link from "next/link";
 import CloseBand from "@/components/CloseBand";
 import PageShell from "@/components/PageShell";
@@ -6,16 +8,14 @@ import SocialLinks from "@/components/SocialLinks";
 import { mail, site, wa } from "@/lib/site";
 import "./page.css";
 
-export const metadata: Metadata = {
-  title: "Find us · Zhilly",
-  description: "How to get to Zhilly in Kalimpong: about 73 km from NJP station and about 78 km from Bagdogra airport by NH10 along the Teesta, plus how to reach us.",
-};
+export const metadata: Metadata = pageMeta("/find-us/", "How to reach Kalimpong from NJP and Bagdogra · Zhilly", "How to get to Zhilly hostel in Kalimpong, West Bengal: about 73 km from NJP station and 78 km from Bagdogra airport on NH10 along the Teesta. Map and contact.");
 
 export default function FindUsPage() {
   return (
     <PageShell page="find-us" nav="find">
+      <JsonLd data={breadcrumbLd("/find-us/", "Find us")} />
       <section className="phero" aria-labelledby="h1">
-        <img src="/photos/side-path.jpg" srcSet="/photos/side-path-sm.jpg 960w, /photos/side-path.jpg 2000w" sizes="100vw" width="2000" height="1500" fetchPriority="high" alt="A gravel path running along the side of the Zhilly cottage, with a bamboo railing on the left, tall trees and bamboo beyond, and the white lace trim of the eaves on the right." />
+        <img src="/photos/side-path.jpg" srcSet="/photos/side-path-sm.jpg 800w, /photos/side-path.jpg 1600w" sizes="100vw" width="1600" height="1200" fetchPriority="high" alt="A gravel path running along the side of the Zhilly cottage, with a bamboo railing on the left, tall trees and bamboo beyond, and the white lace trim of the eaves on the right." />
         <div className="wrap">
           <nav className="crumb" aria-label="Breadcrumb">
             <Link href="/">Zhilly</Link>
@@ -388,7 +388,7 @@ export default function FindUsPage() {
               </div>
               <figure className="plate">
                 <div className="frame">
-                  <img src="/photos/cottage-angle-sm.jpg" srcSet="/photos/cottage-angle-sm.jpg 720w, /photos/cottage-angle.jpg 1500w" sizes="(max-width:980px) 86vw, 30vw" width="1500" height="2000" loading="lazy" alt="The Zhilly cottage from an angle: green corrugated tin roof, white scalloped lace trim along the eaves and the wooden verandah rail." />
+                  <img src="/photos/cottage-angle-sm.jpg" srcSet="/photos/cottage-angle-sm.jpg 720w, /photos/cottage-angle.jpg 1200w" sizes="(max-width:980px) 86vw, 30vw" width="1200" height="1600" loading="lazy" alt="The Zhilly cottage from an angle: green corrugated tin roof, white scalloped lace trim along the eaves and the wooden verandah rail." />
                 </div>
                 <figcaption className="cap">
                   Plate · What you're looking for.

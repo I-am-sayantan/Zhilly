@@ -1,21 +1,22 @@
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
+import JsonLd from "@/components/JsonLd";
+import { pageMeta, breadcrumbLd, cafeLd } from "@/lib/seo";
 import Link from "next/link";
 import CloseBand from "@/components/CloseBand";
 import StripButtons from "@/components/StripButtons";
 import PageShell from "@/components/PageShell";
 import "./page.css";
 
-export const metadata: Metadata = {
-  title: "Café · Zhilly, Kalimpong",
-  description: "The café at Zhilly, a small social hostel in Kalimpong: food, tea and coffee, and somewhere to sit and talk.",
-};
+export const metadata: Metadata = pageMeta("/cafe/", "Café in Kalimpong, open 12 pm to 11 pm · Zhilly", "The café at Zhilly hostel in Kalimpong, West Bengal: food, tea and coffee under a woven bamboo ceiling. Open every day, 12 pm to 11 pm. Day visitors welcome.");
 
 export default function CafePage() {
   return (
     <PageShell page="cafe" nav="cafe">
+      <JsonLd data={breadcrumbLd("/cafe/", "Café")} />
+      <JsonLd data={cafeLd} />
       <section className="phero" aria-labelledby="h1" style={{ "--pos": "50% 30%" } as CSSProperties}>
-        <img src="/photos/dining-shed.jpg" srcSet="/photos/dining-shed-sm.jpg 720w, /photos/dining-shed.jpg 1500w" sizes="100vw" width="1500" height="2000" fetchPriority="high" alt="Inside the bamboo dining shed: a woven bamboo ceiling on pole rafters, bamboo-slat walls, chairs at a covered table and a turquoise-painted post in front." />
+        <img src="/photos/dining-shed.jpg" srcSet="/photos/dining-shed-sm.jpg 720w, /photos/dining-shed.jpg 1200w" sizes="100vw" width="1200" height="1600" fetchPriority="high" alt="Inside the bamboo dining shed: a woven bamboo ceiling on pole rafters, bamboo-slat walls, chairs at a covered table and a turquoise-painted post in front." />
         <div className="wrap">
           <nav className="crumb" aria-label="Breadcrumb">
             <Link href="/">Zhilly</Link>
@@ -180,37 +181,37 @@ export default function CafePage() {
               </figure>
               <figure className="plate">
                 <div className="frame">
-                  <img src="/photos/deck-wide-sm.jpg" srcSet="/photos/deck-wide-sm.jpg 960w, /photos/deck-wide.jpg 2000w" sizes="(max-width:640px) 380px, 680px" width="2000" height="1500" loading="lazy" alt="The bamboo-pole deck with its lattice frame, two tyre rings on posts and hostas in painted-tyre planters, under tall trunks." />
+                  <img src="/photos/deck-wide-sm.jpg" srcSet="/photos/deck-wide-sm.jpg 800w, /photos/deck-wide.jpg 1600w" sizes="(max-width:640px) 380px, 680px" width="1600" height="1200" loading="lazy" alt="The bamboo-pole deck with its lattice frame, two tyre rings on posts and hostas in painted-tyre planters, under tall trunks." />
                 </div>
                 <figcaption className="cap">The bamboo deck, under tall trunks.</figcaption>
               </figure>
               <figure className="plate">
                 <div className="frame">
-                  <img src="/photos/cottage-front-sm.jpg" srcSet="/photos/cottage-front-sm.jpg 720w, /photos/cottage-front.jpg 1500w" sizes="(max-width:640px) 220px, 380px" width="1500" height="2000" loading="lazy" alt="The cottage head-on: green tin roof, white lace trim along the eaves, a lattice gable and a wooden verandah rail, a stone path across the lawn." />
+                  <img src="/photos/cottage-front-sm.jpg" srcSet="/photos/cottage-front-sm.jpg 720w, /photos/cottage-front.jpg 1200w" sizes="(max-width:640px) 220px, 380px" width="1200" height="1600" loading="lazy" alt="The cottage head-on: green tin roof, white lace trim along the eaves, a lattice gable and a wooden verandah rail, a stone path across the lawn." />
                 </div>
                 <figcaption className="cap">The cottage, from the lawn.</figcaption>
               </figure>
               <figure className="plate">
                 <div className="frame">
-                  <img src="/photos/side-path-sm.jpg" srcSet="/photos/side-path-sm.jpg 960w, /photos/side-path.jpg 2000w" sizes="(max-width:640px) 380px, 680px" width="2000" height="1500" loading="lazy" alt="A gravel path along the side of the cottage with a bamboo railing and forest beyond." />
+                  <img src="/photos/side-path-sm.jpg" srcSet="/photos/side-path-sm.jpg 800w, /photos/side-path.jpg 1600w" sizes="(max-width:640px) 380px, 680px" width="1600" height="1200" loading="lazy" alt="A gravel path along the side of the cottage with a bamboo railing and forest beyond." />
                 </div>
                 <figcaption className="cap">The path along the side of the cottage.</figcaption>
               </figure>
               <figure className="plate">
                 <div className="frame">
-                  <img src="/photos/flower-path-sm.jpg" srcSet="/photos/flower-path-sm.jpg 634w, /photos/flower-path.jpg 1320w" sizes="(max-width:640px) 190px, 340px" width="1320" height="2000" loading="lazy" alt="A red flower in the foreground with a forest path rising into hazy light." />
+                  <img src="/photos/flower-path-sm.jpg" srcSet="/photos/flower-path-sm.jpg 634w, /photos/flower-path.jpg 1056w" sizes="(max-width:640px) 190px, 340px" width="1056" height="1600" loading="lazy" alt="A red flower in the foreground with a forest path rising into hazy light." />
                 </div>
                 <figcaption className="cap">Red flowers by the forest path.</figcaption>
               </figure>
               <figure className="plate">
                 <div className="frame">
-                  <img src="/photos/forest-path-sm.jpg" srcSet="/photos/forest-path-sm.jpg 720w, /photos/forest-path.jpg 1500w" sizes="(max-width:640px) 220px, 380px" width="1500" height="2000" loading="lazy" alt="An earthen path between a bank of bushes and a tall stand of bamboo." />
+                  <img src="/photos/forest-path-sm.jpg" srcSet="/photos/forest-path-sm.jpg 720w, /photos/forest-path.jpg 1200w" sizes="(max-width:640px) 220px, 380px" width="1200" height="1600" loading="lazy" alt="An earthen path between a bank of bushes and a tall stand of bamboo." />
                 </div>
                 <figcaption className="cap">A path through the bamboo.</figcaption>
               </figure>
               <figure className="plate">
                 <div className="frame">
-                  <img src="/photos/treeline-sm.jpg" srcSet="/photos/treeline-sm.jpg 960w, /photos/treeline.jpg 2000w" sizes="(max-width:640px) 380px, 680px" width="2000" height="1500" loading="lazy" alt="A hedge and very tall trees against a bright sky." />
+                  <img src="/photos/treeline-sm.jpg" srcSet="/photos/treeline-sm.jpg 800w, /photos/treeline.jpg 1600w" sizes="(max-width:640px) 380px, 680px" width="1600" height="1200" loading="lazy" alt="A hedge and very tall trees against a bright sky." />
                 </div>
                 <figcaption className="cap">The treeline at the edge of the lawn.</figcaption>
               </figure>

@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
+import JsonLd from "@/components/JsonLd";
+import { pageMeta, breadcrumbLd } from "@/lib/seo";
 import Link from "next/link";
 import PageShell from "@/components/PageShell";
 import { site, wa } from "@/lib/site";
 import "./page.css";
 
-export const metadata: Metadata = {
-  title: "Policies · Zhilly",
-  description: "Zhilly's house policies: booking and the advance, cancellation and refunds, check-in, ID, house rules and the café.",
-};
+export const metadata: Metadata = pageMeta("/policies/", "House policies · Zhilly hostel, Kalimpong", "Zhilly hostel's house policies in Kalimpong: booking and the UPI advance, cancellation and refunds, check-in from 11 am, check-out by 10 am, ID and house rules.");
 
 export default function PoliciesPage() {
   return (
     <PageShell page="policies">
+      <JsonLd data={breadcrumbLd("/policies/", "Policies")} />
       <section className="phero flat" aria-labelledby="h1">
         <svg className="contours" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#topoA" /></svg>
         <div className="wrap">
@@ -22,13 +22,12 @@ export default function PoliciesPage() {
           </nav>
           <h1 id="h1">House policies</h1>
           <p className="lead">
-            The terms for staying at Zhilly, in plain words. A draft until the owner signs it off.
+            The terms for staying at Zhilly, in plain words.
           </p>
         </div>
         <div className="eave" aria-hidden="true" />
       </section>
       <div className="doc wrap">
-        <p className="draftstamp"><b>Draft</b>Not in force yet</p>
         <aside className="toc" aria-label="On this page">
           <div className="in">
             <p className="mono">On this page</p>
@@ -45,8 +44,6 @@ export default function PoliciesPage() {
               <li><a href="#changes"><span>09</span>Changes to these policies</a></li>
             </ol>
             <dl className="docmeta">
-              <dt>Status</dt>
-              <dd>Draft, not in force</dd>
               <dt>Operated by</dt>
               <dd>Canopy Ventures</dd>
             </dl>

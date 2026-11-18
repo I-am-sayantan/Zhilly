@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
+import JsonLd from "@/components/JsonLd";
+import { pageMeta, breadcrumbLd } from "@/lib/seo";
 import Link from "next/link";
 import PageShell from "@/components/PageShell";
 import { site, wa } from "@/lib/site";
 import "./page.css";
 
-export const metadata: Metadata = {
-  title: "Privacy · Zhilly",
-  description: "What Zhilly (operated by Canopy Ventures) keeps when you send a booking enquiry, message us or check in, why, and who sees it.",
-};
+export const metadata: Metadata = pageMeta("/privacy/", "Privacy notice · Zhilly hostel, Kalimpong", "What Zhilly hostel in Kalimpong (run by Canopy Ventures) keeps when you send a booking enquiry, message us or check in: why we keep it, who sees it, how long.");
 
 export default function PrivacyPage() {
   return (
     <PageShell page="privacy">
+      <JsonLd data={breadcrumbLd("/privacy/", "Privacy")} />
       <section className="phero flat" aria-labelledby="h1">
         <svg className="contours" preserveAspectRatio="xMidYMid slice" aria-hidden="true" style={{ transform: "scaleX(-1)" }}>
           <use href="#topoB" />
@@ -24,13 +24,12 @@ export default function PrivacyPage() {
           </nav>
           <h1 id="h1">Privacy</h1>
           <p className="lead">
-            What we know about you, why, and who sees it. Short, because we mean to keep very little. A draft until it has been reviewed.
+            What we know about you, why, and who sees it. Short, because we mean to keep very little.
           </p>
         </div>
         <div className="eave" aria-hidden="true" />
       </section>
       <div className="doc wrap">
-        <p className="draftstamp"><b>Draft</b>To be reviewed</p>
         <aside className="toc" aria-label="On this page">
           <div className="in">
             <p className="mono">On this page</p>
@@ -46,8 +45,6 @@ export default function PrivacyPage() {
               <li><a href="#changes"><span>09</span>Changes to this notice</a></li>
             </ol>
             <dl className="docmeta">
-              <dt>Status</dt>
-              <dd>Draft, not in force</dd>
               <dt>Responsible for your data</dt>
               <dd>Canopy Ventures</dd>
             </dl>
@@ -144,12 +141,6 @@ export default function PrivacyPage() {
             <h2 id="p7"><span className="no">07</span>Your rights</h2>
             <p>
               You can ask us what we hold about you, ask us to correct it, and ask us to delete it where we're allowed to. If you agreed to something, you can change your mind. Write to us by email or on WhatsApp.
-            </p>
-            <p className="ask">
-              <span className="mono">For review</span>
-              <span>
-                This page is meant to follow the Digital Personal Data Protection Rules, 2025 (most duties, including notice and consent, from around May 2027) and, until then, the IT Act's SPDI Rules, 2011, which ask for a privacy policy to be published. All of this is to be reviewed by counsel before the page goes live.
-              </span>
             </p>
           </section>
           <section id="contact" aria-labelledby="p8">

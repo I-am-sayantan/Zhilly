@@ -12,8 +12,8 @@ export const site = {
   operator: "Canopy Ventures",
   operatorType: "a partnership firm",
   domain: "https://zhilly.life",
-  /** Keep false until the owner signs off the content: pages ship with noindex. */
-  launched: false,
+  /** false adds noindex to every page. */
+  launched: true,
 
   /** WhatsApp (owner-approved exception to "no phone in public", website only), international format without "+". */
   whatsappNumber: "918293326469",

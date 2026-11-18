@@ -1,20 +1,39 @@
 import type { Metadata } from "next";
+import JsonLd from "@/components/JsonLd";
+import { pageMeta, breadcrumbLd, faqLd } from "@/lib/seo";
 import Link from "next/link";
 import CloseBand from "@/components/CloseBand";
 import PageShell from "@/components/PageShell";
 import { site, wa } from "@/lib/site";
 import "./page.css";
 
-export const metadata: Metadata = {
-  title: "Plan your stay · Zhilly",
-  description: "How booking a bed at Zhilly works (a booking enquiry, a quote, a UPI advance), what it costs, when to come to Kalimpong and what to pack.",
-};
+export const metadata: Metadata = pageMeta("/plan-your-stay/", "Plan your stay in Kalimpong: prices and FAQ · Zhilly", "How to book a bed at Zhilly hostel in Kalimpong: send your dates, get a quote, pay a UPI advance. Prices, what's included, when to visit, what to pack, FAQ.");
+
+
+// FAQ as plain text for search engines; keep in step with the questions on the page.
+const faq: [string, string][] = [
+  ["How do I book?", "Pick your dates in the calendar at the bottom of the page and send us a booking enquiry, or message us on WhatsApp (+91 82933 26469) or by email (zhilly.life@gmail.com). We confirm by email or WhatsApp."],
+  ["How much is the advance, and when do I pay the rest?", "Half the total, or all of it, by UPI. The rest is paid at check-out."],
+  ["Someone sent me a different UPI ID or payment link. Is it you?", "If you're not sure it's us, don't pay. Message us on WhatsApp or email zhilly.life@gmail.com and we'll sort it out."],
+  ["What if I need to cancel or change my dates?", "7 or more days before arrival: full refund. 3 to 6 days: half back. Less than 3 days, or a no-show: not refunded. You can move your dates once, free, if you tell us 7 or more days ahead."],
+  ["How do I get there from NJP or Bagdogra?", "Kalimpong is about 73 km from NJP station, roughly 2.5 hours by road on NH10 along the Teesta. Bagdogra airport is about 78 km."],
+  ["What if NH10 is closed on my travel day?", "It happens in the monsoon. Check road status before you set off and message us. You can move your dates free, or get a full refund."],
+  ["What time can I check in? I'm arriving late.", "Check-in from 11 am, check-out by 10 am. Early check-in depends on occupancy: if your bed is free, it's yours early, at no extra charge. Arriving late? Tell us your arrival time when we confirm your booking."],
+  ["What ID do I need?", "Aadhaar card, PAN card or passport."],
+  ["Is there a female-only dorm?", "Not at the moment. There's one mixed dorm with four bunk beds, and one private room with a queen bed and its own bathroom."],
+  ["Can I work from there? How's the internet?", "The internet runs at 40–50 Mbps. Power backup covers basic lighting and the internet."],
+  ["Is there hot water? Is it cold at night?", "Yes: there's a geyser in the bathroom, and hot drinking water whenever you ask. Winter nights are cold in the hills; every bed has a blanket."],
+  ["Is it a party hostel?", "Maybe. It's social: people talk in the evenings, over the long table in the café. No set quiet hours for now."],
+  ["Is there an age limit?", "Guests need to be 16 or over, and we don't take families."],
+];
 
 export default function PlanPage() {
   return (
     <PageShell page="plan-your-stay" nav="plan">
+      <JsonLd data={breadcrumbLd("/plan-your-stay/", "Plan your stay")} />
+      <JsonLd data={faqLd(faq)} />
       <section className="phero" aria-labelledby="h1">
-        <img src="/photos/verandah-up.jpg" srcSet="/photos/verandah-up-sm.jpg 960w, /photos/verandah-up.jpg 2000w" sizes="100vw" width="2000" height="1500" fetchPriority="high" alt="Looking up from the verandah steps: the white lace fretwork along the eaves, the lattice gable, and very tall trees and bamboo against the sky." />
+        <img src="/photos/verandah-up.jpg" srcSet="/photos/verandah-up-sm.jpg 800w, /photos/verandah-up.jpg 1600w" sizes="100vw" width="1600" height="1200" fetchPriority="high" alt="Looking up from the verandah steps: the white lace fretwork along the eaves, the lattice gable, and very tall trees and bamboo against the sky." />
         <div className="wrap">
           <nav className="crumb" aria-label="Breadcrumb">
             <Link href="/">Zhilly</Link>
@@ -270,7 +289,7 @@ export default function PlanPage() {
             <div className="bring">
               <figure className="plate">
                 <div className="frame">
-                  <img src="/photos/side-path-sm.jpg" srcSet="/photos/side-path-sm.jpg 960w, /photos/side-path.jpg 2000w" sizes="(max-width:980px) 92vw, 40vw" width="2000" height="1500" loading="lazy" alt="A gravel path running along the side of the cottage, with a bamboo railing on one side and tall trees and bamboo falling away beyond it." />
+                  <img src="/photos/side-path-sm.jpg" srcSet="/photos/side-path-sm.jpg 800w, /photos/side-path.jpg 1600w" sizes="(max-width:980px) 92vw, 40vw" width="1600" height="1200" loading="lazy" alt="A gravel path running along the side of the cottage, with a bamboo railing on one side and tall trees and bamboo falling away beyond it." />
                 </div>
                 <figcaption className="cap">
                   The path along the side of the cottage. Gravel, roots and a bamboo rail.
