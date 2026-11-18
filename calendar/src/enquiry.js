@@ -83,8 +83,8 @@ export function enquiryEmails(v, id, replyHours) {
     },
     guest: {
       subject: "We got your Zhilly enquiry",
-      html: `<p>Hi ${escapeHtml(v.name)},</p><p>Thanks for asking about a stay at Zhilly. This is not a booking yet: we check the dates by hand and will confirm within ${replyHours} hours by email or phone.</p>${table(guestRows)}<p>Just reply to this email if anything changes.</p><p>Zhilly, Kalimpong</p>`,
-      text: `Hi ${v.name},\n\nThanks for asking about a stay at Zhilly. This is not a booking yet: we check the dates by hand and will confirm within ${replyHours} hours by email or phone.\n\n${text(guestRows)}\n\nJust reply to this email if anything changes.\nZhilly, Kalimpong`,
+      html: `<p>Hi ${escapeHtml(v.name)},</p><p>Thanks for asking about a stay at Zhilly. This is not a booking yet: we check the dates by hand and will confirm within ${replyHours} hours by email or WhatsApp.</p>${table(guestRows)}<p>Just reply to this email if anything changes.</p><p>Zhilly, Kalimpong</p>`,
+      text: `Hi ${v.name},\n\nThanks for asking about a stay at Zhilly. This is not a booking yet: we check the dates by hand and will confirm within ${replyHours} hours by email or WhatsApp.\n\n${text(guestRows)}\n\nJust reply to this email if anything changes.\nZhilly, Kalimpong`,
     },
   };
 }

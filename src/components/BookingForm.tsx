@@ -137,7 +137,7 @@ export default function BookingForm() {
     return (
       <div className="enq done" role="status" tabIndex={-1} ref={doneRef}>
         <h3>Thanks, {done.name}. We've got your dates.</h3>
-        <p>We'll confirm within {done.hours} hours by email or phone. A copy of your enquiry is on its way to your inbox (check spam if it isn't).</p>
+        <p>We'll confirm within {done.hours} hours by email or WhatsApp.</p>
         <p>This isn't a booking yet: nothing is held until we confirm.</p>
       </div>
     );
