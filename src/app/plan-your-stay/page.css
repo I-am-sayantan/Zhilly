@@ -1,0 +1,107 @@
+/* Plan your stay · Zhilly — page-only styles, scoped to this page's shell. */
+:where([data-page="plan-your-stay"]) .phero{--pos:50% 40%}
+
+/* 01 · the four legs, unrolled: each leg on its own ruled line, with the thing you'd actually see beside it */
+:where([data-page="plan-your-stay"]) .route{list-style:none;margin:0;padding:0;counter-reset:leg}
+:where([data-page="plan-your-stay"]) .route>li{counter-increment:leg;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:20px clamp(32px,5vw,80px);padding:30px 0 clamp(40px,4vw,56px);border-top:1.5px solid var(--ink)}
+:where([data-page="plan-your-stay"]) .route .leg{position:relative;padding-left:42px}
+:where([data-page="plan-your-stay"]) .route .leg::before{content:"";position:absolute;left:0;top:4px;border-left:12px solid transparent;border-right:12px solid transparent;border-bottom:21px solid var(--red)}
+:where([data-page="plan-your-stay"]) .route .leg .mono{display:block;margin:0 0 8px}
+:where([data-page="plan-your-stay"]) .route .leg .mono::before{content:"Leg " counter(leg,upper-alpha) " · "}
+:where([data-page="plan-your-stay"]) .route h3{margin:0 0 14px;font-weight:850;font-variation-settings:"wdth" 112;text-transform:uppercase;font-size:clamp(28px,2.8vw,42px);line-height:.95;letter-spacing:-.01em}
+:where([data-page="plan-your-stay"]) .route .leg p{margin:0 0 10px;max-width:30rem}
+:where([data-page="plan-your-stay"]) .route .field{margin:0}
+/* the sample message: a slip of paper, not a phone mock-up */
+:where([data-page="plan-your-stay"]) .slip{position:relative;margin:4px 0 0;max-width:430px;background:#FBF8F1;border:1.5px solid var(--ink);padding:18px 22px 20px;transform:rotate(-1.2deg);box-shadow:0 14px 22px -20px rgba(0,0,0,.55)}
+:where([data-page="plan-your-stay"]) .slip::before{content:"";position:absolute;left:28px;top:-9px;width:64px;height:18px;background:rgba(233,162,59,.55);transform:rotate(-4deg)}
+:where([data-page="plan-your-stay"]) .slip figcaption{margin:0 0 10px;padding-bottom:8px;border-bottom:1px dashed rgba(29,35,32,.35)}
+:where([data-page="plan-your-stay"]) .slip pre{margin:0;font-family:var(--mono);font-size:15px;line-height:1.75;white-space:pre-wrap;color:var(--ink)}
+:where([data-page="plan-your-stay"]) .slip pre b{font-weight:600;color:var(--red-d)}
+:where([data-page="plan-your-stay"]) .payonly{border-top:3px dotted var(--red);border-bottom:3px dotted var(--red);padding:22px 0 24px}
+:where([data-page="plan-your-stay"]) .payonly p{margin:0}
+:where([data-page="plan-your-stay"]) .payonly .big{font-family:var(--serif);font-weight:560;font-variation-settings:"opsz" 72,"SOFT" 50;font-size:clamp(26px,2.4vw,34px);line-height:1.12;letter-spacing:-.01em;color:var(--ink)}
+:where([data-page="plan-your-stay"]) .payonly .big+p{margin-top:14px;font-size:17px}
+:where([data-page="plan-your-stay"]) .idline{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;margin-top:18px!important;padding-top:14px;border-top:1px dotted var(--ink-2)}
+:where([data-page="plan-your-stay"]) .after-legs{margin:4px 0 0;font-size:16px;color:var(--ink-2);max-width:44rem}
+
+/* 02 · prices: a giant hatched figure (like the altitude) and the ledger beside it */
+:where([data-page="plan-your-stay"]) .tariff{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:clamp(32px,5vw,88px);align-items:start}
+:where([data-page="plan-your-stay"]) .bigfig{margin:0}
+:where([data-page="plan-your-stay"]) .bigfig .n{display:flex;align-items:flex-start;gap:.08em;font-family:var(--serif);font-weight:640;font-variation-settings:"opsz" 144,"SOFT" 30;font-size:clamp(96px,9vw,150px);line-height:.82;letter-spacing:-.04em;color:var(--pine)}
+:where([data-page="plan-your-stay"]) .bigfig .n .blank{display:inline-block;width:1.3em;height:.78em;margin-top:.04em;border:2px dashed var(--contour);background:repeating-linear-gradient(135deg,rgba(154,107,63,.2) 0 4px,transparent 4px 11px)}
+:where([data-page="plan-your-stay"]) .bigfig figcaption{margin-top:18px;max-width:19rem}
+:where([data-page="plan-your-stay"]) .tcap{margin:0 0 12px}
+:where([data-page="plan-your-stay"]) #small-print{padding-bottom:clamp(72px,9vw,128px)}
+:where([data-page="plan-your-stay"]) .ledger td.amt{border-left:4px double var(--red);padding-left:16px;font-family:var(--mono);font-size:16px;white-space:nowrap}
+:where([data-page="plan-your-stay"]) .ledger th.amt{padding-left:16px}
+:where([data-page="plan-your-stay"]) .ledger td:last-child{font-size:16px;color:var(--ink-2)}
+:where([data-page="plan-your-stay"]) .ledger tr.sub td{font-size:16px}
+:where([data-page="plan-your-stay"]) .ledger tr.sub td:first-child{font-weight:600;font-size:17px}
+:where([data-page="plan-your-stay"]) .tariff .after{margin:18px 0 0;font-size:16px}
+
+/* 03 · when to come: the year as one strip */
+:where([data-page="plan-your-stay"]) .year{position:relative;margin:0 0 clamp(36px,4vw,56px)}
+:where([data-page="plan-your-stay"]) .year .m,:where([data-page="plan-your-stay"]) .year .b{display:grid;grid-template-columns:repeat(12,minmax(0,1fr))}
+:where([data-page="plan-your-stay"]) .year .m span{padding:0 0 8px 6px;border-left:1px solid var(--ink);font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.06em;color:var(--ink-2)}
+:where([data-page="plan-your-stay"]) .year .m span:last-child{border-right:1px solid var(--ink)}
+:where([data-page="plan-your-stay"]) .year .b{height:64px;border-top:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink)}
+:where([data-page="plan-your-stay"]) .year .b span{display:flex;align-items:center;padding:0 10px;font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;overflow:hidden}
+:where([data-page="plan-your-stay"]) .sw-w{background:repeating-linear-gradient(90deg,rgba(47,110,142,.22) 0 1px,transparent 1px 9px),rgba(47,110,142,.08);color:#22536B}
+:where([data-page="plan-your-stay"]) .sw-s{background:var(--paper-2);color:var(--ink-2)}
+:where([data-page="plan-your-stay"]) .sw-m{background:repeating-linear-gradient(135deg,rgba(47,110,142,.35) 0 3px,transparent 3px 8px);color:#1E4A60}
+:where([data-page="plan-your-stay"]) .sw-u{background:rgba(233,162,59,.3);color:#7A5230}
+:where([data-page="plan-your-stay"]) .sw-a{background:rgba(194,65,45,.16);color:var(--red-d)}
+:where([data-page="plan-your-stay"]) .year .b .sw-m{color:#173E52;text-shadow:0 0 6px var(--paper),0 0 2px var(--paper)}
+:where([data-page="plan-your-stay"]) .seasons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 clamp(28px,4vw,64px);margin:0}
+:where([data-page="plan-your-stay"]) .seasons>div{padding:16px 0 18px;border-bottom:1px dotted var(--ink-2)}
+:where([data-page="plan-your-stay"]) .seasons dt{display:grid;grid-template-columns:30px minmax(0,1fr);align-items:center;gap:2px 14px;margin:0 0 8px;font-weight:800;font-variation-settings:"wdth" 88;font-size:22px;line-height:1.2}
+:where([data-page="plan-your-stay"]) .seasons dt i{flex:none;width:30px;height:16px;border:1.5px solid var(--ink)}
+:where([data-page="plan-your-stay"]) .seasons dt small{grid-column:2;font-family:var(--mono);font-size:12.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--brown)}
+:where([data-page="plan-your-stay"]) .seasons dd{margin:0;font-size:17px;max-width:30rem}
+:where([data-page="plan-your-stay"]) .season .roadstamp{position:relative;right:auto;bottom:auto;display:inline-block;margin:36px 0 0 6px}
+
+/* 04 · what to bring: a kit list with empty tick boxes, next to the path you'll walk */
+:where([data-page="plan-your-stay"]) .bring{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(32px,5vw,80px);align-items:start}
+:where([data-page="plan-your-stay"]) .bring .frame img{aspect-ratio:4/3;object-position:50% 60%}
+:where([data-page="plan-your-stay"]) .kit{list-style:none;margin:0;padding:0;border-top:1.5px solid var(--ink)}
+:where([data-page="plan-your-stay"]) .kit li{position:relative;padding:13px 0 13px 40px;border-bottom:1px dotted var(--ink-2)}
+:where([data-page="plan-your-stay"]) .kit li::before{content:"";position:absolute;left:2px;top:18px;width:19px;height:19px;border:1.8px solid var(--ink);border-radius:1px;transform:rotate(-3deg)}
+:where([data-page="plan-your-stay"]) .kit b{display:block;font-weight:700;font-size:19px;font-variation-settings:"wdth" 92;line-height:1.3}
+:where([data-page="plan-your-stay"]) .kit li>span{display:block;font-size:16px;color:var(--ink-2)}
+:where([data-page="plan-your-stay"]) .bring .after{margin:18px 0 0;font-size:16px;color:var(--ink-2)}
+
+/* 05 · questions, grouped */
+:where([data-page="plan-your-stay"]) .qgroup{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:0 clamp(24px,4vw,64px)}
+:where([data-page="plan-your-stay"]) .qgroup+.qgroup{margin-top:clamp(36px,4vw,56px)}
+:where([data-page="plan-your-stay"]) .qgroup h3{margin:0;padding-top:20px;font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--brown)}
+:where([data-page="plan-your-stay"]) .faq .a a{text-underline-offset:3px}
+
+/* end · onward */
+:where([data-page="plan-your-stay"]) .onward{list-style:none;margin:0;padding:0;border-top:1.5px solid var(--ink)}
+:where([data-page="plan-your-stay"]) .onward a{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:6px 24px;padding:24px 0;border-bottom:1px dotted var(--ink-2);text-decoration:none}
+:where([data-page="plan-your-stay"]) .onward b{font-weight:850;font-variation-settings:"wdth" 118;text-transform:uppercase;font-size:clamp(32px,4vw,60px);line-height:.95;letter-spacing:-.015em}
+:where([data-page="plan-your-stay"]) .onward span{grid-column:1;font-size:17px;color:var(--ink-2);max-width:34rem}
+:where([data-page="plan-your-stay"]) .onward svg{grid-column:2;grid-row:1/3;width:46px;height:30px;color:var(--red);transition:transform .25s}
+:where([data-page="plan-your-stay"]) .onward a:hover b{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:6px;text-decoration-color:var(--red)}
+:where([data-page="plan-your-stay"]) .onward a:hover svg{transform:translateX(6px)}
+
+@media (max-width:980px){
+  :where([data-page="plan-your-stay"]) .route>li,:where([data-page="plan-your-stay"]) .tariff,:where([data-page="plan-your-stay"]) .bring{grid-template-columns:1fr}
+  :where([data-page="plan-your-stay"]) .slip{margin-left:6px}
+  :where([data-page="plan-your-stay"]) .seasons{grid-template-columns:1fr}
+  :where([data-page="plan-your-stay"]) .qgroup{grid-template-columns:1fr}
+  :where([data-page="plan-your-stay"]) .qgroup h3{padding:0 0 10px}
+}
+@media (max-width:640px){
+  :where([data-page="plan-your-stay"]) .route .leg{padding-left:34px}
+  :where([data-page="plan-your-stay"]) .route .leg::before{border-left-width:10px;border-right-width:10px;border-bottom-width:17px}
+  :where([data-page="plan-your-stay"]) .slip{padding:16px 16px 18px}
+  :where([data-page="plan-your-stay"]) .slip pre{font-size:14px}
+  :where([data-page="plan-your-stay"]) .bigfig .n{font-size:clamp(80px,24vw,120px)}
+  :where([data-page="plan-your-stay"]) .ledger td.amt{border-left:0;padding-left:0;white-space:normal}
+  :where([data-page="plan-your-stay"]) .year .m span{padding-left:3px;font-size:11px;letter-spacing:0}
+  :where([data-page="plan-your-stay"]) .year .b{height:40px}
+  :where([data-page="plan-your-stay"]) .year .b span{font-size:0;padding:0}
+  :where([data-page="plan-your-stay"]) .season .roadstamp{margin:28px 0 0;max-width:100%}
+  :where([data-page="plan-your-stay"]) .onward svg{width:34px}
+}

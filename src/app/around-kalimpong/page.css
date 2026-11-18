@@ -1,0 +1,108 @@
+/* Around Kalimpong · Zhilly — page-only styles, scoped to this page's shell. */
+/* ---------- Around Kalimpong ---------- */
+:where([data-page="around-kalimpong"]) .phero{--pos:50% 46%}
+
+/* 01 · the town, sorted like a map key */
+:where([data-page="around-kalimpong"]) .ak-key{display:grid;grid-template-columns:260px minmax(0,1fr);gap:clamp(28px,4vw,64px);align-items:start}
+:where([data-page="around-kalimpong"]) .ak-legend{position:sticky;top:28px;border:1.5px solid var(--ink);background:var(--card);padding:18px 20px 20px;box-shadow:6px 6px 0 rgba(154,107,63,.22)}
+:where([data-page="around-kalimpong"]) .ak-legend .mono{margin:0 0 10px;padding-bottom:8px;border-bottom:1.5px solid var(--ink);display:flex;justify-content:space-between}
+:where([data-page="around-kalimpong"]) .ak-legend ul{list-style:none;margin:0;padding:0}
+:where([data-page="around-kalimpong"]) .ak-legend li{display:flex;align-items:center;gap:12px;padding:7px 0;font-size:16px;border-bottom:1px dotted rgba(29,35,32,.35)}
+:where([data-page="around-kalimpong"]) .ak-legend li:last-child{border-bottom:0}
+:where([data-page="around-kalimpong"]) .sym{width:24px;height:24px;flex:none;overflow:visible}
+:where([data-page="around-kalimpong"]) .ak-spot{margin:18px 0 0;padding-top:14px;border-top:1.5px solid var(--ink)}
+:where([data-page="around-kalimpong"]) .ak-spot .fig{display:flex;align-items:baseline;gap:8px;font-family:var(--serif);font-weight:640;font-variation-settings:"opsz" 144,"SOFT" 30;font-size:64px;line-height:.9;letter-spacing:-.03em;color:var(--pine)}
+:where([data-page="around-kalimpong"]) .ak-spot .fig::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--ink);transform:translateY(-6px)}
+:where([data-page="around-kalimpong"]) .ak-spot .fig small{font-size:.38em;font-weight:400;letter-spacing:0;color:var(--ink)}
+:where([data-page="around-kalimpong"]) .ak-spot .cap{display:block;margin-top:8px}
+:where([data-page="around-kalimpong"]) .ak-groups{columns:2;column-gap:clamp(28px,3vw,48px)}
+:where([data-page="around-kalimpong"]) .ak-grp{break-inside:avoid;margin:0 0 30px}
+:where([data-page="around-kalimpong"]) .ak-grp h3{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--brown);font-weight:600;margin:0;padding-bottom:8px;border-bottom:1.5px solid var(--ink)}
+:where([data-page="around-kalimpong"]) .ak-grp ul{list-style:none;margin:0;padding:0}
+:where([data-page="around-kalimpong"]) .ak-grp li{padding:12px 0 12px;border-bottom:1px dotted var(--ink-2)}
+:where([data-page="around-kalimpong"]) .ak-grp li b{display:block;font-size:clamp(22px,1.9vw,27px);font-weight:800;font-variation-settings:"wdth" 84;line-height:1.1}
+:where([data-page="around-kalimpong"]) .ak-grp li>span{display:block;font-size:16px;color:var(--ink-2);margin-top:3px}
+:where([data-page="around-kalimpong"]) .ak-grp .also{font-size:15px;color:var(--ink-2);margin:12px 0 0}
+
+/* 02 · half a day, or all of it */
+:where([data-page="around-kalimpong"]) .ak-split{display:grid;grid-template-columns:minmax(0,7fr) 40px minmax(0,5fr);gap:0 clamp(16px,2vw,32px);align-items:start}
+:where([data-page="around-kalimpong"]) .ak-split h3{font-family:var(--serif);font-weight:560;font-variation-settings:"opsz" 144,"SOFT" 50;font-size:clamp(40px,4.2vw,64px);line-height:1;letter-spacing:-.015em;margin:0 0 18px}
+:where([data-page="around-kalimpong"]) .ak-split .whole h3{color:var(--post)}
+:where([data-page="around-kalimpong"]) .ak-threads{list-style:none;margin:0;padding:0;border-top:1.5px solid var(--ink)}
+:where([data-page="around-kalimpong"]) .ak-threads li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:0 12px;padding:16px 0;border-bottom:1px dotted var(--ink-2)}
+:where([data-page="around-kalimpong"]) .ak-threads .k{font-family:var(--mono);font-weight:600;font-size:15px;color:var(--red-d);padding-top:5px}
+:where([data-page="around-kalimpong"]) .ak-threads b{display:block;font-size:22px;font-weight:800;font-variation-settings:"wdth" 88;line-height:1.2}
+:where([data-page="around-kalimpong"]) .ak-threads p{margin:3px 0 0;font-size:17px}
+:where([data-page="around-kalimpong"]) .ak-vrule{align-self:stretch;width:40px;background:var(--trail) repeat-y 0 0/40px 200px;opacity:.9}
+:where([data-page="around-kalimpong"]) .ak-split .whole p{margin:0 0 14px}
+:where([data-page="around-kalimpong"]) .ak-split .whole .big{font-size:clamp(20px,1.6vw,23px);line-height:1.4;font-weight:500;font-variation-settings:"wdth" 92}
+:where([data-page="around-kalimpong"]) .ak-hand{position:relative;margin:30px 0 30px 8px;padding:6px 0 6px 18px;border-left:3px solid #E9A23B;font-family:"Caveat",cursive;font-weight:500;font-size:27px;line-height:1.15;color:#2B3A55;transform:rotate(-1.2deg)}
+:where([data-page="around-kalimpong"]) .ak-split .plate{max-width:340px;margin:8px 0 0 12px;transform:rotate(1.4deg)}
+:where([data-page="around-kalimpong"]) .ak-split .plate img{aspect-ratio:4/5;object-position:50% 60%}
+
+/* 03 · further out: day trips as milestones along a road */
+:where([data-page="around-kalimpong"]) .ak-road{position:relative;list-style:none;margin:10px 0 0;padding:0 0 30px;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:0 clamp(14px,2vw,30px);align-items:end}
+:where([data-page="around-kalimpong"]) .ak-road::after{content:"";position:absolute;left:-2%;right:-2%;bottom:14px;height:6px;background:radial-gradient(circle,var(--red) 2.2px,transparent 2.6px) 0 50%/13px 6px repeat-x}
+:where([data-page="around-kalimpong"]) .ak-road::before{content:"";position:absolute;left:-2%;right:-2%;bottom:24px;border-top:1.5px solid var(--ink)}
+:where([data-page="around-kalimpong"]) .stone{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;min-height:clamp(170px,15vw,206px);padding:0 8px 16px;margin-bottom:24px;border:2px solid var(--ink);border-bottom:0;border-radius:999px 999px 0 0;background:var(--card);text-align:center;transform:rotate(var(--r,0deg));transform-origin:50% 100%;overflow:hidden}
+:where([data-page="around-kalimpong"]) .stone::before{content:"";position:absolute;left:0;right:0;top:0;height:clamp(56px,36%,74px);background:var(--red);border-bottom:2px solid var(--ink)}
+:where([data-page="around-kalimpong"]) .stone b{display:block;font-weight:850;font-variation-settings:"wdth" 75;text-transform:uppercase;font-size:clamp(19px,1.7vw,25px);line-height:1;letter-spacing:.01em}
+:where([data-page="around-kalimpong"]) .stone .km{margin-top:10px;font-family:var(--mono);font-size:14px;font-weight:600;letter-spacing:.02em;white-space:nowrap}
+:where([data-page="around-kalimpong"]) .ak-trips{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);margin-top:clamp(26px,3vw,40px)}
+:where([data-page="around-kalimpong"]) .ak-trips h3{font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--brown);font-weight:600;margin:0 0 6px}
+:where([data-page="around-kalimpong"]) .ak-trips p{margin:0}
+
+/* 04 · the year, as a ruled strip */
+:where([data-page="around-kalimpong"]) .ak-year{position:relative;display:grid;grid-template-columns:repeat(24,minmax(0,1fr));margin:6px 0 0}
+:where([data-page="around-kalimpong"]) .ak-year .m{grid-row:1;grid-column:var(--s)/var(--e);padding:0 0 8px 6px;border-left:1.5px solid var(--ink);font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);background:linear-gradient(var(--ink),var(--ink)) 50% 100%/1px 7px no-repeat}
+:where([data-page="around-kalimpong"]) .ak-year .m:last-of-type{border-right:1.5px solid var(--ink)}
+:where([data-page="around-kalimpong"]) .ak-year .s{grid-row:2;grid-column:var(--s)/var(--e);position:relative;min-height:132px;padding:14px 12px 14px;border-top:4px solid var(--ink-2);border-left:1px solid rgba(29,35,32,.18)}
+:where([data-page="around-kalimpong"]) .ak-year .s b{display:block;font-weight:800;font-variation-settings:"wdth" 85;font-size:20px;line-height:1.1;text-transform:uppercase}
+:where([data-page="around-kalimpong"]) .ak-year .s span{display:block;margin-top:6px;font-size:15px;line-height:1.35;color:var(--ink-2)}
+:where([data-page="around-kalimpong"]) .ak-year .win{border-top-color:#6E8A9C;background:repeating-linear-gradient(0deg,rgba(47,110,142,.07) 0 1px,transparent 1px 9px)}
+:where([data-page="around-kalimpong"]) .ak-year .spr,:where([data-page="around-kalimpong"]) .ak-year .aut{border-top:0;padding-top:18px;background:linear-gradient(var(--paper),var(--paper)) 0 0/100% 4px no-repeat,radial-gradient(circle,var(--red) 2.2px,transparent 2.6px) 0 0/12px 6px repeat-x}
+:where([data-page="around-kalimpong"]) .ak-year .sum{border-top-color:#E9A23B}
+:where([data-page="around-kalimpong"]) .ak-year .mon{border-top-color:var(--river);background:repeating-linear-gradient(115deg,rgba(47,110,142,.2) 0 1.5px,transparent 1.5px 11px)}
+:where([data-page="around-kalimpong"]) .ak-year .mon b{color:var(--river)}
+:where([data-page="around-kalimpong"]) .ak-year .cont b{color:var(--ink-2)}
+:where([data-page="around-kalimpong"]) .ak-src{margin:14px 0 0}
+:where([data-page="around-kalimpong"]) .ak-notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 clamp(28px,4vw,64px);margin:clamp(40px,4vw,60px) 0 0;border-top:1.5px solid var(--ink)}
+:where([data-page="around-kalimpong"]) .ak-notes div{padding:16px 0 18px;border-bottom:1px dotted var(--ink-2)}
+:where([data-page="around-kalimpong"]) .ak-notes dt{font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--brown);font-weight:600;margin:0 0 4px}
+:where([data-page="around-kalimpong"]) .ak-notes dd{margin:0}
+:where([data-page="around-kalimpong"]) .ak-notes a{color:var(--red-d);font-weight:700;text-underline-offset:4px}
+
+@media (max-width:980px){
+  :where([data-page="around-kalimpong"]) .ak-key{grid-template-columns:1fr}
+  :where([data-page="around-kalimpong"]) .ak-legend{position:relative;top:auto;max-width:440px}
+  :where([data-page="around-kalimpong"]) .ak-split{grid-template-columns:1fr}
+  :where([data-page="around-kalimpong"]) .ak-vrule{display:none}
+  :where([data-page="around-kalimpong"]) .ak-split .whole{margin-top:44px}
+  :where([data-page="around-kalimpong"]) .ak-road{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:0}
+  :where([data-page="around-kalimpong"]) .ak-road::before,:where([data-page="around-kalimpong"]) .ak-road::after{display:none}
+  :where([data-page="around-kalimpong"]) .ak-road li{padding-bottom:30px;background:linear-gradient(var(--ink),var(--ink)) 0 calc(100% - 24px)/100% 1.5px no-repeat,radial-gradient(circle,var(--red) 2.2px,transparent 2.6px) 0 calc(100% - 12px)/13px 6px repeat-x;margin-right:calc(clamp(14px,2vw,30px) * -1);padding-right:clamp(14px,2vw,30px)}
+  :where([data-page="around-kalimpong"]) .ak-road .stone{margin-bottom:0}
+}
+@media (max-width:640px){
+  :where([data-page="around-kalimpong"]) .ak-groups{columns:1}
+  :where([data-page="around-kalimpong"]) .ak-spot .fig{font-size:54px}
+  :where([data-page="around-kalimpong"]) .ak-threads li{grid-template-columns:32px minmax(0,1fr);gap:0 8px}
+  :where([data-page="around-kalimpong"]) .ak-threads b{font-size:20px}
+  :where([data-page="around-kalimpong"]) .ak-hand{font-size:24px}
+  :where([data-page="around-kalimpong"]) .ak-split .plate{margin-left:10px;max-width:none}
+  :where([data-page="around-kalimpong"]) .stone{min-height:158px;padding:0 4px 12px}
+  :where([data-page="around-kalimpong"]) .stone b{font-size:15.5px}
+  :where([data-page="around-kalimpong"]) .stone .km{font-size:12px}
+  :where([data-page="around-kalimpong"]) .ak-trips{grid-template-columns:1fr;gap:20px}
+  /* the year runs down the page instead of across */
+  :where([data-page="around-kalimpong"]) .ak-year{grid-template-columns:52px minmax(0,1fr);grid-template-rows:repeat(24,minmax(30px,auto))}
+  :where([data-page="around-kalimpong"]) .ak-year .m{grid-column:1;grid-row:var(--s)/var(--e);border-left:0;border-top:1.5px solid var(--ink);padding:6px 0 0;background:none}
+  :where([data-page="around-kalimpong"]) .ak-year .m:last-of-type{border-right:0;border-bottom:1.5px solid var(--ink)}
+  :where([data-page="around-kalimpong"]) .ak-year .s{grid-column:2;grid-row:var(--s)/var(--e);min-height:0;border-top:0;border-left:4px solid var(--ink-2);padding:10px 0 12px 14px}
+  :where([data-page="around-kalimpong"]) .ak-year .win{border-left-color:#6E8A9C}
+  :where([data-page="around-kalimpong"]) .ak-year .sum{border-left-color:#E9A23B}
+  :where([data-page="around-kalimpong"]) .ak-year .mon{border-left-color:var(--river)}
+  :where([data-page="around-kalimpong"]) .ak-year .spr,:where([data-page="around-kalimpong"]) .ak-year .aut{border-left:0;padding-left:18px;background:radial-gradient(circle,var(--red) 2.2px,transparent 2.6px) 0 0/6px 12px repeat-y}
+  :where([data-page="around-kalimpong"]) .ak-year .s b{font-size:18px}
+  :where([data-page="around-kalimpong"]) .ak-notes{grid-template-columns:1fr}
+}

@@ -1,0 +1,52 @@
+/* Policies · Zhilly — page-only styles, scoped to this page's shell. */
+/* ---------- a draft document: contents on a short trail at the side, the terms beside it ---------- */
+:where([data-page="policies"]) .doc{position:relative;display:grid;grid-template-columns:minmax(0,270px) minmax(0,1fr);gap:clamp(40px,6vw,104px);padding-top:clamp(72px,8vw,120px);padding-bottom:clamp(80px,9vw,140px)}
+:where([data-page="policies"]) .draftstamp{position:absolute;z-index:5;right:var(--gut);top:-62px;margin:0;transform:rotate(5deg);padding:12px 22px 13px;border:3px solid #A8432F;color:#A8432F;background:rgba(247,243,230,.97);box-shadow:inset 0 0 0 4px rgba(247,243,230,.97),inset 0 0 0 6px #A8432F;font-family:var(--mono);font-weight:600;font-size:13px;letter-spacing:.1em;text-transform:uppercase;line-height:1.35;text-align:center;filter:url(#inked)}
+:where([data-page="policies"]) .draftstamp b{display:block;font-family:var(--sans);font-weight:900;font-variation-settings:"wdth" 125;font-size:44px;letter-spacing:.06em;line-height:1}
+:where([data-page="policies"]) .toc{position:relative;z-index:1}
+:where([data-page="policies"]) .toc .in{position:sticky;top:28px}
+:where([data-page="policies"]) .toc ol{list-style:none;margin:12px 0 0;padding:0;position:relative}
+:where([data-page="policies"]) .toc ol::before{content:"";position:absolute;left:10px;top:14px;bottom:14px;border-left:3px dotted var(--red)}
+:where([data-page="policies"]) .toc li{position:relative;padding-left:36px}
+:where([data-page="policies"]) .toc li::before{content:"";position:absolute;left:3px;top:15px;border-left:8.5px solid transparent;border-right:8.5px solid transparent;border-bottom:14px solid var(--red)}
+:where([data-page="policies"]) .toc a{display:grid;grid-template-columns:2.1em 1fr;padding:9px 0;text-decoration:none;font-weight:600;font-size:16px;line-height:1.35;font-variation-settings:"wdth" 92}
+:where([data-page="policies"]) .toc a span{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--red-d);padding-top:2px}
+:where([data-page="policies"]) .toc a:hover{text-decoration:underline;text-underline-offset:4px}
+:where([data-page="policies"]) .docmeta{margin:28px 0 0;padding-top:14px;border-top:1.5px solid var(--ink)}
+:where([data-page="policies"]) .docmeta dt{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--brown);font-weight:600;margin-top:12px}
+:where([data-page="policies"]) .docmeta dd{margin:2px 0 0;font-size:16px}
+:where([data-page="policies"]) .policy{position:relative;z-index:1}
+:where([data-page="policies"]) .policy>section{scroll-margin-top:24px}
+:where([data-page="policies"]) .policy>section+section{margin-top:clamp(48px,5vw,72px)}
+:where([data-page="policies"]) .prose.policy h2{display:flex;align-items:baseline;gap:16px;margin:0 0 18px;padding-bottom:12px;font-family:var(--sans);font-size:clamp(26px,2.4vw,34px);line-height:1.1;letter-spacing:-.005em;text-transform:none;color:var(--ink);font-weight:800;font-variation-settings:"wdth" 96}
+:where([data-page="policies"]) .prose.policy h2 .no{flex:none;font-family:var(--mono);font-size:14px;font-weight:600;letter-spacing:.08em;color:var(--red-d)}
+:where([data-page="policies"]) .policy h3{margin:22px 0 6px;font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--brown)}
+:where([data-page="policies"]) .policy .intro{font-family:var(--serif);font-weight:500;font-variation-settings:"opsz" 36,"SOFT" 50;font-size:clamp(22px,1.9vw,26px);line-height:1.35;margin:0 0 30px}
+/* the short version: a field list, terms on the left */
+:where([data-page="policies"]) .short{margin:0 0 8px;display:grid;grid-template-columns:auto minmax(0,1fr);border-top:1.5px solid var(--ink)}
+:where([data-page="policies"]) .short dt,:where([data-page="policies"]) .short dd{margin:0;padding:12px 0;border-bottom:1px dotted var(--ink-2)}
+:where([data-page="policies"]) .short dt{padding-right:28px;font-family:var(--mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;color:var(--brown);padding-top:15px}
+:where([data-page="policies"]) .pay{margin:18px 0!important;padding:14px 0 14px 20px;border-left:4px double var(--red);font-weight:700;font-size:19px}
+/* notes to the owner, set apart from the public wording */
+:where([data-page="policies"]) .ask{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;margin:18px 0 0!important;padding:12px 16px;border:1px dashed var(--contour);background:repeating-linear-gradient(135deg,rgba(154,107,63,.08) 0 5px,transparent 5px 12px);font-size:16px}
+:where([data-page="policies"]) .ask .mono{font-size:12px;padding-top:3px;color:#5E3E22}
+:where([data-page="policies"]) .terms{margin:16px 0 4px}
+:where([data-page="policies"]) .terms td:first-child{font-size:18px}
+@media (max-width:980px){
+  :where([data-page="policies"]) .doc{grid-template-columns:1fr;gap:44px}
+  :where([data-page="policies"]) .toc .in{position:static}
+  :where([data-page="policies"]) .toc ol{columns:2;column-gap:28px}
+  :where([data-page="policies"]) .toc ol::before{display:none}
+  :where([data-page="policies"]) .toc li{break-inside:avoid}
+  :where([data-page="policies"]) .draftstamp{top:-50px}
+}
+@media (max-width:640px){
+  :where([data-page="policies"]) .draftstamp{position:relative;right:auto;top:auto;display:block;width:max-content;max-width:100%;margin:-26px 0 0 auto;transform:rotate(4deg);font-size:11.5px}
+  :where([data-page="policies"]) .draftstamp b{font-size:34px}
+  :where([data-page="policies"]) .doc{padding-top:30px}
+  :where([data-page="policies"]) .toc ol{columns:1}
+  :where([data-page="policies"]) .short{grid-template-columns:1fr}
+  :where([data-page="policies"]) .short dt{padding:14px 0 0;border:0}
+  :where([data-page="policies"]) .short dd{padding-top:2px}
+  :where([data-page="policies"]) .ask{grid-template-columns:1fr}
+}
