@@ -22,3 +22,7 @@ FROM_EMAIL = "onboarding@resend.dev"
 binding = "DB"
 database_name = "zhilly-calendar"
 database_id = "281cbb59-5eec-47c4-bcfa-128cf2c3d697"
+
+# Worker logs in the dashboard (Observability), so failed enquiry emails can be seen.
+[observability]
+enabled = true
