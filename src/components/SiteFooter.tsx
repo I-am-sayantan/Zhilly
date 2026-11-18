@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { site } from "@/lib/site";
+import { site, wa } from "@/lib/site";
 import Pending from "./Pending";
 import SocialLinks from "./SocialLinks";
 
@@ -14,6 +14,7 @@ export default function SiteFooter() {
         </div>
         <div>
           <h3>Contact</h3>
+          <p>WhatsApp <a href={wa.checkDates}>{site.phoneDisplay}</a></p>
           <p>Email <a href={`mailto:${site.email}`}>{site.email}</a></p>
           <p>Instagram <a href={site.instagramUrl}>{site.instagram}</a></p>
           <p><a href={site.facebookUrl}>Facebook</a></p>

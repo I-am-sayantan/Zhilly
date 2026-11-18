@@ -12,7 +12,9 @@ crons = ["*/15 * * * *"] # pull every OTA import link
 # Websites allowed to read /availability and post /enquiry (comma separated).
 ALLOWED_ORIGINS = "https://zhilly.life,https://www.zhilly.life,https://zhilly.pages.dev"
 # Sender of the booking enquiry emails (Resend); must be on a domain verified in Resend.
-FROM_EMAIL = "bookings@zhilly.life"
+# shortcut: onboarding@resend.dev until zhilly.life is verified in Resend; it can only email the Resend account's own
+# address (the owner), so guest copies fail until then. After verifying, change to "bookings@zhilly.life" and deploy.
+FROM_EMAIL = "onboarding@resend.dev"
 # Secrets, never in this file (`npx wrangler secret put NAME`):
 #   ADMIN_PASSWORD, TURNSTILE_SECRET, RESEND_API_KEY, OWNER_EMAIL (where enquiries go; kept out of the public repo)
 

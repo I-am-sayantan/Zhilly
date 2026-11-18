@@ -15,7 +15,10 @@ export const site = {
   /** Keep false until the owner signs off the content: pages ship with noindex. */
   launched: false,
 
-  /** No phone number is published: every contact link goes to this inbox. */
+  /** WhatsApp (owner-approved exception to "no phone in public", website only), international format without "+". */
+  whatsappNumber: "918293326469",
+  /** The same number as people read it. */
+  phoneDisplay: "+91 82933 26469",
   email: "zhilly.life@gmail.com" as string | null,
   instagram: "@zhilly.life" as string | null,
   instagramUrl: "https://www.instagram.com/zhilly.life/",
@@ -30,12 +33,10 @@ export const site = {
 
   /**
    * The calendar Worker (calendar/ folder): availability JSON and booking enquiries. Local dev: set NEXT_PUBLIC_CALENDAR_API.
-   * null = Worker not deployed yet: no booked nights are fetched and the enquiry form is replaced by email + the first-guest form.
-   * Set to "https://cal.zhilly.life" once the Worker, Turnstile and Resend are set up (DEPLOY-CLOUDFLARE.md).
    */
-  calendarApi: (process.env.NEXT_PUBLIC_CALENDAR_API ?? null) as string | null,
-  /** Cloudflare Turnstile site key (public). 1x00000000000000000000AA is Cloudflare's always-pass test key: replace it at launch. */
-  turnstileSiteKey: "1x00000000000000000000AA",
+  calendarApi: process.env.NEXT_PUBLIC_CALENDAR_API ?? "https://cal.zhilly.life",
+  /** Cloudflare Turnstile site key (public). For local dev, Cloudflare's always-pass test key is 1x00000000000000000000AA. */
+  turnstileSiteKey: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "0x4AAAAAAGHr6R1pq7hA5ONB",
 } as const;
 
 export const nav = [
@@ -51,6 +52,16 @@ export type NavKey = (typeof nav)[number]["key"];
 export function mailUrl(subject: string, body: string): string {
   return `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
+
+export function whatsappUrl(message: string): string {
+  return `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(message)}`;
+}
+
+/** Pre-filled WhatsApp chats used by the buttons across the site. */
+export const wa = {
+  checkDates: whatsappUrl("Hi Zhilly! I'd like to check dates…"),
+  roadQuestion: whatsappUrl("Hi Zhilly! I'm travelling up tomorrow. How's the road?"),
+};
 
 /** Pre-filled emails used by the buttons across the site. */
 export const mail = {

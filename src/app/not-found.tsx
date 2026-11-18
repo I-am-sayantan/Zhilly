@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageShell from "@/components/PageShell";
-import { mail } from "@/lib/site";
+import { wa } from "@/lib/site";
 import "./not-found.css";
 
 export const metadata: Metadata = {
   title: "Off the map · Zhilly",
-  description: "This page doesn't exist. Head back to the Zhilly homepage, the beds, or directions, or email us.",
+  description: "This page doesn't exist. Head back to the Zhilly homepage, the beds, or directions, or ask us on WhatsApp.",
 };
 
 export default function NotFound() {
@@ -26,7 +26,7 @@ export default function NotFound() {
               <li><Link href="/stay/"><b>Stay</b><span>Eight beds and a private room</span></Link></li>
               <li><Link href="/find-us/"><b>Find us</b><span>The road up from NJP</span></Link></li>
             </ol>
-            <a className="btn" href={mail.checkDates}>Or just email us</a>
+            <a className="btn" href={wa.checkDates}>Or just ask us on WhatsApp</a>
           </div>
         </div>
         <div className="mapfrag" aria-hidden="true">

@@ -46,7 +46,7 @@ export function validateEnquiry(body, today, rooms) {
 
   if (v.name.length < 2 || v.name.length > 100 || CTRL.test(v.name) || /[\n\t<>]/.test(v.name)) e.name = "Tell us your full name.";
   const digits = v.phone.replace(/\D/g, "").length;
-  if (!PHONE_RE.test(v.phone) || digits < 8 || digits > 15) e.phone = "Phone with country code, e.g. +91 98765 43210.";
+  if (!PHONE_RE.test(v.phone) || digits < 8 || digits > 15) e.phone = "Phone with country code, starting with +.";
   if (v.email.length > 254 || !EMAIL_RE.test(v.email)) e.email = "Check the email address.";
   if (v.message.length > 1000 || CTRL.test(v.message)) e.message = "Keep the message under 1,000 characters.";
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useMemo, useRef, useState, type KeyboardEvent, type ReactNode } from "react";
-import { site, mail, mailUrl } from "@/lib/site";
+import { site, mail, mailUrl, wa, whatsappUrl } from "@/lib/site";
 
 /*
  * The "Send us your dates" planner (Figma: Components › Date planner).
@@ -83,6 +83,16 @@ function message({ arrive, leave }: Plan) {
     lines.push(`Leave   ${long(leave)} (${n} night${n === 1 ? "" : "s"})`);
   }
   return lines.join("\n");
+}
+
+/** A WhatsApp chat with the chosen dates filled in: handy on phones. */
+export function WhatsAppDatesLink({ className, children }: { className?: string; children: ReactNode }) {
+  const text = message(usePlan());
+  return (
+    <a className={className} href={text ? whatsappUrl(text) : wa.checkDates}>
+      {children}
+    </a>
+  );
 }
 
 /** An email with the chosen dates filled in. */
@@ -233,7 +243,7 @@ export function DatePlanner() {
         </div>
 
         <div className="foot">
-          <p>{arrive && !leave ? "Now tap the day you leave." : arrive ? "Now send us these dates. We check every date by hand." : "Tap the day you arrive, then the day you leave."}{booked.size > 0 && <><br /><span className="key-booked">12</span> = already booked</>}</p>
+          <p>{arrive && !leave ? "Now tap the day you leave." : arrive ? "Now send us the enquiry. We check every date by hand." : "Tap the day you arrive, then the day you leave."}{booked.size > 0 && <><br /><span className="key-booked">12</span> = already booked</>}</p>
           {arrive && <button type="button" className="clear" onClick={() => { setArrive(null); setLeave(null); }}>Clear</button>}
         </div>
       </div>

@@ -2,12 +2,12 @@
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { site } from "@/lib/site";
-import { fromIso, hitsBooked, iso, key, nightsBetween, usePlan, EmailDatesLink } from "./DatePlanner";
+import { fromIso, hitsBooked, iso, key, nightsBetween, usePlan, EmailDatesLink, WhatsAppDatesLink } from "./DatePlanner";
 
 /*
  * The booking enquiry form, beside the date planner in the closing band. It posts to the calendar
  * Worker's /enquiry (Turnstile-checked, emailed to us and acknowledged to the guest). It is an
- * enquiry, not a booking: we confirm by hand. An email link with the dates stays as a small secondary link.
+ * enquiry, not a booking: we confirm by hand. WhatsApp and email links with the dates stay as small secondary links.
  */
 
 const MAX_GUESTS = 20;
@@ -91,7 +91,7 @@ export default function BookingForm() {
     if (name.length < 2) e.name = "Tell us your full name.";
     const phone = String(fd.get("phone") ?? "").trim();
     const digits = phone.replace(/\D/g, "").length;
-    if (!/^\+[1-9][0-9 ()-]{6,22}$/.test(phone) || digits < 8 || digits > 15) e.phone = "Phone with country code, e.g. +91 98765 43210.";
+    if (!/^\+[1-9][0-9 ()-]{6,22}$/.test(phone) || digits < 8 || digits > 15) e.phone = "Phone with country code, starting with +.";
     if (!/^[^\s@<>"(),;:]{1,64}@[a-z0-9-]+(\.[a-z0-9-]+)*\.[a-z]{2,}$/i.test(String(fd.get("email") ?? "").trim())) e.email = "Check the email address.";
     return e;
   }
@@ -123,9 +123,9 @@ export default function BookingForm() {
       if (out.errors) {
         setErrors(out.errors);
         focusFirst(out.errors);
-      } else setGeneral(out.error ?? "Something went wrong. Please try again, or email us.");
+      } else setGeneral(out.error ?? "Something went wrong. Please try again, or message us on WhatsApp.");
     } catch {
-      setGeneral("We couldn't send that just now. Please try again, or email us.");
+      setGeneral("We couldn't send that just now. Please try again, or message us on WhatsApp.");
     } finally {
       setSending(false);
       setToken("");
@@ -191,7 +191,7 @@ export default function BookingForm() {
       <div className="two">
         <div>
           <label htmlFor="enq-phone">Phone, with country code</label>
-          <input id="enq-phone" name="phone" type="tel" autoComplete="tel" required maxLength={24} placeholder="+91 98765 43210" {...err("phone")} />
+          <input id="enq-phone" name="phone" type="tel" autoComplete="tel" required maxLength={24} placeholder="+91 …" {...err("phone")} />
           {msg("phone")}
         </div>
         <div>
@@ -214,24 +214,11 @@ export default function BookingForm() {
       {general && <p className="err general" role="alert">{general}</p>}
       <div className="go">
         <button className="btn" type="submit" disabled={sending}>{sending ? "Sending…" : "Send booking enquiry"}</button>
-        <EmailDatesLink className="wa-alt">Or email us these dates</EmailDatesLink>
+        <WhatsAppDatesLink className="wa-alt">Or send these dates on WhatsApp</WhatsAppDatesLink>
+        <EmailDatesLink className="wa-alt">or by email</EmailDatesLink>
       </div>
       <p className="fine">We reply within 24 hours. Nothing is charged or held until we confirm.</p>
     </form>
   );
 }
 
-/** Stands in for the form while the calendar Worker isn't deployed (site.calendarApi is null): email, or the first-guest form. */
-export function EmailEnquiry() {
-  return (
-    <div className="enq">
-      <h3>Booking enquiry</h3>
-      <p>Pick your dates on the calendar, then email them to us with how many of you are coming. We check every date by hand and reply by email.</p>
-      <div className="go">
-        <EmailDatesLink className="btn">Email us your dates</EmailDatesLink>
-        <a className="wa-alt" href={site.firstGuestForm}>Or fill in the first-guest form</a>
-      </div>
-      <p className="fine">{site.email} · Nothing is charged or held until we confirm.</p>
-    </div>
-  );
-}
