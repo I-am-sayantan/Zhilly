@@ -7,7 +7,7 @@ import "./page.css";
 
 export const metadata: Metadata = {
   title: "Plan your stay · Zhilly",
-  description: "How booking a bed at Zhilly works (a booking enquiry, a quote, a UPI advance), what's included, when to come to Kalimpong and what to pack.",
+  description: "How booking a bed at Zhilly works (a booking enquiry, a quote, a UPI advance), what it costs, when to come to Kalimpong and what to pack.",
 };
 
 export default function PlanPage() {
@@ -72,7 +72,7 @@ export default function PlanPage() {
                 <dl className="field">
                   <dt>The quote tells you</dt>
                   <dd>Which beds are free for your dates</dd>
-                  <dd>The price per night, times your nights</dd>
+                  <dd>Price per night, times your nights: ₹800 a dorm bed with breakfast, or ₹1,500 for the private room (₹1,700 with breakfast for two)</dd>
                   <dd>What's included: breakfast with dorm beds</dd>
                   <dd>Taxes: GST included</dd>
                   <dd>The advance that holds your beds: half the total, or all of it</dd>
@@ -127,39 +127,48 @@ export default function PlanPage() {
             </div>
           </div>
           <div className="body">
-            <p className="mono">Waypoint 02 · What's included</p>
+            <p className="mono">Waypoint 02 · Prices</p>
             <h2 id="wp2">
-              What's included
+              What it costs
               <small>
-                Your quote has the price per night, in rupees. The same numbers in your quote and at the gate.
+                Per night, in rupees. The same numbers here, in your quote and at the gate.
               </small>
             </h2>
-            <div>
+            <div className="tariff">
+              <figure className="bigfig">
+                <span className="n">₹800</span>
+                <figcaption className="cap">Field note: one bed, one night, breakfast included.</figcaption>
+              </figure>
               <div>
                 <p className="mono tcap">At a glance</p>
                 <table className="ledger">
                   <thead>
-                    <tr><th scope="col">Item</th><th scope="col">Note</th></tr>
+                    <tr><th scope="col">Item</th><th scope="col" className="amt">₹</th><th scope="col">Note</th></tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>Bed, mixed dorm</td>
+                      <td className="amt" data-k="Price">₹800</td>
                       <td data-k="Note">per bed, per night, breakfast included</td>
                     </tr>
                     <tr>
                       <td>Private room, queen bed</td>
-                      <td data-k="Note">the room, per night, up to two; its own bathroom. Breakfast for two on request</td>
+                      <td className="amt" data-k="Price">₹1,500</td>
+                      <td data-k="Note">the room, per night, up to two; its own bathroom. ₹1,700 with breakfast for two</td>
                     </tr>
                     <tr className="sub">
                       <td>Taxes</td>
+                      <td className="amt" data-k="Price">Incl.</td>
                       <td data-k="Note">GST is included in every price</td>
                     </tr>
                     <tr className="sub">
                       <td>Advance to hold</td>
+                      <td className="amt" data-k="Price">Half or all</td>
                       <td data-k="Note">by UPI</td>
                     </tr>
                     <tr className="sub">
                       <td>Café</td>
+                      <td className="amt" />
                       <td data-k="Note">Breakfast comes with dorm beds</td>
                     </tr>
                   </tbody>

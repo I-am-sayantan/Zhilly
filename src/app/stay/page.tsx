@@ -8,7 +8,7 @@ import "./page.css";
 
 export const metadata: Metadata = {
   title: "Stay · Zhilly, Kalimpong",
-  description: "Dorm beds at Zhilly, a small social hostel with a café in Kalimpong (eight dorm beds and a private room): who it suits, the beds, the shared spaces, and check-in.",
+  description: "Dorm beds at Zhilly, a small social hostel with a café in Kalimpong (eight dorm beds and a private room): who it suits, the beds and prices, the shared spaces, and check-in.",
 };
 
 export default function StayPage() {
@@ -88,10 +88,10 @@ export default function StayPage() {
             </div>
           </div>
           <div className="body">
-            <p className="mono">Waypoint 02 · Beds</p>
+            <p className="mono">Waypoint 02 · Beds and prices</p>
             <h2 id="w2">
               The beds
-              <small>Dorm beds by the bed, the private room by the room.</small>
+              <small>Per night, in rupees: dorm beds by the bed, the private room by the room.</small>
             </h2>
             <table className="s-ledger">
               <thead>
@@ -99,6 +99,7 @@ export default function StayPage() {
                   <th scope="col">Room</th>
                   <th scope="col">Beds</th>
                   <th scope="col">Bed type</th>
+                  <th scope="col">Per night</th>
                   <th scope="col">Bathroom</th>
                 </tr>
               </thead>
@@ -107,12 +108,14 @@ export default function StayPage() {
                   <td>Mixed dorm</td>
                   <td data-k="Beds">8</td>
                   <td data-k="Type">4 bunk beds</td>
+                  <td className="rate" data-k="Per night">₹800/night</td>
                   <td data-k="Bathroom">One, inside the dorm</td>
                 </tr>
                 <tr>
                   <td>Private room</td>
                   <td data-k="Beds">1</td>
                   <td data-k="Type">Queen bed</td>
+                  <td className="rate" data-k="Per night">₹1,500/night</td>
                   <td data-k="Bathroom">Its own</td>
                 </tr>
               </tbody>
@@ -120,7 +123,7 @@ export default function StayPage() {
                 <tr>
                   <th scope="row">All rooms</th>
                   <td>9 beds</td>
-                  <td colSpan={2} className="cap">Breakfast comes with dorm beds, and is available with the private room.</td>
+                  <td colSpan={3} className="cap">Breakfast comes with dorm beds. The private room is ₹1,700 a night with breakfast for two.</td>
                 </tr>
               </tfoot>
             </table>

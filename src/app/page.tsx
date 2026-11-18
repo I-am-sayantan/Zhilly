@@ -120,16 +120,18 @@ export default function HomePage() {
               <div>
                 <table>
                   <thead>
-                    <tr><th scope="col">Room</th><th scope="col">Beds</th></tr>
+                    <tr><th scope="col">Room</th><th scope="col">Beds</th><th scope="col">₹ per night</th></tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>Mixed dorm</td>
-                      <td data-k="Beds">8, on four bunks, with breakfast</td>
+                      <td data-k="Beds">8, on four bunks</td>
+                      <td data-k="Per night">₹800 a bed, with breakfast</td>
                     </tr>
                     <tr>
                       <td>Private room</td>
                       <td data-k="Beds">1 queen bed, own bathroom</td>
+                      <td data-k="Per night">₹1,500 the room (₹1,700 with breakfast)</td>
                     </tr>
                   </tbody>
                 </table>
