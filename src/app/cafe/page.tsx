@@ -107,13 +107,13 @@ export default function CafePage() {
               </div>
               <img className="grove" src="/art/bamboo-grove.svg" alt="" aria-hidden="true" width="300" height="800" />
               <div className="text">
-                <p className="mono">When, who, where</p>
+                <p className="mono">When and who</p>
                 <h2 id="w2">The kettle's on when we're open.</h2>
                 <dl>
                   <dt>When</dt>
                   <dd>Every day, 12 pm to 11 pm<br />Breakfast around 10–10:30 am</dd>
                   <dt>Who</dt>
-                  <dd>Guests.</dd>
+                  <dd>Guests, and day visitors are welcome.</dd>
                 </dl>
                 <p className="note">The strip on the left is drawn from the woven bamboo ceiling of the dining shed.</p>
               </div>

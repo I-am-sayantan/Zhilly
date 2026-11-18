@@ -372,12 +372,7 @@ export default function FindUsPage() {
             <div className="fu-last">
               <div>
                 <h3>Nearly there</h3>
-                <ol className="fu-steps">
-                  <li>
-                    <b>Look for</b>
-                    A green tin roof with white lace trim along the eaves.
-                  </li>
-                </ol>
+                <p>Look for a green tin roof with white lace trim along the eaves.</p>
                 <dl className="fu-facts">
                   <div>
                     <dt>Address</dt>

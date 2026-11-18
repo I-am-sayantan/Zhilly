@@ -112,7 +112,7 @@ export default function PlanPage() {
             <p className="after-legs">
               The full terms (advance, cancellation, check-in, ID) are on the{" "}
               <Link href="/policies/">Policies</Link>
-              {" "}page. It's still a draft until we open.
+              {" "}page.
             </p>
           </div>
         </section>
@@ -281,7 +281,6 @@ export default function PlanPage() {
                       The one you'll show at check-in: Aadhaar card, PAN card or passport.
                     </span>
                   </li>
-                  <li><b>A towel</b><span>We provide one.</span></li>
                   <li><b>Some cash</b><span>Small shops and taxis in town may prefer it.</span></li>
                   <li>
                     <b>Whatever helps on winding roads</b>
@@ -383,7 +382,7 @@ export default function PlanPage() {
                   <summary>What ID do I need?</summary>
                   <div className="a">
                     <p>
-                      Indian guests: Aadhaar card, PAN card or passport.
+                      Aadhaar card, PAN card or passport.
                     </p>
                   </div>
                 </details>
@@ -446,7 +445,7 @@ export default function PlanPage() {
               <li>
                 <Link href="/policies/">
                   <b>Policies</b>
-                  <span>Advance, cancellation, check-in, ID and house rules. A draft until we open.</span>
+                  <span>Advance, cancellation, check-in, ID and house rules.</span>
                   <svg viewBox="0 0 46 30" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M2 15h38M28 4l12 11-12 11" />
                   </svg>
