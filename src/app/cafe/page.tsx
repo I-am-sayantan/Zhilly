@@ -8,7 +8,7 @@ import "./page.css";
 
 export const metadata: Metadata = {
   title: "Café · Zhilly, Kalimpong",
-  description: "The café at Zhilly, a small social hostel in Kalimpong: food, tea and coffee, and somewhere to sit and talk. Hours and menu to confirm. Concept draft.",
+  description: "The café at Zhilly, a small social hostel in Kalimpong: food, tea and coffee, and somewhere to sit and talk.",
 };
 
 export default function CafePage() {
@@ -24,7 +24,7 @@ export default function CafePage() {
           </nav>
           <h1 id="h1">Pull up a chair.</h1>
           <p className="lead">
-            Food, tea and coffee, and a place to sit and talk. The menu is still being written, so this page has blanks where the dishes go.
+            Food, tea and coffee, and a place to sit and talk.
           </p>
           <p className="credit">The bamboo dining shed: woven ceiling, turquoise post.</p>
         </div>
@@ -113,9 +113,7 @@ export default function CafePage() {
                   <dt>When</dt>
                   <dd>Every day, 12 pm to 11 pm<br />Breakfast around 10–10:30 am</dd>
                   <dt>Who</dt>
-                  <dd>Guests. Not staying with us? <span className="ph">[Non-guests welcome? To confirm]</span></dd>
-                  <dt>Where</dt>
-                  <dd><span className="ph">[Where on the grounds: to confirm]</span></dd>
+                  <dd>Guests.</dd>
                 </dl>
                 <p className="note">The strip on the left is drawn from the woven bamboo ceiling of the dining shed.</p>
               </div>
@@ -136,95 +134,12 @@ export default function CafePage() {
             </div>
           </div>
           <div className="body">
-            <p className="mono">Waypoint 03 · The menu</p>
+            <p className="mono">Waypoint 03 · Eating here</p>
             <h2 id="w3">
-              On the menu
-              <small>Laid out the way it will be printed. The dishes come later.</small>
+              Before you order
+              <small>A few things worth knowing.</small>
             </h2>
             <div className="c-menu">
-              <article className="c-card" aria-labelledby="menu-h">
-                <div className="c-head">
-                  <span className="mono">Zhilly · Café · Kalimpong</span>
-                  <span className="mono"><span className="ph">[Season to confirm]</span></span>
-                </div>
-                <h3 id="menu-h">Menu</h3>
-                <span className="trim" aria-hidden="true" />
-                <p className="hand" aria-hidden="true">the real menu <br />goes here ↓</p>
-                <div className="cols">
-                  <section aria-label="Breakfast, heading to confirm">
-                    <h4>[Breakfast]</h4>
-                    <ul>
-                      <li>
-                        <span className="ph">[Dish to confirm]</span>
-                      </li>
-                      <li>
-                        <span className="ph">[Dish to confirm]</span>
-                      </li>
-                      <li>
-                        <span className="ph">[Dish to confirm]</span>
-                      </li>
-                    </ul>
-                  </section>
-                  <section aria-label="All day, heading to confirm">
-                    <h4>[All day]</h4>
-                    <ul>
-                      <li>
-                        <span className="ph">[Dish to confirm]</span>
-                      </li>
-                      <li>
-                        <span className="ph">[Dish to confirm]</span>
-                      </li>
-                      <li>
-                        <span className="ph">[Dish to confirm]</span>
-                      </li>
-                      <li>
-                        <span className="ph">[Dish to confirm]</span>
-                      </li>
-                    </ul>
-                  </section>
-                  <section aria-label="Tea and coffee, heading to confirm">
-                    <h4>[Tea & coffee]</h4>
-                    <ul>
-                      <li>
-                        <span className="ph">[Drink to confirm]</span>
-                      </li>
-                      <li>
-                        <span className="ph">[Drink to confirm]</span>
-                      </li>
-                      <li>
-                        <span className="ph">[Drink to confirm]</span>
-                      </li>
-                    </ul>
-                  </section>
-                  <section aria-label="Something sweet, heading to confirm">
-                    <h4>[Something sweet]</h4>
-                    <ul>
-                      <li>
-                        <span className="ph">[Dish to confirm]</span>
-                      </li>
-                      <li>
-                        <span className="ph">[Dish to confirm]</span>
-                      </li>
-                    </ul>
-                  </section>
-                </div>
-                <p className="foot cap">
-                  Veg / non-veg marks{" "}
-                  <span className="ph">[to confirm]</span>
-                </p>
-                <svg className="c-stamp" viewBox="0 0 240 112" aria-hidden="true">
-                  <g filter="url(#inked)" fill="none" stroke="currentColor">
-                    <rect x="4" y="4" width="232" height="104" strokeWidth="3.2" />
-                    <rect x="11" y="11" width="218" height="90" strokeWidth="1.4" />
-                    <text x="120" y="44" textAnchor="middle" fill="currentColor" stroke="none" fontWeight="600" fontSize="15" letterSpacing="3" style={{ fontFamily: "var(--mono)" }}>
-                      THE MENU IS
-                    </text>
-                    <text x="120" y="80" textAnchor="middle" fill="currentColor" stroke="none" fontWeight="800" fontSize="25" letterSpacing=".5" style={{ fontFamily: "var(--sans)" }}>
-                      BEING WRITTEN
-                    </text>
-                  </g>
-                </svg>
-              </article>
               <aside className="c-side" aria-label="Notes beside the menu">
                 <h3>Not on our menu</h3>
                 <ul className="town"><li>Kalimpong's local cheese</li><li>A Kalimpong lollipop</li><li>Momos</li></ul>
@@ -258,7 +173,7 @@ export default function CafePage() {
               <figure className="plate detail">
                 <div className="frame">
                   <div className="crop">
-                    <img src="/photos/dining-shed.jpg" width="1500" height="2000" loading="lazy" alt="Close up: the woven bamboo mats of the dining-shed ceiling, held up on pale bamboo rafters." />
+                    <img src="/photos/dining-shed-sm.jpg" width="720" height="960" loading="lazy" alt="Close up: the woven bamboo mats of the dining-shed ceiling, held up on pale bamboo rafters." />
                   </div>
                 </div>
                 <figcaption className="cap">Detail · The woven ceiling in the bamboo dining shed.</figcaption>

@@ -3,12 +3,12 @@ import Link from "next/link";
 import CloseBand from "@/components/CloseBand";
 import PageShell from "@/components/PageShell";
 import SocialLinks from "@/components/SocialLinks";
-import { mail, site } from "@/lib/site";
+import { mail, site, wa } from "@/lib/site";
 import "./page.css";
 
 export const metadata: Metadata = {
   title: "Find us · Zhilly",
-  description: "How to get to Zhilly in Kalimpong: about 73 km from NJP station and about 78 km from Bagdogra airport by NH10 along the Teesta, plus how to reach us. Concept draft.",
+  description: "How to get to Zhilly in Kalimpong: about 73 km from NJP station and about 78 km from Bagdogra airport by NH10 along the Teesta, plus how to reach us.",
 };
 
 export default function FindUsPage() {
@@ -47,8 +47,7 @@ export default function FindUsPage() {
             <h2 id="wp1">The road<small>Up from the plains, along the river, to about 1,250 m.</small></h2>
             <figure className="fu-map">
               {/* wide sketch (desktop) */}
-              {" "}
-              <svg className="sk sk-h" viewBox="0 0 1200 440" role="img" aria-label="Route sketch, not to scale: from NJP station or Bagdogra airport to Siliguri and Sevoke, then NH10 along the Teesta to Teesta Bazaar, where you turn off and climb to Kalimpong. The last stretch to Zhilly is still to be confirmed.">
+              <svg className="sk sk-h" viewBox="0 0 1200 440" role="img" aria-label="Route sketch, not to scale: from NJP station or Bagdogra airport to Siliguri and Sevoke, then NH10 along the Teesta to Teesta Bazaar, where you turn off and climb to Kalimpong.">
                 <g fill="none" stroke="#9A6B3F" strokeWidth="1.2" opacity=".55">
                   <path d="M880 118C900 52 1010 30 1090 44S1200 110 1176 160S1060 214 980 200S862 170 880 118Z" />
                   <path d="M926 120C936 80 1010 66 1068 76S1146 118 1130 150S1056 182 1000 172S918 152 926 120Z" />
@@ -110,10 +109,8 @@ export default function FindUsPage() {
                   Kalimpong
                 </text>
               </svg>
-              {" "}
               {/* tall sketch (phone) */}
-              {" "}
-              <svg className="sk sk-v" viewBox="0 0 360 860" role="img" aria-label="Route sketch, not to scale: from NJP station or Bagdogra airport to Siliguri and Sevoke, then NH10 along the Teesta to Teesta Bazaar, where you turn off and climb to Kalimpong. The last stretch to Zhilly is still to be confirmed.">
+              <svg className="sk sk-v" viewBox="0 0 360 860" role="img" aria-label="Route sketch, not to scale: from NJP station or Bagdogra airport to Siliguri and Sevoke, then NH10 along the Teesta to Teesta Bazaar, where you turn off and climb to Kalimpong.">
                 <g fill="none" stroke="#9A6B3F" strokeWidth="1.2" opacity=".55">
                   <path d="M60 760C50 700 120 660 190 668S300 720 290 780S200 846 140 836S68 810 60 760Z" />
                   <path d="M96 762C92 724 140 700 186 706S256 740 250 778S194 818 152 812S100 796 96 762Z" />
@@ -173,8 +170,8 @@ export default function FindUsPage() {
                   ABOUT 1,250 M
                 </text>
               </svg>
-              <p className="ov ov-h"><b>Zhilly</b><span className="ph">[last stretch to confirm]</span></p>
-              <p className="ov ov-v"><b>Zhilly</b><span className="ph">[last stretch to confirm]</span></p>
+              <p className="ov ov-h"><b>Zhilly</b></p>
+              <p className="ov ov-v"><b>Zhilly</b></p>
               <p className="fu-stamp">
                 <strong>NH10 can close in the monsoon</strong>
                 Check road status before you travel
@@ -193,9 +190,8 @@ export default function FindUsPage() {
                 <p>
                   When NH10 has shut before, traffic went the long way round via Lava and Gorubathan (NH717A). That road can slip too.
                 </p>
-                <a className="fu-day" href={mail.roadQuestion}>
-                  {" "}
-                  {" "}Message us the day before you travel{" "}
+                <a className="fu-day" href={wa.roadQuestion}>
+                  WhatsApp us the day before you travel
                 </a>
               </div>
             </div>
@@ -253,7 +249,6 @@ export default function FindUsPage() {
                       <div><dt>Distance</dt><dd>About 73 km</dd></div>
                       <div><dt>Time</dt><dd>About 2.5 h</dd></div>
                       <div><dt>Rides</dt><dd>Shared jeep, bus or prepaid taxi</dd></div>
-                      <div><dt>Fare</dt><dd><span className="ph">[confirm locally]</span></dd></div>
                     </dl>
                   </div>
                 </article>
@@ -279,9 +274,7 @@ export default function FindUsPage() {
                     </div>
                     <dl className="facts">
                       <div><dt>Distance</dt><dd>About 78 km</dd></div>
-                      <div><dt>Time</dt><dd><span className="ph">[to confirm]</span></dd></div>
                       <div><dt>Rides</dt><dd>Prepaid taxi counter at the airport</dd></div>
-                      <div><dt>Fare</dt><dd><span className="ph">[confirm at the counter]</span></dd></div>
                     </dl>
                   </div>
                 </article>
@@ -291,21 +284,17 @@ export default function FindUsPage() {
                 <dl>
                   <div>
                     <dt>Shared jeep</dt>
-                    <dd>
-                      From NJP and Siliguri. Where they leave from:{" "}
-                      <span className="ph">[stand to confirm]</span>
-                    </dd>
+                    <dd>From NJP and Siliguri.</dd>
                   </div>
                   <div>
                     <dt>Bus</dt>
-                    <dd>Also from NJP and Siliguri. <span className="ph">[Timings to confirm]</span></dd>
+                    <dd>Also from NJP and Siliguri.</dd>
                   </div>
                   <div><dt>Prepaid taxi</dt><dd>Government-regulated counters at NJP and Bagdogra.</dd></div>
                   <div>
                     <dt>From Darjeeling</dt>
-                    <dd>About 52 km. <span className="ph">[Route and time to confirm]</span></dd>
+                    <dd>About 52 km.</dd>
                   </div>
-                  <div><dt>Pickup</dt><dd><span className="ph">[Do we pick up? To confirm]</span></dd></div>
                 </dl>
                 <p className="cap">We don't print fares. They change, and an old fare is worse than none.</p>
               </div>
@@ -329,9 +318,9 @@ export default function FindUsPage() {
             <p className="mono">Waypoint 03 · From town to our gate</p>
             <h2 id="wp3">
               The last stretch
-              <small>The pin is in. The sheet itself is still to be surveyed.</small>
+              <small>The pin is in. Open it in Google Maps for the last bit.</small>
             </h2>
-            <figure className="fu-sheet" aria-label="A survey sheet for the area around Zhilly, with the pin at 27.0580° N, 88.4737° E. Directions and scale are still to be confirmed.">
+            <figure className="fu-sheet" aria-label="A survey sheet for the area around Zhilly, with the pin at 27.0580° N, 88.4737° E.">
               <svg viewBox="0 0 900 560" aria-hidden="true">
                 <defs>
                   <clipPath id="fu-clip"><rect x="18" y="18" width="864" height="524" /></clipPath>
@@ -374,26 +363,19 @@ export default function FindUsPage() {
                 </g>
               </svg>
               <p className="ov ov-pin"><b>Zhilly</b><span className="ll">27.0580° N, 88.4737° E</span></p>
-              <p className="ov ov-from"><span className="ph">from town · [direction to confirm]</span></p>
             </figure>
             <dl className="fu-tb">
               <div><dt>Sheet</dt><dd>Zhilly and around</dd></div>
               <div><dt>Area</dt><dd>Lower Bong Basti</dd></div>
               <div><dt>Grid ref</dt><dd>27°03′28.9″N 88°28′25.3″E</dd></div>
-              <div><dt>Scale</dt><dd><span className="ph">[—]</span></dd></div>
-              <div><dt>Surveyed</dt><dd>Not yet</dd></div>
             </dl>
             <div className="fu-last">
               <div>
-                <h3>Directions</h3>
+                <h3>Nearly there</h3>
                 <ol className="fu-steps">
-                  <li><b>Start from</b><span className="ph">[landmark in town to confirm]</span></li>
-                  <li><b>Head</b><span className="ph">[road and direction to confirm]</span></li>
-                  <li><b>Turn at</b><span className="ph">[landmark to confirm]</span></li>
                   <li>
                     <b>Look for</b>
-                    A green tin roof with white lace trim along the eaves.{" "}
-                    <span className="ph">[gate or sign to confirm]</span>
+                    A green tin roof with white lace trim along the eaves.
                   </li>
                 </ol>
                 <dl className="fu-facts">
@@ -407,11 +389,6 @@ export default function FindUsPage() {
                     <dt>Map</dt>
                     <dd><a href={site.mapUrl}>Open the pin in Google Maps</a></dd>
                   </div>
-                  <div>
-                    <dt>From town</dt>
-                    <dd><span className="ph">[distance and walking time to confirm]</span></dd>
-                  </div>
-                  <div><dt>Parking</dt><dd><span className="ph">[to confirm]</span></dd></div>
                 </dl>
               </div>
               <figure className="plate">
@@ -419,7 +396,7 @@ export default function FindUsPage() {
                   <img src="/photos/cottage-angle-sm.jpg" srcSet="/photos/cottage-angle-sm.jpg 720w, /photos/cottage-angle.jpg 1500w" sizes="(max-width:980px) 86vw, 30vw" width="1500" height="2000" loading="lazy" alt="The Zhilly cottage from an angle: green corrugated tin roof, white scalloped lace trim along the eaves and the wooden verandah rail." />
                 </div>
                 <figcaption className="cap">
-                  Plate · What you're looking for. Photos of the turns on the way in to follow.
+                  Plate · What you're looking for.
                 </figcaption>
               </figure>
             </div>
@@ -437,7 +414,7 @@ export default function FindUsPage() {
           </div>
           <div className="body">
             <p className="mono">Waypoint 04 · Contact</p>
-            <h2 id="wp4">Write to us<small>Email is quickest. Instagram and Facebook work too.</small></h2>
+            <h2 id="wp4">Write to us<small>WhatsApp or email is quickest. Instagram and Facebook work too.</small></h2>
             <div className="fu-letter">
               <svg className="fu-pm" viewBox="0 0 160 110" aria-hidden="true">
                 <defs><path id="fupm" d="M55 55 m-40 0 a40 40 0 1 1 80 0 a40 40 0 1 1 -80 0" /></defs>
@@ -458,6 +435,10 @@ export default function FindUsPage() {
               </svg>
               <dl className="fu-ledger">
                 <div className="wa">
+                  <dt>WhatsApp</dt>
+                  <dd>{site.phoneDisplay} <a href={wa.checkDates}>Open a chat</a></dd>
+                </div>
+                <div>
                   <dt>Email</dt>
                   <dd>
                     <a href={mail.checkDates}>{site.email}</a>
@@ -473,13 +454,12 @@ export default function FindUsPage() {
                     <small>Kalimpong, West Bengal 734301</small>
                   </dd>
                 </div>
-                <div><dt>Replies</dt><dd><span className="ph">[hours to confirm]</span></dd></div>
               </dl>
             </div>
             <SocialLinks />
             <p className="upi">
-              <strong>We only take payment to the UPI ID listed on zhilly.life.</strong>
-              {" "}If anyone asks you to pay somewhere else, message us before you do.
+              <strong>Before you pay anything, check the payment details with us.</strong>
+              {" "}If anyone asks you to pay somewhere else, message us on WhatsApp or email first.
             </p>
           </div>
         </section>

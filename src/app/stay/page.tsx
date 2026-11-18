@@ -3,12 +3,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CloseBand from "@/components/CloseBand";
 import PageShell from "@/components/PageShell";
-import { mail } from "@/lib/site";
+import { mail, site, wa } from "@/lib/site";
 import "./page.css";
 
 export const metadata: Metadata = {
   title: "Stay · Zhilly, Kalimpong",
-  description: "Dorm beds at Zhilly, a small social hostel with a café in Kalimpong (eight dorm beds and a private room): who it suits, the beds, the shared spaces, and check-in. Concept draft.",
+  description: "Dorm beds at Zhilly, a small social hostel with a café in Kalimpong (eight dorm beds and a private room): who it suits, the beds, the shared spaces, and check-in.",
 };
 
 export default function StayPage() {
@@ -24,7 +24,7 @@ export default function StayPage() {
           </nav>
           <h1 id="h1">Eight beds. One private room. Tall trees.</h1>
           <p className="lead">
-            Eight dorm beds and one private room in a small social hostel in Kalimpong. A few details are still to confirm, so parts of this page are honest blanks.
+            Eight dorm beds and one private room in a small social hostel in Kalimpong.
           </p>
           <p className="credit">
             The cottage from the corner of the lawn: lace trim on the eaves, lattice in the gable.
@@ -61,7 +61,6 @@ export default function StayPage() {
                 </dd>
                 <dd>
                   Groups up for a hill weekend
-                  <span className="cap">Beds together <span className="ph">[group booking to confirm]</span></span>
                 </dd>
               </dl>
               <dl className="field">
@@ -132,7 +131,6 @@ export default function StayPage() {
                   <li><span>Breakfast</span><i /><span>Included, 10–10:30 am</span></li>
                   <li><span>Bed linen and a pillow</span><i /><span>Included</span></li>
                   <li><span>Blanket or quilt</span><i /><span>Included</span></li>
-                  <li><span>A locker</span><i /><span className="ph">[to confirm]</span></li>
                   <li><span>Towel</span><i /><span>Included</span></li>
                   <li><span>Plug point</span><i /><span>Yes</span></li>
                   <li><span>Hot water</span><i /><span>Geyser in the bathroom</span></li>
@@ -194,8 +192,7 @@ export default function StayPage() {
                   </g>
                 </svg>
                 <figcaption className="cap">
-                  Fig. 1 · Each room from above: four bunks (beds 01–08) and a bathroom in the dorm; a queen bed and its own bathroom in the private room. Not to scale. Layout{" "}
-                  <span className="ph">[to confirm]</span>
+                  Fig. 1 · Each room from above: four bunks (beds 01–08) and a bathroom in the dorm; a queen bed and its own bathroom in the private room. Not to scale.
                 </figcaption>
               </figure>
             </div>
@@ -284,7 +281,7 @@ export default function StayPage() {
                     <li><span>The lattice in the gable.</span></li>
                     <li><span>Lace trim along the eaves.</span></li>
                     <li><span>The verandah and its wooden rail.</span></li>
-                    <li><span>The rooms, behind these walls. Layout <span className="ph">[to confirm]</span></span></li>
+                    <li><span>The rooms, behind these walls.</span></li>
                   </ol>
                   <dl className="s-log">
                     <dt>Beds</dt>
@@ -301,7 +298,7 @@ export default function StayPage() {
                   Plate 2 · Where the dorm photo will go. For now, a drawing from our own photos of the front.
                 </span>
                 {" "}
-                <a href={mail.checkDates}>Email us for a progress picture</a>
+                Ask us for a progress picture on <a href={wa.checkDates}>WhatsApp ({site.phoneDisplay})</a> or by <a href={mail.checkDates}>email</a>.
               </figcaption>
             </figure>
           </div>
@@ -348,8 +345,6 @@ export default function StayPage() {
                 <dl className="field">
                   <dt>Quiet hours</dt>
                   <dd>None set yet</dd>
-                  <dt>Guest kitchen</dt>
-                  <dd><span className="ph">[to confirm]</span></dd>
                   <dt>Food</dt>
                   <dd>See <Link href="/cafe/">the café</Link>.</dd>
                 </dl>
@@ -386,7 +381,7 @@ export default function StayPage() {
                 <div className="s-next">
                   <p className="mono">Next on the trail</p>
                   <Link className="go" href="/plan-your-stay/">Plan your stay <span aria-hidden="true">→</span></Link>
-                  <p>How booking works: send us a booking enquiry with your dates, we confirm by email, a UPI advance holds the beds.</p>
+                  <p>How booking works: send us a booking enquiry with your dates, we confirm by email or WhatsApp, a UPI advance holds the beds.</p>
                   <a className="btn" href="#book">Send a booking enquiry</a>
                 </div>
               </div>
@@ -399,7 +394,7 @@ export default function StayPage() {
                   <li><b>Smoking and alcohol</b> Alcohol yes; smoking outside the dorm only</li>
                   <li><b>Cancellations</b> Full refund 7+ days ahead</li>
                 </ul>
-                <p className="upi"><strong>We only take payment to the UPI ID listed on zhilly.life.</strong></p>
+                <p className="upi"><strong>Never pay anyone who isn't us: check with us on WhatsApp or by email first.</strong></p>
                 <Link className="more-link" href="/policies/">Read the full policies</Link>
               </aside>
             </div>

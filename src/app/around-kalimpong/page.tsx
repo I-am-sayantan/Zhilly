@@ -7,7 +7,7 @@ import "./page.css";
 
 export const metadata: Metadata = {
   title: "Around Kalimpong · Zhilly",
-  description: "What's around Zhilly in Kalimpong: Deolo Hill, the gompas, the nurseries, the haat bazaar, and day trips to Lava, Lolegaon, Rishyap, Pedong, Sillery Gaon and Ichhey Gaon. Concept draft.",
+  description: "What's around Zhilly in Kalimpong: Deolo Hill, the gompas, the nurseries, the haat bazaar, and day trips to Lava, Lolegaon, Rishyap, Pedong, Sillery Gaon and Ichhey Gaon.",
 };
 
 export default function AroundPage() {
@@ -118,7 +118,7 @@ export default function AroundPage() {
                   <ul>
                     <li>
                       <b>Dr Graham's Homes</b>
-                      <span>Holds a May Fair. <span className="ph">[2027 date to confirm]</span></span>
+                      <span>Holds a May Fair.</span>
                     </li>
                     <li><b>Morgan House</b></li>
                   </ul>
@@ -136,11 +136,7 @@ export default function AroundPage() {
                   <ul>
                     <li>
                       <b>The haat bazaar</b>
-                      <span>
-                        Market days{" "}
-                        <span className="ph">[to confirm]</span>
-                        . Try the local cheese, a Kalimpong lollipop and momos while you're in town.
-                      </span>
+                      <span>Try the local cheese, a Kalimpong lollipop and momos while you're in town.</span>
                     </li>
                   </ul>
                 </div>
@@ -201,10 +197,6 @@ export default function AroundPage() {
                 <h3>The whole day.</h3>
                 <p className="big">Any two threads, back to back. Or leave town for one of the villages further out.</p>
                 <p>Back under the tall trees by evening.</p>
-                <p className="cap">
-                  Times between places:{" "}
-                  <span className="ph">[walking and taxi times to confirm]</span>
-                </p>
                 <p className="ak-hand">
                   We'll add our own notes (timings, the best order, where to eat) once we've walked these with guests.
                 </p>
@@ -270,10 +262,7 @@ export default function AroundPage() {
             <div className="ak-trips">
               <div>
                 <h3>Getting there</h3>
-                <p>
-                  <span className="ph">[Shared jeep or taxi, and where from: to confirm]</span>
-                  {" "}Ask us the evening before and we'll help you sort it.
-                </p>
+                <p>Ask us the evening before and we'll help you sort it.</p>
               </div>
               <div>
                 <h3>In the rains</h3>
@@ -352,8 +341,6 @@ export default function AroundPage() {
                   <Link href="/find-us/">How to get here</Link>
                 </dd>
               </div>
-              <div><dt>Market days</dt><dd><span className="ph">[Haat bazaar days to confirm]</span></dd></div>
-              <div><dt>Gompas</dt><dd><span className="ph">[Visiting hours and etiquette to confirm]</span></dd></div>
               <div>
                 <dt>Sikkim next?</dt>
                 <dd>

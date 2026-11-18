@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CloseBand from "@/components/CloseBand";
 import PageShell from "@/components/PageShell";
+import { mail, site, wa } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Zhilly · hostel and café in Kalimpong",
-  description: "Zhilly is a small social hostel with a café (eight dorm beds and a private room) in a cottage among very tall trees in Kalimpong, West Bengal. Concept draft.",
+  description: "Zhilly is a small social hostel with a café (eight dorm beds and a private room) in a cottage among very tall trees in Kalimpong, West Bengal.",
 };
 
 export default function HomePage() {
@@ -133,15 +134,16 @@ export default function HomePage() {
                   </tbody>
                 </table>
                 <p className="after">
-                  Breakfast with dorm beds · Facilities: internet 40–50 Mbps, hot water, bed linen, blanket and towel · Lockers{" "}
-                  <span className="ph">[to confirm]</span>
-                  {" "}· Check-in 11 am · Check-out 10 am
+                  Breakfast with dorm beds · Facilities: internet 40–50 Mbps, hot water, bed linen, blanket and towel · Check-in 11 am · Check-out 10 am
                 </p>
               </div>
               <div className="nophoto">
                 <svg className="stamp" viewBox="0 0 200 200" aria-hidden="true"><use href="#stamp-build" /></svg>
                 <h3>Room photos after fit-out.</h3>
-                <p>We'd rather show you a blank than someone else's dorm. Email us for a progress picture.</p>
+                <p>
+                  We'd rather show you a blank than someone else's dorm. Ask us for a progress picture on{" "}
+                  <a href={wa.checkDates}>WhatsApp ({site.phoneDisplay})</a> or by <a href={mail.checkDates}>email</a>.
+                </p>
               </div>
             </div>
           </div>
@@ -184,10 +186,6 @@ export default function HomePage() {
                 <dl>
                   <dt>Hours</dt>
                   <dd>Every day, 12 pm to 11 pm</dd>
-                  <dt>Menu</dt>
-                  <dd><span className="ph">[Menu to confirm]</span></dd>
-                  <dt>Not staying?</dt>
-                  <dd><span className="ph">[Non-guests welcome? To confirm]</span></dd>
                 </dl>
               </div>
             </div>
@@ -235,27 +233,27 @@ export default function HomePage() {
               </summary>
               <div className="all">
                 <figure>
-                  <img src="/photos/cottage-angle-sm.jpg" width="720" height="960" decoding="async" alt="The cottage from an angle: green tin roof, white scalloped trim and the verandah rail." />
+                  <img src="/photos/cottage-angle-sm.jpg" width="720" height="960" loading="lazy" decoding="async" alt="The cottage from an angle: green tin roof, white scalloped trim and the verandah rail." />
                   <figcaption className="cap">The cottage, from the corner of the lawn</figcaption>
                 </figure>
                 <figure>
-                  <img src="/photos/forest-path-sm.jpg" width="720" height="960" decoding="async" alt="An earthen path between a bank of bushes and a tall stand of bamboo." />
+                  <img src="/photos/forest-path-sm.jpg" width="720" height="960" loading="lazy" decoding="async" alt="An earthen path between a bank of bushes and a tall stand of bamboo." />
                   <figcaption className="cap">A path through the bamboo</figcaption>
                 </figure>
                 <figure>
-                  <img src="/photos/side-path-sm.jpg" width="960" height="720" decoding="async" alt="A gravel path along the side of the cottage with a bamboo railing and forest beyond." />
+                  <img src="/photos/side-path-sm.jpg" width="960" height="720" loading="lazy" decoding="async" alt="A gravel path along the side of the cottage with a bamboo railing and forest beyond." />
                   <figcaption className="cap">Along the side of the cottage</figcaption>
                 </figure>
                 <figure>
-                  <img src="/photos/flower-path-sm.jpg" width="634" height="960" decoding="async" alt="A red flower in the foreground with a forest path rising into hazy light." />
+                  <img src="/photos/flower-path-sm.jpg" width="634" height="960" loading="lazy" decoding="async" alt="A red flower in the foreground with a forest path rising into hazy light." />
                   <figcaption className="cap">Red flowers by the path</figcaption>
                 </figure>
                 <figure>
-                  <img src="/photos/forest-slope-sm.jpg" width="960" height="720" decoding="async" alt="Forest falling away down a slope: tall thin trunks, bamboo and ferns." />
+                  <img src="/photos/forest-slope-sm.jpg" width="960" height="720" loading="lazy" decoding="async" alt="Forest falling away down a slope: tall thin trunks, bamboo and ferns." />
                   <figcaption className="cap">Where the forest drops away</figcaption>
                 </figure>
                 <figure>
-                  <img src="/photos/treeline-sm.jpg" width="960" height="720" decoding="async" alt="A hedge and very tall trees against a bright sky." />
+                  <img src="/photos/treeline-sm.jpg" width="960" height="720" loading="lazy" decoding="async" alt="A hedge and very tall trees against a bright sky." />
                   <figcaption className="cap">The treeline at the edge of the lawn</figcaption>
                 </figure>
               </div>
@@ -420,7 +418,7 @@ export default function HomePage() {
                 <div>
                   <span className="mono">Last stretch</span>
                   <b>To our gate</b>
-                  <span>Lower Bong Basti, Kalimpong. Directions <span className="ph">[to confirm]</span></span>
+                  <span>Lower Bong Basti, Kalimpong.</span>
                 </div>
               </div>
               <p className="roadstamp">NH10 can close in the monsoon<br />Check road status before you travel</p>
@@ -428,7 +426,7 @@ export default function HomePage() {
             <p className="cap ticketnote">Distances and times are approximate and change with traffic and weather.</p>
           </div>
         </section>
-        <section className="wp finish" id="book" aria-labelledby="wp7">
+        <section className="wp finish" id="how-to-book" aria-labelledby="wp7">
           <div className="mark" aria-hidden="true">
             <div className="pt">
               <svg className="x" viewBox="0 0 30 30">
@@ -439,9 +437,9 @@ export default function HomePage() {
           </div>
           <div className="body">
             <p className="mono">Trail's end · Plan your stay</p>
-            <h2 id="wp7">Book a bed<small>It's an email or two, in four short legs.</small></h2>
+            <h2 id="wp7">Book a bed<small>A booking enquiry, then four short legs.</small></h2>
             <ol className="legs">
-              <li><h3>Send us your dates</h3><p>By email, with how many of you are coming.</p></li>
+              <li><h3>Send us your dates</h3><p>Send a booking enquiry on this site, or message us on WhatsApp or by email, with how many of you are coming.</p></li>
               <li><h3>We reply with a quote</h3><p>What's free and what it costs.</p></li>
               <li>
                 <h3>Pay an advance by UPI</h3>
@@ -449,11 +447,11 @@ export default function HomePage() {
                   That holds the beds. Pay half the total, or all of it. Cancel 7 or more days ahead for a full refund.
                 </p>
               </li>
-              <li><h3>You're confirmed</h3><p>By email.</p></li>
+              <li><h3>You're confirmed</h3><p>By email or WhatsApp.</p></li>
             </ol>
             <p className="upi">
-              <strong>We only take payment to the UPI ID listed on zhilly.life.</strong>
-              {" "}If anyone asks you to pay somewhere else, message us before you do.
+              <strong>Never pay anyone who isn't us.</strong>
+              {" "}If anyone asks you to pay somewhere else, check with us on WhatsApp or by email first.
             </p>
           </div>
         </section>

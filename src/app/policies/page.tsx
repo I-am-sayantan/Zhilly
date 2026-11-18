@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageShell from "@/components/PageShell";
+import { site, wa } from "@/lib/site";
 import "./page.css";
 
 export const metadata: Metadata = {
   title: "Policies · Zhilly",
-  description: "Zhilly's house policies: booking and the UPI advance, cancellation and refunds, check-in, ID, house rules and the café. Draft: terms to come from the owner.",
+  description: "Zhilly's house policies: booking and the advance, cancellation and refunds, check-in, ID, house rules and the café.",
 };
 
 export default function PoliciesPage() {
@@ -21,13 +22,13 @@ export default function PoliciesPage() {
           </nav>
           <h1 id="h1">House policies</h1>
           <p className="lead">
-            The terms for staying at Zhilly, in plain words. Every blank below gets filled in, and signed off, before we take a single booking.
+            The terms for staying at Zhilly, in plain words. A draft until the owner signs it off.
           </p>
         </div>
         <div className="eave" aria-hidden="true" />
       </section>
       <div className="doc wrap">
-        <p className="draftstamp"><b>Draft</b>Terms to come from the owner</p>
+        <p className="draftstamp"><b>Draft</b>Not in force yet</p>
         <aside className="toc" aria-label="On this page">
           <div className="in">
             <p className="mono">On this page</p>
@@ -46,8 +47,6 @@ export default function PoliciesPage() {
             <dl className="docmeta">
               <dt>Status</dt>
               <dd>Draft, not in force</dd>
-              <dt>Last updated</dt>
-              <dd><span className="ph">[date to confirm]</span></dd>
               <dt>Operated by</dt>
               <dd>Canopy Ventures</dd>
             </dl>
@@ -57,7 +56,7 @@ export default function PoliciesPage() {
           <section id="short" aria-labelledby="p0">
             <h2 id="p0"><span className="no">00</span>The short version</h2>
             <p className="intro">
-              Book by email, hold your beds with a UPI advance, bring your ID, keep the evenings friendly and not loud.
+              Send an enquiry, hold your beds with an advance, bring your ID, keep the evenings friendly and not loud.
             </p>
             <dl className="short">
               <dt>Advance</dt>
@@ -77,33 +76,26 @@ export default function PoliciesPage() {
           <section id="booking" aria-labelledby="p1">
             <h2 id="p1"><span className="no">01</span>Booking and the advance</h2>
             <p>
-              We take bookings by email. You send your dates and how many of you are coming; we reply with a quote; you pay an advance by UPI to hold the beds; we confirm in the same email thread. A booking is confirmed only when we've said so in writing.
+              Send us your dates and how many of you are coming, through the booking enquiry form on this site, on WhatsApp or by email. We reply with a quote; you pay an advance by UPI to hold the beds; we confirm by email or WhatsApp. A booking is confirmed only when we've said so in writing.
             </p>
             <h3>The advance</h3>
             <p>
-              The advance is half the total, or the full amount if you'd rather pay it all at once. We hold beds for{" "}
-              <span className="ph">[how long: to confirm]</span>
-              {" "}while you pay. If the advance hasn't reached us by then, the beds go back on offer.
+              The advance is half the total, or the full amount if you'd rather pay it all at once. If the advance hasn't reached us in the time we give you, the beds go back on offer.
             </p>
             <h3>The balance</h3>
-            <p>
-              The rest of your stay is paid at check-out, by{" "}
-              <span className="ph">[UPI / cash / card: to confirm]</span>
-              . Café bills are paid when you order.
-            </p>
+            <p>The rest of your stay is paid at check-out. Café bills are paid when you order.</p>
             <h3>Prices and taxes</h3>
             <p>
               The price in your quote is per night: per bed in the dorm, per room for the private room. GST is included.
             </p>
             <p className="pay">
-              We only take payment to the UPI ID listed on zhilly.life. If anyone asks you to pay anywhere else, message us before you do.
+              Before you pay, check the payment details with us on WhatsApp or by email. If anyone asks you to pay anywhere else, message us before you do.
             </p>
-            <p>Our UPI ID: <span className="ph">[to be listed here at launch]</span></p>
           </section>
           <section id="cancel" aria-labelledby="p2">
             <h2 id="p2"><span className="no">02</span>Cancellation and refunds</h2>
             <p>
-              Plans change. Reply in the same email thread the moment you know. The date you message us is the date we go by.
+              Plans change. Tell us by email or WhatsApp the moment you know. The date you message us is the date we go by.
             </p>
             <table className="terms">
               <thead><tr><th scope="col">If you cancel</th><th scope="col">What you get back</th></tr></thead>
@@ -136,26 +128,12 @@ export default function PoliciesPage() {
               Check-in from 11 am. Check-out by 10 am.
             </p>
             <p>
-              Arriving late, or early? Tell us roughly when, by email. Late arrivals{" "}
-              <span className="ph">[to confirm]</span>
-              . Early check-in depends on occupancy: if your bed is free, you can have it early, at no charge. Late check-out{" "}
-              <span className="ph">[to confirm]</span>
-              . Leaving your bags after check-out{" "}
-              <span className="ph">[to confirm]</span>
-              .
+              Arriving late, or early? Tell us roughly when, by email or WhatsApp. Early check-in depends on occupancy: if your bed is free, you can have it early, at no charge.
             </p>
           </section>
           <section id="id" aria-labelledby="p4">
             <h2 id="p4"><span className="no">04</span>ID at check-in</h2>
             <p>Every guest shows ID at check-in: an Aadhaar card, PAN card or passport.</p>
-            <p>
-              Guests from outside India:{" "}
-              <span className="ph">[passport and visa requirements: to confirm]</span>
-              .{" "}
-              <span className="ph">
-                [Wording on reporting foreign guests' details to the authorities: to be reviewed]
-              </span>
-            </p>
             <h3>Age</h3>
             <p>Guests must be 16 or over. Zhilly isn't set up for families, so we don't take family bookings.</p>
             <p>How we handle your ID details is on the <Link href="/privacy/">Privacy</Link> page.</p>
@@ -174,45 +152,18 @@ export default function PoliciesPage() {
               <dd>Not in the dorm. Fine everywhere else on the grounds, including the lawn and the workspace</dd>
               <dt>Alcohol</dt>
               <dd>Allowed</dd>
-              <dt>Pets</dt>
-              <dd><span className="ph">[to confirm]</span></dd>
-              <dt>Dorm manners</dt>
-              <dd><span className="ph">[lights, phone calls, packing at dawn: to confirm]</span></dd>
             </dl>
-            <p className="ask">
-              <span className="mono">To decide</span>
-              <span>What happens if someone ignores these more than once.</span>
-            </p>
           </section>
           <section id="cafe" aria-labelledby="p6">
             <h2 id="p6"><span className="no">06</span>The café</h2>
             <p>
-              Hours{" "}
-              <span className="ph">[to confirm]</span>
-              . Open to people who aren't staying{" "}
-              <span className="ph">[to confirm]</span>
-              . Café bills are settled{" "}
-              <span className="ph">[when and how: to confirm]</span>
-              . Bringing your own food in{" "}
-              <span className="ph">[to confirm]</span>
-              .
+              Café bills are paid when you order. More about the café is on the <Link href="/cafe/">Café</Link> page.
             </p>
           </section>
           <section id="damage" aria-labelledby="p7">
             <h2 id="p7"><span className="no">07</span>Damage and lost property</h2>
-            <p>
-              If something gets broken, tell us. Accidents happen.{" "}
-              <span className="ph">[How damage is charged: to confirm]</span>
-            </p>
-            <p>
-              Left something behind? Message us. We keep things for{" "}
-              <span className="ph">[how long: to confirm]</span>
-              {" "}and can send them on{" "}
-              <span className="ph">[at your cost: to confirm]</span>
-              . Valuables:{" "}
-              <span className="ph">[lockers, and our liability: to confirm]</span>
-              .
-            </p>
+            <p>If something gets broken, tell us. Accidents happen.</p>
+            <p>Left something behind? Message us.</p>
           </section>
           <section id="who" aria-labelledby="p8">
             <h2 id="p8"><span className="no">08</span>Who runs Zhilly</h2>
@@ -221,20 +172,14 @@ export default function PoliciesPage() {
               <dt>Address</dt>
               <dd>Lower Bong Basti, Kalimpong, West Bengal 734301</dd>
               <dt>Email</dt>
-              <dd><a href="mailto:zhilly.life@gmail.com">zhilly.life@gmail.com</a></dd>
-              <dt>Registration</dt>
-              <dd><span className="ph">[shown once issued]</span></dd>
-              <dt>Complaints</dt>
-              <dd><span className="ph">[grievance contact and response times: to confirm]</span></dd>
+              <dd><a href={`mailto:${site.email}`}>{site.email}</a></dd>
+              <dt>WhatsApp</dt>
+              <dd>{site.phoneDisplay} <a href={wa.checkDates}>Open a chat</a></dd>
             </dl>
           </section>
           <section id="changes" aria-labelledby="p9">
             <h2 id="p9"><span className="no">09</span>Changes to these policies</h2>
-            <p>
-              We'll update this page as we open and learn.{" "}
-              <span className="ph">[Which version applies to your booking: to confirm]</span>
-            </p>
-            <p>Last updated <span className="ph">[date to confirm]</span>.</p>
+            <p>We'll update this page as we learn.</p>
           </section>
         </article>
       </div>

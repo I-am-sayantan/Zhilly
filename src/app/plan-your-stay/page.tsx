@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CloseBand from "@/components/CloseBand";
 import PageShell from "@/components/PageShell";
+import { site, wa } from "@/lib/site";
 import "./page.css";
 
 export const metadata: Metadata = {
   title: "Plan your stay · Zhilly",
-  description: "How booking a bed at Zhilly works (a booking enquiry, a quote, a UPI advance), what it costs, when to come to Kalimpong and what to pack. Concept draft.",
+  description: "How booking a bed at Zhilly works (a booking enquiry, a quote, a UPI advance), what's included, when to come to Kalimpong and what to pack.",
 };
 
 export default function PlanPage() {
@@ -22,7 +23,7 @@ export default function PlanPage() {
           </nav>
           <h1 id="h1">Plan your stay</h1>
           <p className="lead">
-            Booking starts with a short enquiry: pick your dates at the bottom of this page and we confirm by email. Here's how it goes, what to ask, when to come and what to pack.
+            Booking starts with a short enquiry: send it from the bottom of this page (or message us on WhatsApp or by email) and we confirm by email or WhatsApp. Here's how it goes, what to ask, when to come and what to pack.
           </p>
           <p className="credit">The eaves, from the verandah steps.</p>
         </div>
@@ -44,7 +45,7 @@ export default function PlanPage() {
             <p className="mono">Waypoint 01 · How booking works</p>
             <h2 id="wp1">
               Four legs
-              <small>Dates, a quote, an advance, done. A person at the other end, by email.</small>
+              <small>Dates, a quote, an advance, done. A person at the other end, by email or WhatsApp.</small>
             </h2>
             <ol className="route">
               <li>
@@ -57,7 +58,7 @@ export default function PlanPage() {
                 </div>
                 <figure className="slip">
                   <figcaption className="mono">A sample message · change it to suit</figcaption>
-                  <pre>{"Hi Zhilly! I'd like to check dates…\n"}<b>{"Arrive"}</b>{"  12 Dec 2026\n"}<b>{"Leave"}</b>{"   15 Dec 2026 (3 nights)\n"}<b>{"Guests"}</b>{"  2\n"}<b>{"Beds"}</b>{"    mixed dorm\n"}<b>{"Name"}</b>{"    yours"}</pre>
+                  <pre>{"Hi Zhilly! I'd like to check dates…\n"}<b>{"Arrive"}</b>{"  a Friday\n"}<b>{"Leave"}</b>{"   the Monday (3 nights)\n"}<b>{"Guests"}</b>{"  2\n"}<b>{"Beds"}</b>{"    mixed dorm\n"}<b>{"Name"}</b>{"    yours"}</pre>
                 </figure>
               </li>
               <li>
@@ -65,9 +66,7 @@ export default function PlanPage() {
                   <span className="mono">We reply with a quote</span>
                   <h3>What's free, and what it costs</h3>
                   <p>
-                    We check every date by hand, so this part is a person, not a bot. We reply{" "}
-                    <span className="ph">[reply hours to confirm]</span>
-                    .
+                    We check every date by hand, so this part is a person, not a bot.
                   </p>
                 </div>
                 <dl className="field">
@@ -85,35 +84,26 @@ export default function PlanPage() {
                   <span className="mono">Pay an advance by UPI</span>
                   <h3>That holds the beds</h3>
                   <p>
-                    We hold the beds for{" "}
-                    <span className="ph">[how long: to confirm]</span>
-                    {" "}while you pay. The rest of your stay is paid at check-out; café bills as you go. Other ways to pay:{" "}
-                    <span className="ph">[to confirm]</span>
-                    .
+                    The rest of your stay is paid at check-out; café bills as you go.
                   </p>
                 </div>
                 <div className="payonly">
-                  <p className="big">We only take payment to the UPI ID listed on zhilly.life.</p>
+                  <p className="big">Never pay anyone who isn't us.</p>
                   <p>
-                    If anyone asks you to pay somewhere else (another number, a forwarded link or QR code), message us before you do. We won't mind the double-check.
-                  </p>
-                  <p className="idline">
-                    <span className="mono">Our UPI ID</span>
-                    <span className="ph">[to be listed here at launch]</span>
+                    If anyone asks you to pay somewhere else (another number, a forwarded link or QR code), check with us on WhatsApp or by email first. We won't mind the double-check.
                   </p>
                 </div>
               </li>
               <li>
                 <div className="leg">
                   <span className="mono">You're confirmed</span>
-                  <h3>In the same chat</h3>
-                  <p>Once the advance lands, we confirm it in writing. Keep the chat. It's your booking.</p>
+                  <h3>By email or WhatsApp</h3>
+                  <p>Once the advance lands, we confirm it in writing, by email or WhatsApp. Keep that message. It's your booking.</p>
                 </div>
                 <dl className="field">
                   <dt>What we send you</dt>
                   <dd>Your dates, your beds, what's paid and what's left</dd>
                   <dd>Check-in from 11 am</dd>
-                  <dd>Directions to the gate <span className="ph">[to confirm]</span></dd>
                   <dt>What we'd like back</dt>
                   <dd>Roughly when you'll arrive, so someone's at the gate</dd>
                 </dl>
@@ -137,16 +127,16 @@ export default function PlanPage() {
             </div>
           </div>
           <div className="body">
-            <p className="mono">Waypoint 02 · What it costs</p>
+            <p className="mono">Waypoint 02 · What's included</p>
             <h2 id="wp2">
-              What it costs
+              What's included
               <small>
                 Your quote has the price per night, in rupees. The same numbers in your quote and at the gate.
               </small>
             </h2>
             <div>
               <div>
-                <p className="mono tcap">Tariff · draft</p>
+                <p className="mono tcap">At a glance</p>
                 <table className="ledger">
                   <thead>
                     <tr><th scope="col">Item</th><th scope="col">Note</th></tr>
@@ -166,7 +156,7 @@ export default function PlanPage() {
                     </tr>
                     <tr className="sub">
                       <td>Advance to hold</td>
-                      <td data-k="Note">by UPI, only to the ID on zhilly.life</td>
+                      <td data-k="Note">by UPI</td>
                     </tr>
                     <tr className="sub">
                       <td>Café</td>
@@ -174,12 +164,6 @@ export default function PlanPage() {
                     </tr>
                   </tbody>
                 </table>
-                <p className="after">
-                  Seasonal rates{" "}
-                  <span className="ph">[if any: to confirm]</span>
-                  {" "}· Group or whole-dorm bookings{" "}
-                  <span className="ph">[to confirm]</span>
-                </p>
               </div>
             </div>
           </div>
@@ -236,14 +220,12 @@ export default function PlanPage() {
               <div>
                 <dt><i className="sw-w" />December to February <small>Winter</small></dt>
                 <dd>
-                  Cold and dry, about 5 to 17&nbsp;°C, and colder at night. Pack proper warm layers. Heating and winter bedding{" "}
-                  <span className="ph">[to confirm]</span>
-                  .
+                  Cold and dry, about 5 to 17&nbsp;°C, and colder at night. Pack proper warm layers.
                 </dd>
               </div>
               <div>
                 <dt><i className="sw-s" />March and April <small>Spring</small></dt>
-                <dd>Milder days, and rhododendrons flowering up in Neora Valley. <span className="ph">[A host's note on spring at Zhilly: to come]</span></dd>
+                <dd>Milder days, and rhododendrons flowering up in Neora Valley.</dd>
               </div>
               <div>
                 <dt><i className="sw-u" />May to mid-June <small>Summer</small></dt>
@@ -252,9 +234,7 @@ export default function PlanPage() {
               <div>
                 <dt><i className="sw-m" />Mid-June to September <small>Monsoon</small></dt>
                 <dd>
-                  Long rains, and the hills at their greenest. NH10 can close after landslides; traffic then goes the long way, via Gorubathan and Lava, which can add hours. Check the road before you set off, and message us if you're stuck. Date changes for road closures{" "}
-                  <span className="ph">[to confirm]</span>
-                  .
+                  Long rains, and the hills at their greenest. NH10 can close after landslides; traffic then goes the long way, via Gorubathan and Lava, which can add hours. Check the road before you set off, and message us if you're stuck.
                 </dd>
               </div>
               <div>
@@ -301,10 +281,6 @@ export default function PlanPage() {
                       The one you'll show at check-in: Aadhaar card, PAN card or passport.
                     </span>
                   </li>
-                  <li>
-                    <b>A small padlock</b>
-                    <span>If there are lockers. <span className="ph">[lockers to confirm]</span></span>
-                  </li>
                   <li><b>A towel</b><span>We provide one.</span></li>
                   <li><b>Some cash</b><span>Small shops and taxis in town may prefer it.</span></li>
                   <li>
@@ -313,7 +289,7 @@ export default function PlanPage() {
                   </li>
                 </ul>
                 <p className="after">
-                  Forgot something? Kalimpong town has shops. Tell us in the chat and we'll say where.
+                  Forgot something? Kalimpong town has shops. Message us and we'll say where.
                 </p>
               </div>
             </div>
@@ -335,25 +311,15 @@ export default function PlanPage() {
             <h2 id="wp5">
               Asked already
               <small>
-                Asked before anyone has stayed, so most of the answers are still blanks. Ask us anything that isn't here.
+                Asked before anyone has stayed. Ask us anything that isn't here.
               </small>
             </h2>
             <div className="qgroup">
               <h3>Booking and paying</h3>
               <div className="faq">
                 <details>
-                  <summary>How quickly do you reply?</summary>
-                  <div className="a">
-                    <p>
-                      We check every date by hand, so it's a person replying, not a bot. Reply hours:{" "}
-                      <span className="ph">[to confirm]</span>
-                      .
-                    </p>
-                  </div>
-                </details>
-                <details>
                   <summary>How do I book?</summary>
-                  <div className="a"><p>Yes. Pick your dates in the calendar at the <a href="#book">bottom of this page</a> and email them to us. We confirm by email.</p></div>
+                  <div className="a"><p>Pick your dates in the calendar at the <a href="#book">bottom of this page</a> and send us a booking enquiry, or message us on <a href={wa.checkDates}>WhatsApp</a> or by email. We confirm by email or WhatsApp.</p></div>
                 </details>
                 <details>
                   <summary>How much is the advance, and when do I pay the rest?</summary>
@@ -367,7 +333,8 @@ export default function PlanPage() {
                   <summary>Someone sent me a different UPI ID or payment link. Is it you?</summary>
                   <div className="a">
                     <p>
-                      We only take payment to the UPI ID listed on zhilly.life. If it's anything else, don't pay. Message us on the number on this site and we'll sort it out.
+                      If you're not sure it's us, don't pay. Message us on <a href={wa.checkDates}>WhatsApp</a> or email{" "}
+                      <a href={`mailto:${site.email}`}>{site.email}</a> and we'll sort it out.
                     </p>
                   </div>
                 </details>
@@ -390,9 +357,7 @@ export default function PlanPage() {
                   <summary>How do I get there from NJP or Bagdogra?</summary>
                   <div className="a">
                     <p>
-                      Kalimpong is about 73 km from NJP station, roughly 2.5 hours by road on NH10 along the Teesta. Bagdogra airport is about 78 km. The last stretch to our gate:{" "}
-                      <span className="ph">[to confirm]</span>
-                      . More on{" "}
+                      Kalimpong is about 73 km from NJP station, roughly 2.5 hours by road on NH10 along the Teesta. Bagdogra airport is about 78 km. More on{" "}
                       <Link href="/find-us/">Find us</Link>
                       .
                     </p>
@@ -410,9 +375,7 @@ export default function PlanPage() {
                   <summary>What time can I check in? I'm arriving late.</summary>
                   <div className="a">
                     <p>
-                      Check-in from 11 am, check-out by 10 am. Early check-in depends on occupancy: if your bed is free, it's yours early, at no extra charge. Arriving late{" "}
-                      <span className="ph">[to confirm]</span>
-                      . Either way, tell us your arrival time in the chat.
+                      Check-in from 11 am, check-out by 10 am. Early check-in depends on occupancy: if your bed is free, it's yours early, at no extra charge. Arriving late? Tell us your arrival time when we confirm your booking.
                     </p>
                   </div>
                 </details>
@@ -420,15 +383,9 @@ export default function PlanPage() {
                   <summary>What ID do I need?</summary>
                   <div className="a">
                     <p>
-                      Indian guests: Aadhaar card, PAN card or passport. Guests from outside India{" "}
-                      <span className="ph">[passport and visa requirements: to confirm]</span>
-                      .
+                      Indian guests: Aadhaar card, PAN card or passport.
                     </p>
                   </div>
-                </details>
-                <details>
-                  <summary>Is there parking?</summary>
-                  <div className="a"><p><span className="ph">[Cars and bikes: to confirm]</span></p></div>
                 </details>
               </div>
             </div>
@@ -451,9 +408,7 @@ export default function PlanPage() {
                   <summary>Is there hot water? Is it cold at night?</summary>
                   <div className="a">
                     <p>
-                      Yes: there's a geyser in the bathroom, and hot drinking water whenever you ask. Winter nights are cold in the hills; every bed has a blanket. Heating{" "}
-                      <span className="ph">[to confirm]</span>
-                      .
+                      Yes: there's a geyser in the bathroom, and hot drinking water whenever you ask. Winter nights are cold in the hills; every bed has a blanket.
                     </p>
                   </div>
                 </details>
@@ -466,15 +421,9 @@ export default function PlanPage() {
                   </div>
                 </details>
                 <details>
-                  <summary>Can I eat at the café if I'm not staying?</summary>
+                  <summary>Is there an age limit?</summary>
                   <div className="a">
-                    <p>The café is open every day, 12 pm to 11 pm. Non-guests: <span className="ph">[to confirm]</span>.</p>
-                  </div>
-                </details>
-                <details>
-                  <summary>Is there an age limit? Can I bring my dog?</summary>
-                  <div className="a">
-                    <p>Guests need to be 16 or over, and we don't take families. Pets: <span className="ph">[to confirm]</span>.</p>
+                    <p>Guests need to be 16 or over, and we don't take families.</p>
                   </div>
                 </details>
               </div>
