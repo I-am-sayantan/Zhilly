@@ -16,11 +16,17 @@ export function addDays(s, n) {
   return d.toISOString().slice(0, 10);
 }
 
-// "20261201" or "20261201T140000Z" (any params before the colon) -> "2026-12-01"
-// shortcut: DATE-TIME values keep their written calendar date and ignore TZID/UTC offsets; OTAs send
-// all-day DATE values in practice. Upgrade if a feed sends late-night UTC times that land on the wrong day.
+// "20261201" or "20261201T140000" (any params before the colon) -> "2026-12-01".
+// UTC times ("...Z") are moved to India time first, so IST midnight written as 18:30Z lands on the right day.
+// shortcut: a TZID other than India keeps its written date; OTAs send all-day DATE values in practice.
 function icalDate(value) {
-  const m = /^(\d{4})(\d{2})(\d{2})/.exec(value.trim());
+  const v = value.trim();
+  const z = /^(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})Z$/.exec(v);
+  if (z) {
+    const t = Date.UTC(+z[1], z[2] - 1, +z[3], +z[4], +z[5], +z[6]);
+    return isNaN(t) ? null : new Date(t + 19_800_000).toISOString().slice(0, 10);
+  }
+  const m = /^(\d{4})(\d{2})(\d{2})/.exec(v);
   if (!m) return null;
   const s = `${m[1]}-${m[2]}-${m[3]}`;
   return isDate(s) ? s : null;
@@ -29,6 +35,8 @@ function icalDate(value) {
 /** Parse VEVENT date ranges out of an iCalendar text. Returns [{ start, end }], end exclusive. */
 export function parseIcs(text) {
   if (typeof text !== "string" || !text.includes("BEGIN:VCALENDAR")) throw new Error("not an iCalendar file");
+  // a download cut off part-way must fail, not read as "no bookings" (which would free every night)
+  if (!text.includes("END:VCALENDAR")) throw new Error("iCalendar file is cut off (no END:VCALENDAR)");
   const lines = text.replace(/\r\n|\r/g, "\n").replace(/\n[ \t]/g, "").split("\n"); // unfold RFC 5545 folded lines
   const out = [];
   let ev = null;

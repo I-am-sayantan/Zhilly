@@ -3,7 +3,7 @@ import { addDays, isDate } from "./ical.js";
 
 export const MAX_GUESTS = 20;
 export const MAX_NIGHTS = 90;
-export const MAX_DAYS_AHEAD = 550;
+export const MAX_DAYS_AHEAD = 580;
 const CTRL = /[\u0000-\u0008\u000b-\u001f\u007f]/; // control chars except \t and \n
 const EMAIL_RE = /^[^\s@<>"(),;:]{1,64}@[a-z0-9-]+(\.[a-z0-9-]+)*\.[a-z]{2,}$/i;
 const PHONE_RE = /^\+[1-9][0-9 ()-]{6,22}$/;
@@ -70,19 +70,21 @@ export function enquiryEmails(v, id, replyHours) {
     ["Email", v.email],
     ["Message", v.message || "(none)"],
   ];
-  const table = `<table cellpadding="6" style="border-collapse:collapse">${rows.map(([k, val]) => `<tr><th align="left" valign="top">${k}</th><td style="white-space:pre-wrap">${escapeHtml(val)}</td></tr>`).join("")}</table>`;
-  const text = rows.map(([k, val]) => `${k}: ${val}`).join("\n");
+  const table = (rows) => `<table cellpadding="6" style="border-collapse:collapse">${rows.map(([k, val]) => `<tr><th align="left" valign="top">${k}</th><td style="white-space:pre-wrap">${escapeHtml(val)}</td></tr>`).join("")}</table>`;
+  const text = (rows) => rows.map(([k, val]) => `${k}: ${val}`).join("\n");
+  // the guest's message stays out of the guest copy, so the form can't send free text to any address
+  const guestRows = rows.filter(([k]) => k !== "Message");
   const subjectName = v.name.replace(/[\r\n]/g, " ");
   return {
     owner: {
       subject: `Booking enquiry #${id}: ${subjectName}, ${v.checkin} to ${v.checkout}`,
-      html: `<p>New booking enquiry #${id} from zhilly.life. Reply to this email to answer the guest. Confirm or decline it on the calendar admin page.</p>${table}`,
-      text: `New booking enquiry #${id}\n\n${text}`,
+      html: `<p>New booking enquiry #${id} from zhilly.life. Reply to this email to answer the guest. Confirm or decline it on the calendar admin page.</p>${table(rows)}`,
+      text: `New booking enquiry #${id}\n\n${text(rows)}`,
     },
     guest: {
       subject: "We got your Zhilly enquiry",
-      html: `<p>Hi ${escapeHtml(v.name)},</p><p>Thanks for asking about a stay at Zhilly. This is not a booking yet: we check the dates by hand and will confirm within ${replyHours} hours by email or phone.</p>${table}<p>Just reply to this email if anything changes.</p><p>Zhilly, Kalimpong</p>`,
-      text: `Hi ${v.name},\n\nThanks for asking about a stay at Zhilly. This is not a booking yet: we check the dates by hand and will confirm within ${replyHours} hours by email or phone.\n\n${text}\n\nJust reply to this email if anything changes.\nZhilly, Kalimpong`,
+      html: `<p>Hi ${escapeHtml(v.name)},</p><p>Thanks for asking about a stay at Zhilly. This is not a booking yet: we check the dates by hand and will confirm within ${replyHours} hours by email or phone.</p>${table(guestRows)}<p>Just reply to this email if anything changes.</p><p>Zhilly, Kalimpong</p>`,
+      text: `Hi ${v.name},\n\nThanks for asking about a stay at Zhilly. This is not a booking yet: we check the dates by hand and will confirm within ${replyHours} hours by email or phone.\n\n${text(guestRows)}\n\nJust reply to this email if anything changes.\nZhilly, Kalimpong`,
     },
   };
 }

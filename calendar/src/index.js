@@ -8,7 +8,7 @@ import { addDays, isDate, nightsIn, parseIcs, toIcs } from "./ical.js";
 import { enquiryEmails, escapeHtml as esc, validateEnquiry } from "./enquiry.js";
 
 const MAX_FEED_BYTES = 1_000_000;
-const DAYS_AHEAD = 550; // ~18 months, same as the website's date planner
+const DAYS_AHEAD = 580; // ~19 months, covers the 18 calendar months, same as the website's date planner
 const SOURCE_RE = /^[a-z0-9-]{1,32}$/;
 const ROOM_RE = /^[a-z0-9-]{1,32}$/;
 const REPLY_HOURS = 24; // promised in the website's success message and the guest email
@@ -85,12 +85,12 @@ async function enquiry(env, req, ctx) {
   }
   if (req.method !== "POST") return json({ error: "Method not allowed" }, 405, cors);
   if (!cors["access-control-allow-origin"]) return json({ error: "Bad origin" }, 403, cors);
-  if (!env.TURNSTILE_SECRET) return json({ error: "Enquiries are not switched on yet. Please message us on WhatsApp." }, 503, cors);
+  if (!env.TURNSTILE_SECRET) return json({ error: "Enquiries are not switched on yet. Please message us on WhatsApp or email zhilly.life@gmail.com." }, 503, cors);
 
   const ip = req.headers.get("cf-connecting-ip") || "unknown";
   const now = Date.now();
   const recent = await env.DB.prepare("SELECT COUNT(*) AS n FROM hits WHERE ip = ? AND at > ?").bind(ip, now - 3_600_000).first();
-  if (recent.n >= ENQUIRIES_PER_HOUR) return json({ error: "Too many enquiries from here. Please try again in an hour, or message us on WhatsApp." }, 429, cors);
+  if (recent.n >= ENQUIRIES_PER_HOUR) return json({ error: "Too many enquiries from here. Please try again in an hour, or message us on WhatsApp or email zhilly.life@gmail.com." }, 429, cors);
   await env.DB.batch([
     env.DB.prepare("INSERT INTO hits (ip, at) VALUES (?, ?)").bind(ip, now),
     env.DB.prepare("DELETE FROM hits WHERE at < ?").bind(now - 86_400_000),
@@ -157,7 +157,7 @@ async function sendEmail(env, mail) {
 // ---------- OTA import ----------
 
 export async function syncAll(env) {
-  const feeds = (await env.DB.prepare("SELECT id, room, source, url FROM feeds").all()).results;
+  const feeds = (await env.DB.prepare("SELECT id, room, source, url, last_error FROM feeds").all()).results;
   for (const f of feeds) {
     try {
       const ranges = parseIcs(await fetchCapped(f.url));
@@ -169,7 +169,18 @@ export async function syncAll(env) {
       ]);
     } catch (e) {
       // a failing feed keeps its previous blocks; only the error is recorded
-      await env.DB.prepare("UPDATE feeds SET last_error = ? WHERE id = ?").bind(`${new Date().toISOString()} ${String(e.message || e).slice(0, 200)}`, f.id).run();
+      const err = String(e.message || e).slice(0, 200);
+      await env.DB.prepare("UPDATE feeds SET last_error = ? WHERE id = ?").bind(`${new Date().toISOString()} ${err}`, f.id).run();
+      // tell the owner once, when a feed goes from fine to failing (not on every 15-minute retry)
+      if (!f.last_error) {
+        await sendEmail(env, {
+          to: env.OWNER_EMAIL,
+          subject: `Zhilly calendar: the ${f.source} link for ${f.room} stopped working`,
+          text: `The ${f.source} import link for ${f.room} failed: ${err}
+
+New ${f.source} bookings will not block nights on the website or the other sites until it works again. The nights it blocked before are kept. Check the link on the calendar admin page.`,
+        }).catch((m) => console.error("feed alert email failed:", m));
+      }
     }
   }
 }
@@ -246,6 +257,8 @@ async function adminAction(env, form) {
       if (!known) return "Unknown room.";
       if (!isDate(start) || !isDate(end) || end <= start) return "Dates must be valid, and check-out after check-in.";
       if (end > addDays(start, 400)) return "A block can be at most 400 nights.";
+      const taken = await bookedNights(env, room, start, end);
+      if (taken.size) return `Not blocked: ${[...taken].sort()[0]} is already booked in ${room}. Remove or shorten the other block first.`;
       await env.DB.prepare("INSERT INTO blocks (room, source, start, end, note) VALUES (?, 'direct', ?, ?, ?)").bind(room, start, end, note || null).run();
       return `Blocked ${start} to ${end} (check-out day stays free).`;
     }
@@ -265,7 +278,7 @@ async function adminAction(env, form) {
       } catch {
         return "That is not a valid link.";
       }
-      if (!["https:", "http:"].includes(u.protocol) || feedUrl.length > 2000) return "The link must start with https://.";
+      if (u.protocol !== "https:" || feedUrl.length > 2000) return "The link must start with https://.";
       await env.DB.prepare("INSERT INTO feeds (room, source, url) VALUES (?, ?, ?) ON CONFLICT(room, source) DO UPDATE SET url = excluded.url, last_error = NULL").bind(room, source, feedUrl).run();
       return `Saved the ${source} link. Press "Sync now" to pull it.`;
     }
@@ -289,6 +302,9 @@ async function adminAction(env, form) {
         return `Enquiry #${id} declined. Remember to tell the guest.`;
       }
       if (status !== "confirmed" || !known) return "Pick a room to confirm into.";
+      // the nights may have sold on an OTA (or to another enquiry) since the guest asked
+      const taken = await bookedNights(env, room, q.checkin, q.checkout);
+      if (taken.size) return `Not confirmed: ${[...taken].sort()[0]} is already booked in ${room}. Decline enquiry #${id} or offer the guest other dates.`;
       // confirming blocks the nights, so they reach every OTA through the export feed
       await env.DB.batch([
         env.DB.prepare("UPDATE enquiries SET status = 'confirmed', room = ? WHERE id = ?").bind(room, id),
@@ -348,8 +364,8 @@ ${enquiries.map((q) => `<tr><td>${q.id}<br><small>${esc(q.created.slice(0, 10))}
 
 // ---------- helpers ----------
 
-// shortcut: "today" is the UTC date, up to 5.5 h behind India; harmless for a nights calendar.
-const today = () => new Date().toISOString().slice(0, 10);
+// "today" in India (UTC+5:30, no daylight saving)
+const today = () => new Date(Date.now() + 19_800_000).toISOString().slice(0, 10);
 
 function json(body, status, headers = {}) {
   return new Response(JSON.stringify(body), { status, headers: { "content-type": "application/json", ...headers } });

@@ -121,9 +121,10 @@ test("escapeHtml and the emails never carry raw user markup", () => {
   const mails = enquiryEmails(v, 7, 24);
   for (const m of [mails.owner, mails.guest]) {
     assert.ok(!m.html.includes("<img"), "message is escaped");
-    assert.ok(m.html.includes("&lt;img src=x onerror=alert(1)&gt; &amp; &quot;hi&quot;"));
     assert.ok(!/₹|price|rate/i.test(m.html), "no prices");
   }
+  assert.ok(mails.owner.html.includes("&lt;img src=x onerror=alert(1)&gt; &amp; &quot;hi&quot;"), "owner sees the message, escaped");
+  assert.ok(!mails.guest.html.includes("img src") && !mails.guest.text.includes("img src"), "guest copy leaves the message out");
   assert.match(mails.owner.subject, /#7: Asha Rai, 2026-12-01 to 2026-12-03/);
   assert.match(mails.guest.html, /within 24 hours/);
 });

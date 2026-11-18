@@ -3,13 +3,14 @@
 name = "zhilly-calendar"
 main = "src/index.js"
 compatibility_date = "2025-09-01"
+routes = [{ pattern = "cal.zhilly.life", custom_domain = true }]
 
 [triggers]
 crons = ["*/15 * * * *"] # pull every OTA import link
 
 [vars]
 # Websites allowed to read /availability and post /enquiry (comma separated).
-ALLOWED_ORIGINS = "https://zhilly.life,https://www.zhilly.life"
+ALLOWED_ORIGINS = "https://zhilly.life,https://www.zhilly.life,https://zhilly.pages.dev"
 # Sender of the booking enquiry emails (Resend); must be on a domain verified in Resend.
 FROM_EMAIL = "bookings@zhilly.life"
 # Secrets, never in this file (`npx wrangler secret put NAME`):
@@ -18,4 +19,4 @@ FROM_EMAIL = "bookings@zhilly.life"
 [[d1_databases]]
 binding = "DB"
 database_name = "zhilly-calendar"
-database_id = "00000000-0000-0000-0000-000000000000" # replace with the id printed by `npx wrangler d1 create zhilly-calendar`
+database_id = "281cbb59-5eec-47c4-bcfa-128cf2c3d697"
