@@ -31,7 +31,6 @@ export default function SiteFooter() {
       </div>
       <div className="wrap legal">
         <span>Zhilly is operated by {site.operator}.</span>
-        {!site.launched && <span>Concept draft · not a live website</span>}
       </div>
     </footer>
   );
