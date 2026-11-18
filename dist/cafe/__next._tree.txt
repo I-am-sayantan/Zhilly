@@ -1,4 +1,4 @@
-:HL["/_next/static/chunks/2-t-8-1ifloi-.css","style"]
+:HL["/_next/static/chunks/1ou56x8psz2bg.css","style"]
 :HL["/_next/static/media/068feab4deafcd0f-s.p.0_kz_z3o_slvt.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/_next/static/media/5ae16e032a695779-s.p.07-q_h5lq3omo.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/_next/static/media/73c8302d2fdfe340-s.p.30xqm3yldpj47.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
@@ -13,4 +13,4 @@
 :HL["/art/bamboo-grove.svg","image"]
 2:[["children",{"s":"__PAGE__","h":160}]]
 1:[["children",{"s":"cafe","h":64,"c":"$Q2"}]]
-0:{"b":"jG9S8PMmHCG6qHnc2LKU_","t":{"t":{"s":"","h":16,"c":"$Q1"}}}
+0:{"b":"AMma0YZykUOAQMxmCY98M","t":{"t":{"s":"","h":16,"c":"$Q1"}}}

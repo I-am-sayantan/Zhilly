@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { site } from "@/lib/site";
 import Pending from "./Pending";
+import SocialLinks from "./SocialLinks";
 
 export default function SiteFooter() {
   return (
@@ -9,6 +10,7 @@ export default function SiteFooter() {
         <div>
           <p className="fm">Zhilly</p>
           <p>A small social hostel and café in Kalimpong, West Bengal.</p>
+          <SocialLinks />
         </div>
         <div>
           <h3>Contact</h3>

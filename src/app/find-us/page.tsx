@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CloseBand from "@/components/CloseBand";
 import PageShell from "@/components/PageShell";
+import SocialLinks from "@/components/SocialLinks";
 import { mail, site } from "@/lib/site";
 import "./page.css";
 
@@ -475,6 +476,7 @@ export default function FindUsPage() {
                 <div><dt>Replies</dt><dd><span className="ph">[hours to confirm]</span></dd></div>
               </dl>
             </div>
+            <SocialLinks />
             <p className="upi">
               <strong>We only take payment to the UPI ID listed on zhilly.life.</strong>
               {" "}If anyone asks you to pay somewhere else, message us before you do.
