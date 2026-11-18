@@ -22,8 +22,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Zhilly",
-    title: "Zhilly · hostel and café in Kalimpong",
-    images: [{ url: `${site.domain}/og.jpg`, width: 1200, height: 630, alt: "Two photos of the Zhilly cottage among tall trees, with the words Building Zhilly, a hostel and café in the Kalimpong hills." }],
+    url: `${site.domain}/`,
+    title: "Check out Zhilly · hostel and café in Kalimpong",
+    images: [{ url: `${site.domain}/og.jpg`, secureUrl: `${site.domain}/og.jpg`, type: "image/jpeg", width: 1200, height: 630, alt: "Two photos of the Zhilly cottage among tall trees, with the words Building Zhilly, a hostel and café in the Kalimpong hills." }],
   },
   twitter: { card: "summary_large_image", images: [`${site.domain}/og.jpg`] },
 };
