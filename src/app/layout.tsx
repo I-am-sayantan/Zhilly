@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import type { ReactNode } from "react";
 import { Archivo, Bricolage_Grotesque, Caveat, Fraunces, IBM_Plex_Mono } from "next/font/google";
 import SvgDefs from "@/components/SvgDefs";
 import { site } from "@/lib/site";
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   const fonts = [archivo, plexMono, bricolage, fraunces, caveat].map((f) => f.variable).join(" ");
   return (
     <html lang="en-IN" className={fonts} suppressHydrationWarning>
