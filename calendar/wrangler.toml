@@ -1,0 +1,21 @@
+# Zhilly availability calendar + booking enquiries (Cloudflare Workers free plan + D1 free tier).
+# Setup steps: ../DEPLOY-CLOUDFLARE.md
+name = "zhilly-calendar"
+main = "src/index.js"
+compatibility_date = "2025-09-01"
+
+[triggers]
+crons = ["*/15 * * * *"] # pull every OTA import link
+
+[vars]
+# Websites allowed to read /availability and post /enquiry (comma separated).
+ALLOWED_ORIGINS = "https://zhilly.life,https://www.zhilly.life"
+# Sender of the booking enquiry emails (Resend); must be on a domain verified in Resend.
+FROM_EMAIL = "bookings@zhilly.life"
+# Secrets, never in this file (`npx wrangler secret put NAME`):
+#   ADMIN_PASSWORD, TURNSTILE_SECRET, RESEND_API_KEY, OWNER_EMAIL (where enquiries go; kept out of the public repo)
+
+[[d1_databases]]
+binding = "DB"
+database_name = "zhilly-calendar"
+database_id = "00000000-0000-0000-0000-000000000000" # replace with the id printed by `npx wrangler d1 create zhilly-calendar`

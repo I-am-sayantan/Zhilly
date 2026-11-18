@@ -66,13 +66,13 @@ export default function PrivacyPage() {
               <dt>Address</dt>
               <dd>Lower Bong Basti, Kalimpong, West Bengal 734301</dd>
               <dt>Website</dt>
-              <dd>zhilly.in</dd>
+              <dd>zhilly.life</dd>
             </dl>
           </section>
           <section id="site" aria-labelledby="p2">
             <h2 id="p2"><span className="no">02</span>This website</h2>
             <p>
-              zhilly.in is a set of plain pages. There are no forms, no accounts and nothing to log in to, so the site itself doesn't ask you for anything.
+              zhilly.life is a set of plain pages. There are no forms, no accounts and nothing to log in to, so the site itself doesn't ask you for anything.
             </p>
             <p>
               Visitor statistics:{" "}

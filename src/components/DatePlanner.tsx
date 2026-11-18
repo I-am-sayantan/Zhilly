@@ -1,26 +1,32 @@
 "use client";
 
 import { createContext, useContext, useEffect, useMemo, useRef, useState, type KeyboardEvent, type ReactNode } from "react";
-import { wa, whatsappUrl } from "@/lib/site";
+import { site, wa, whatsappUrl } from "@/lib/site";
 
 /*
  * The "Send us your dates" planner (Figma: Components › Date planner).
- * Pick the day you arrive, then the day you leave, and how many of you; the WhatsApp button
- * then opens a chat with those dates filled in. It is a request, not a booking: availability
- * is still checked by hand, so the calendar never claims a date is free or taken.
+ * Pick the day you arrive, then the day you leave; the booking enquiry form (BookingForm) and the
+ * small WhatsApp link pick those dates up. Nights already booked come from the calendar Worker
+ * (site.calendarApi /availability) and can't be chosen. If the Worker can't be reached the planner
+ * still works, it just shows nothing as booked; every enquiry is checked by hand anyway.
  */
 
-// 8 dorm beds + a queen room for two
-const MAX_GUESTS = 10;
 const MONTHS_AHEAD = 18;
 const DOW = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
-type Day = { y: number; m: number; d: number };
-const key = (x: Day) => x.y * 10000 + x.m * 100 + x.d;
+export type Day = { y: number; m: number; d: number };
+export const key = (x: Day) => x.y * 10000 + x.m * 100 + x.d;
+const pad = (n: number) => String(n).padStart(2, "0");
+/** Day <-> "YYYY-MM-DD" (the Worker's and <input type="date">'s format). */
+export const iso = (x: Day) => `${x.y}-${pad(x.m + 1)}-${pad(x.d)}`;
+export const fromIso = (s: string): Day | null => {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s);
+  return m ? fromDate(new Date(+m[1], +m[2] - 1, +m[3])) : null;
+};
 const toDate = (x: Day) => new Date(x.y, x.m, x.d);
 const fromDate = (t: Date): Day => ({ y: t.getFullYear(), m: t.getMonth(), d: t.getDate() });
 const addDays = (x: Day, n: number) => fromDate(new Date(x.y, x.m, x.d + n));
-const nightsBetween = (a: Day, b: Day) => Math.round((toDate(b).getTime() - toDate(a).getTime()) / 864e5);
+export const nightsBetween = (a: Day, b: Day) => Math.round((toDate(b).getTime() - toDate(a).getTime()) / 864e5);
 const short = (x: Day) => toDate(x).toLocaleDateString("en-GB", { day: "numeric", month: "short" });
 const long = (x: Day) => toDate(x).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
 const monthTitle = (y: number, m: number) => new Date(y, m, 1).toLocaleDateString("en-GB", { month: "long", year: "numeric" });
@@ -28,13 +34,15 @@ const monthTitle = (y: number, m: number) => new Date(y, m, 1).toLocaleDateStrin
 type Plan = {
   arrive: Day | null;
   leave: Day | null;
-  guests: number;
   setArrive: (d: Day | null) => void;
   setLeave: (d: Day | null) => void;
-  setGuests: (n: number) => void;
+  /** keys of booked nights, from the Worker */
+  booked: Set<number>;
+  /** room ids, from the Worker (the form shows a room choice once there are several) */
+  rooms: string[];
 };
 const PlanContext = createContext<Plan | null>(null);
-const usePlan = () => {
+export const usePlan = () => {
   const p = useContext(PlanContext);
   if (!p) throw new Error("DatePlanner parts must sit inside <PlannerProvider>");
   return p;
@@ -43,35 +51,52 @@ const usePlan = () => {
 export function PlannerProvider({ children }: { children: ReactNode }) {
   const [arrive, setArrive] = useState<Day | null>(null);
   const [leave, setLeave] = useState<Day | null>(null);
-  const [guests, setGuests] = useState(1);
-  const value = useMemo(() => ({ arrive, leave, guests, setArrive, setLeave, setGuests }), [arrive, leave, guests]);
+  const [booked, setBooked] = useState<Set<number>>(() => new Set());
+  const [rooms, setRooms] = useState<string[]>([]);
+  useEffect(() => {
+    fetch(`${site.calendarApi}/availability`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((a: { booked?: string[]; rooms?: string[] } | null) => {
+        if (!a) return;
+        setBooked(new Set((a.booked ?? []).map(fromIso).filter((d): d is Day => !!d).map(key)));
+        setRooms(a.rooms ?? []);
+      })
+      .catch(() => {}); // offline or not deployed yet: nothing shows as booked
+  }, []);
+  const value = useMemo(() => ({ arrive, leave, setArrive, setLeave, booked, rooms }), [arrive, leave, booked, rooms]);
   return <PlanContext.Provider value={value}>{children}</PlanContext.Provider>;
 }
 
+/** True if any night from `from` up to (not including) `to` is booked. */
+export function hitsBooked(booked: Set<number>, from: Day, to: Day) {
+  for (let d = from; key(d) < key(to); d = addDays(d, 1)) if (booked.has(key(d))) return true;
+  return false;
+}
+
 /** The message lines match the sample request on the Plan your stay page. */
-function message({ arrive, leave, guests }: Plan) {
+function message({ arrive, leave }: Plan) {
   if (!arrive) return null;
   const lines = ["Hi Zhilly! I'd like to check dates…", `Arrive  ${long(arrive)}`];
   if (leave) {
     const n = nightsBetween(arrive, leave);
     lines.push(`Leave   ${long(leave)} (${n} night${n === 1 ? "" : "s"})`);
   }
-  lines.push(`Guests  ${guests}`);
   return lines.join("\n");
 }
 
-export function SendDatesButton({ children }: { children: ReactNode }) {
+/** WhatsApp chat with the chosen dates filled in: the secondary path, handy on phones. */
+export function WhatsAppDatesLink({ className, children }: { className?: string; children: ReactNode }) {
   const plan = usePlan();
   const text = message(plan);
   return (
-    <a className="btn" href={text ? whatsappUrl(text) : wa.checkDates}>
+    <a className={className} href={text ? whatsappUrl(text) : wa.checkDates}>
       {children}
     </a>
   );
 }
 
 export function DatePlanner() {
-  const { arrive, leave, guests, setArrive, setLeave, setGuests } = usePlan();
+  const { arrive, leave, setArrive, setLeave, booked } = usePlan();
   // "today" is only known in the browser; the static HTML ships an empty sheet of the same size
   const [today, setToday] = useState<Day | null>(null);
   const [view, setView] = useState<{ y: number; m: number } | null>(null);
@@ -170,19 +195,23 @@ export function DatePlanner() {
                 if (!c || !today) return <span key={i} className="d empty" role="gridcell" />;
                 const k = key(c);
                 const past = k < key(today);
+                const isBooked = booked.has(k);
+                // picking the leave day: any day up to the next booked night (that night's day is a fine check-out)
+                const choosingLeave = arrive && !leave && k > key(arrive);
+                const blocked = choosingLeave ? hitsBooked(booked, arrive, c) : isBooked;
                 const pick = (arrive && k === key(arrive)) || (leave && k === key(leave));
                 const run = arrive && runEnd && k >= key(arrive) && k <= key(runEnd);
                 const tabbable = focusInView ? k === key(focus) : c.d === 1;
-                const cls = ["d", past && "past", k === key(today) && "today", pick && "pick", run && (leave ? "run" : "run pre")].filter(Boolean).join(" ");
+                const cls = ["d", past && "past", isBooked && !past && "booked", k === key(today) && "today", pick && "pick", run && (leave ? "run" : "run pre")].filter(Boolean).join(" ");
                 return (
                   <span key={i} role="gridcell" aria-selected={!!pick}>
                     <button
                       type="button"
                       className={cls}
                       data-k={k}
-                      disabled={past}
+                      disabled={past || blocked}
                       tabIndex={tabbable ? 0 : -1}
-                      aria-label={toDate(c).toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric" }) + (k === key(today) ? ", today" : "")}
+                      aria-label={toDate(c).toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric" }) + (k === key(today) ? ", today" : "") + (isBooked && !past ? ", booked" : "")}
                       onClick={() => choose(c)}
                       onMouseEnter={() => setHover(c)}
                       onFocus={() => setFocus(c)}
@@ -200,18 +229,10 @@ export function DatePlanner() {
           <div><p className="lab">Arrive</p><p className={arrive ? "val" : "val none"}>{arrive ? short(arrive) : "—"}</p></div>
           <div><p className="lab">Leave</p><p className={leave ? "val" : "val none"}>{leave ? short(leave) : "—"}</p></div>
           <div><p className="lab">Nights</p><p className={nights ? "val" : "val none"}>{nights ?? "—"}</p></div>
-          <div>
-            <p className="lab" id="guests-l">Guests</p>
-            <div className="step" role="group" aria-labelledby="guests-l">
-              <button type="button" onClick={() => setGuests(Math.max(1, guests - 1))} disabled={guests <= 1} aria-label="One fewer guest">−</button>
-              <p className="val" aria-live="polite">{guests}</p>
-              <button type="button" onClick={() => setGuests(Math.min(MAX_GUESTS, guests + 1))} disabled={guests >= MAX_GUESTS} aria-label="One more guest">+</button>
-            </div>
-          </div>
         </div>
 
         <div className="foot">
-          <p>{arrive && !leave ? "Now tap the day you leave." : arrive ? "We check every date by hand and reply on WhatsApp." : "Tap the day you arrive, then the day you leave."}</p>
+          <p>{arrive && !leave ? "Now tap the day you leave." : arrive ? "Now fill in the enquiry form. We check every date by hand." : "Tap the day you arrive, then the day you leave."}{booked.size > 0 && <><br /><span className="key-booked">12</span> = already booked</>}</p>
           {arrive && <button type="button" className="clear" onClick={() => { setArrive(null); setLeave(null); }}>Clear</button>}
         </div>
       </div>

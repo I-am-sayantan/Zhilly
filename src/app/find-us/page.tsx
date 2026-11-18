@@ -481,7 +481,7 @@ export default function FindUsPage() {
               </dl>
             </div>
             <p className="upi">
-              <strong>We only take payment to the UPI ID listed on zhilly.in.</strong>
+              <strong>We only take payment to the UPI ID listed on zhilly.life.</strong>
               {" "}If anyone asks you to pay somewhere else, message us before you do.
             </p>
           </div>

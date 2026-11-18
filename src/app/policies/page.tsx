@@ -96,7 +96,7 @@ export default function PoliciesPage() {
               The price in your quote is per night: per bed in the dorm, per room for the private room. GST is included.
             </p>
             <p className="pay">
-              We only take payment to the UPI ID listed on zhilly.in. If anyone asks you to pay anywhere else, message us before you do.
+              We only take payment to the UPI ID listed on zhilly.life. If anyone asks you to pay anywhere else, message us before you do.
             </p>
             <p>Our UPI ID: <span className="ph">[to be listed here at launch]</span></p>
           </section>

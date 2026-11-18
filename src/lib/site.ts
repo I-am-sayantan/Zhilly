@@ -11,7 +11,7 @@ export const site = {
   /** Legal entity: shown in legal notices only. A partnership firm. */
   operator: "Canopy Ventures",
   operatorType: "a partnership firm",
-  domain: "https://zhilly.in",
+  domain: "https://zhilly.life",
   /** Keep false until the owner signs off the content: pages ship with noindex. */
   launched: false,
 
@@ -25,6 +25,11 @@ export const site = {
   town: "Kalimpong, West Bengal",
   /** The gate: 27°03'28.9"N 88°28'25.3"E */
   mapUrl: "https://www.google.com/maps?q=27.058037,88.473698",
+
+  /** The calendar Worker (calendar/ folder): availability JSON and booking enquiries. Local dev: set NEXT_PUBLIC_CALENDAR_API. */
+  calendarApi: process.env.NEXT_PUBLIC_CALENDAR_API ?? "https://cal.zhilly.life",
+  /** Cloudflare Turnstile site key (public). 1x00000000000000000000AA is Cloudflare's always-pass test key: replace it at launch. */
+  turnstileSiteKey: "1x00000000000000000000AA",
 } as const;
 
 export const nav = [

@@ -1,0 +1,6 @@
+# Copy to .dev.vars for `npx wrangler dev` (never commit .dev.vars).
+ADMIN_PASSWORD=change-me-locally
+# Cloudflare's official always-pass Turnstile test secret (pairs with site key 1x00000000000000000000AA)
+TURNSTILE_SECRET=1x0000000000000000000000000000000AA
+ALLOWED_ORIGINS=http://localhost:3000,https://zhilly.life
+# Leave RESEND_API_KEY unset locally: emails are logged instead of sent.

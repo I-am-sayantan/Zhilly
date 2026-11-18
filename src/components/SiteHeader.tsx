@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { nav, wa, type NavKey } from "@/lib/site";
+import { nav, type NavKey } from "@/lib/site";
 import MobileMenu from "./MobileMenu";
 
 function NavList({ current }: { current?: NavKey }) {
@@ -28,7 +28,8 @@ export default function SiteHeader({ current, home }: { current?: NavKey; home?:
         <nav className="mainnav" aria-label="Main">
           <NavList current={current} />
         </nav>
-        <a className="btn" href={wa.checkDates}>Check dates</a>
+        {/* every page with a nav key (and home) ends in the booking band (CloseBand, #book); policies/privacy don't */}
+        <a className="btn" href={current || home ? "#book" : "/plan-your-stay/#book"}>Check dates</a>
         <MobileMenu>
           <nav aria-label="Main">
             <NavList current={current} />

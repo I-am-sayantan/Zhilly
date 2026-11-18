@@ -1,5 +1,8 @@
 # Deploying the Zhilly website
 
+**Chosen setup: Cloudflare Pages + the calendar Worker, all free. Follow [DEPLOY-CLOUDFLARE.md](DEPLOY-CLOUDFLARE.md).**
+The options below are older alternatives; without the calendar Worker the site still works, it just shows no booked nights and the enquiry form can't send.
+
 This is the source code: Next.js 16 + TypeScript, built as a fully static site.
 It needs Node.js 20.9 or newer.
 

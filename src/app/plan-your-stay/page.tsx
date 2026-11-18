@@ -6,7 +6,7 @@ import "./page.css";
 
 export const metadata: Metadata = {
   title: "Plan your stay · Zhilly",
-  description: "How booking a bed at Zhilly works (a WhatsApp chat, a quote, a UPI advance), what it costs, when to come to Kalimpong and what to pack. Concept draft.",
+  description: "How booking a bed at Zhilly works (a booking enquiry, a quote, a UPI advance), what it costs, when to come to Kalimpong and what to pack. Concept draft.",
 };
 
 export default function PlanPage() {
@@ -22,7 +22,7 @@ export default function PlanPage() {
           </nav>
           <h1 id="h1">Plan your stay</h1>
           <p className="lead">
-            Booking is a WhatsApp chat with us, not a form. Here's how it goes, what to ask, when to come and what to pack.
+            Booking starts with a short enquiry: pick your dates at the bottom of this page and we confirm by email or phone (WhatsApp works too). Here's how it goes, what to ask, when to come and what to pack.
           </p>
           <p className="credit">The eaves, from the verandah steps.</p>
         </div>
@@ -44,7 +44,7 @@ export default function PlanPage() {
             <p className="mono">Waypoint 01 · How booking works</p>
             <h2 id="wp1">
               Four legs
-              <small>Dates, a quote, an advance, done. All in one WhatsApp chat, with a person at the other end.</small>
+              <small>Dates, a quote, an advance, done. A person at the other end, by email, phone or WhatsApp.</small>
             </h2>
             <ol className="route">
               <li>
@@ -93,7 +93,7 @@ export default function PlanPage() {
                   </p>
                 </div>
                 <div className="payonly">
-                  <p className="big">We only take payment to the UPI ID listed on zhilly.in.</p>
+                  <p className="big">We only take payment to the UPI ID listed on zhilly.life.</p>
                   <p>
                     If anyone asks you to pay somewhere else (another number, a forwarded link or QR code), message us before you do. We won't mind the double-check.
                   </p>
@@ -174,7 +174,7 @@ export default function PlanPage() {
                     <tr className="sub">
                       <td>Advance to hold</td>
                       <td className="amt" data-k="Price">Half or all</td>
-                      <td data-k="Note">by UPI, only to the ID on zhilly.in</td>
+                      <td data-k="Note">by UPI, only to the ID on zhilly.life</td>
                     </tr>
                     <tr className="sub">
                       <td>Café</td>
@@ -362,7 +362,7 @@ export default function PlanPage() {
                 </details>
                 <details>
                   <summary>Can I book without WhatsApp?</summary>
-                  <div className="a"><p><span className="ph">[Phone or email booking: to confirm]</span></p></div>
+                  <div className="a"><p>Yes. Pick your dates in the calendar at the <a href="#book">bottom of this page</a> and send the booking enquiry form. We confirm by email or phone.</p></div>
                 </details>
                 <details>
                   <summary>How much is the advance, and when do I pay the rest?</summary>
@@ -376,7 +376,7 @@ export default function PlanPage() {
                   <summary>Someone sent me a different UPI ID or payment link. Is it you?</summary>
                   <div className="a">
                     <p>
-                      We only take payment to the UPI ID listed on zhilly.in. If it's anything else, don't pay. Message us on the number on this site and we'll sort it out.
+                      We only take payment to the UPI ID listed on zhilly.life. If it's anything else, don't pay. Message us on the number on this site and we'll sort it out.
                     </p>
                   </div>
                 </details>
