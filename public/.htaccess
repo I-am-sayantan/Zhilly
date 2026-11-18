@@ -1,2 +1,0 @@
-# Apache (Hostinger shared hosting): serve the exported 404 page for unknown URLs
-ErrorDocument 404 /404.html
