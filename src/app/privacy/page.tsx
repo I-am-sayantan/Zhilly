@@ -193,7 +193,7 @@ export default function PrivacyPage() {
             <h2 id="p8"><span className="no">08</span>Contact and complaints</h2>
             <dl className="short">
               <dt>Email</dt>
-              <dd><a href="mailto:hello@zhilly.life">hello@zhilly.life</a></dd>
+              <dd><a href="mailto:zhilly.life@gmail.com">zhilly.life@gmail.com</a></dd>
               <dt>Grievance contact</dt>
               <dd><span className="ph">[name, and how fast we respond: to confirm]</span></dd>
             </dl>

@@ -15,8 +15,8 @@ export const site = {
   /** Keep false until the owner signs off the content: pages ship with noindex. */
   launched: false,
 
-  /** No phone number is published: every contact link goes to this inbox (Cloudflare Email Routing forwards it). */
-  email: "hello@zhilly.life" as string | null,
+  /** No phone number is published: every contact link goes to this inbox. */
+  email: "zhilly.life@gmail.com" as string | null,
   instagram: "@zhilly.life" as string | null,
   instagramUrl: "https://www.instagram.com/zhilly.life/",
   facebookUrl: "https://www.facebook.com/zhilly.life",

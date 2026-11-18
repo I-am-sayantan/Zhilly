@@ -221,7 +221,7 @@ export default function PoliciesPage() {
               <dt>Address</dt>
               <dd>Lower Bong Basti, Kalimpong, West Bengal 734301</dd>
               <dt>Email</dt>
-              <dd><a href="mailto:hello@zhilly.life">hello@zhilly.life</a></dd>
+              <dd><a href="mailto:zhilly.life@gmail.com">zhilly.life@gmail.com</a></dd>
               <dt>Registration</dt>
               <dd><span className="ph">[shown once issued]</span></dd>
               <dt>Complaints</dt>
