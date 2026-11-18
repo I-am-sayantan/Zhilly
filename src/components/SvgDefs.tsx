@@ -1,4 +1,4 @@
-/** Contour symbols (hand-irregular, drawn once), the ink filter and the "being built" stamp, referenced by <use href="#..."> across pages. */
+/** Contour symbols (hand-irregular, drawn once), and the ink filter, referenced by <use href="#..."> across pages. */
 export default function SvgDefs() {
   return (
     <svg width="0" height="0" aria-hidden="true" focusable="false" style={{ position: "absolute" }}>
@@ -51,21 +51,6 @@ export default function SvgDefs() {
           <feColorMatrix in="grain" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -.7 1.3" result="mask" />
           <feComposite in="wob" in2="mask" operator="in" />
         </filter>
-        <symbol id="stamp-build" viewBox="0 0 200 200">
-          <g filter="url(#inked)" fill="none" stroke="currentColor">
-            <ellipse cx="100" cy="100" rx="92" ry="91" strokeWidth="2.2" transform="rotate(-5 100 100)" />
-            <path id="rb" d="M100 100 m-77 0 a77 77 0 1 1 154 0 a77 77 0 1 1 -154 0" stroke="none" />
-            <text fill="currentColor" stroke="none" fontWeight="700" fontSize="15" letterSpacing="2.4" style={{ fontFamily: "var(--sans)" }}>
-              <textPath href="#rb">ROOM PHOTOS AFTER FIT-OUT · ZHILLY · </textPath>
-            </text>
-            <text x="100" y="96" textAnchor="middle" fill="currentColor" stroke="none" fontWeight="800" fontSize="25" style={{ fontFamily: "var(--sans)" }}>
-              BEING
-            </text>
-            <text x="100" y="124" textAnchor="middle" fill="currentColor" stroke="none" fontWeight="800" fontSize="25" style={{ fontFamily: "var(--sans)" }}>
-              BUILT
-            </text>
-          </g>
-        </symbol>
       </defs>
     </svg>
   );

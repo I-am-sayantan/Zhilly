@@ -3,6 +3,7 @@ import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import CloseBand from "@/components/CloseBand";
 import PageShell from "@/components/PageShell";
+import BuildStamp from "@/components/BuildStamp";
 import { mail, site, wa } from "@/lib/site";
 
 export const metadata: Metadata = pageMeta("/", "Zhilly · hostel and café in Kalimpong, Darjeeling hills", "Zhilly is a small social hostel and café in Kalimpong, West Bengal: eight dorm beds and a private room in a cottage under tall trees. Dorm bed ₹800 a night.", "Check out Zhilly · hostel and café in Kalimpong");
@@ -13,7 +14,7 @@ export default function HomePage() {
       <section className="hero" aria-labelledby="h1">
         <p className="wm on-page" aria-hidden="true">Zhilly</p>
         <div className="photo">
-          <img src="/photos/canopy-sky.jpg" srcSet="/photos/canopy-sky-sm.jpg 720w, /photos/canopy-sky.jpg 1200w" sizes="100vw" width="1200" height="1600" fetchPriority="high" alt="Looking straight up from the lawn at Zhilly: the dark crowns of very tall trees ring a wide patch of clear blue sky." />
+          <img src="/photos/canopy-sky.jpg" srcSet="/photos/canopy-sky-sm.jpg 720w, /photos/canopy-sky-md.jpg 1080w, /photos/canopy-sky.jpg 1200w" sizes="100vw" width="1200" height="1600" fetchPriority="high" alt="Looking straight up from the lawn at Zhilly: the dark crowns of very tall trees ring a wide patch of clear blue sky." />
           {" "}
           <svg className="bunting" data-flags="30" viewBox="0 0 1600 120" preserveAspectRatio="none" aria-hidden="true">
             <path d="M-10 14 Q800 96 1610 22" fill="none" stroke="#E9E4D6" strokeWidth="1.5" />
@@ -26,7 +27,7 @@ export default function HomePage() {
           <h1 id="h1">Eight beds, a private room, a café, and a lot of very tall trees.</h1>
         </div>
         <figure className="postcard">
-          <img src="/photos/cottage-front.jpg" srcSet="/photos/cottage-front-sm.jpg 720w, /photos/cottage-front.jpg 1200w" sizes="(max-width:900px) 86vw, 27vw" width="1200" height="1600" alt="The Zhilly cottage head-on: green tin roof, white lace trim along the eaves, a lattice gable and a wooden verandah rail, with tall trees behind." />
+          <img src="/photos/cottage-front.jpg" srcSet="/photos/cottage-front-sm.jpg 720w, /photos/cottage-front-md.jpg 1080w, /photos/cottage-front.jpg 1200w" sizes="(max-width:900px) min(90vw, 380px), min(25vw, 370px)" width="1200" height="1600" alt="The Zhilly cottage head-on: green tin roof, white lace trim along the eaves, a lattice gable and a wooden verandah rail, with tall trees behind." />
           <figcaption><span className="hand">The cottage, from the lawn.</span></figcaption>
           <div className="pstamp" aria-hidden="true">
             <svg viewBox="0 0 72 90">
@@ -78,7 +79,7 @@ export default function HomePage() {
             <div className="cols">
               <div>
                 <p className="lead">
-                  A small social hostel and a café: eight dorm beds and a private room, in a cottage among tall trees and bamboo in Kalimpong. Social, yes. A party hostel, maybe.
+                  A small social hostel and a café: eight dorm beds and a private room, in a cottage among tall trees and bamboo in Kalimpong. Zhilly is a budget hostel in the Darjeeling hills; some guests would call it a homestay. Social, yes. A party hostel, maybe.
                 </p>
                 <dl className="field">
                   <dt>Good for</dt>
@@ -138,7 +139,7 @@ export default function HomePage() {
                 </p>
               </div>
               <div className="nophoto">
-                <svg className="stamp" viewBox="0 0 200 200" aria-hidden="true"><use href="#stamp-build" /></svg>
+                <BuildStamp />
                 <h3>Room photos after fit-out.</h3>
                 <p>
                   We'd rather show you a blank than someone else's dorm. Ask us for a progress picture on{" "}

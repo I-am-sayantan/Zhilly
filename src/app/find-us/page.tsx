@@ -15,7 +15,7 @@ export default function FindUsPage() {
     <PageShell page="find-us" nav="find">
       <JsonLd data={breadcrumbLd("/find-us/", "Find us")} />
       <section className="phero" aria-labelledby="h1">
-        <img src="/photos/side-path.jpg" srcSet="/photos/side-path-sm.jpg 800w, /photos/side-path.jpg 1600w" sizes="100vw" width="1600" height="1200" fetchPriority="high" alt="A gravel path running along the side of the Zhilly cottage, with a bamboo railing on the left, tall trees and bamboo beyond, and the white lace trim of the eaves on the right." />
+        <img src="/photos/side-path.jpg" srcSet="/photos/side-path-sm.jpg 800w, /photos/side-path-md.jpg 1080w, /photos/side-path.jpg 1600w" sizes="100vw" width="1600" height="1200" fetchPriority="high" alt="A gravel path running along the side of the Zhilly cottage, with a bamboo railing on the left, tall trees and bamboo beyond, and the white lace trim of the eaves on the right." />
         <div className="wrap">
           <nav className="crumb" aria-label="Breadcrumb">
             <Link href="/">Zhilly</Link>

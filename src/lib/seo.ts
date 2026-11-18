@@ -55,7 +55,7 @@ export const siteGraph = {
       description:
         "A small social hostel with a café in a cottage among very tall trees in Kalimpong, West Bengal: one mixed dorm with eight beds (four bunk beds) and one private room with a queen bed and its own bathroom.",
       url: `${site.domain}/`,
-      image: [`${site.domain}/og.jpg`, `${site.domain}/photos/cottage-front.jpg`, `${site.domain}/photos/grounds-wide.jpg`],
+      image: [`${site.domain}/photos/cottage-front.jpg`, `${site.domain}/photos/grounds-wide.jpg`],
       logo: `${site.domain}/icon.png`,
       email: site.email,
       telephone: site.phoneDisplay,
@@ -65,8 +65,8 @@ export const siteGraph = {
       priceRange: "₹800–₹1,700 a night",
       currenciesAccepted: "INR",
       paymentAccepted: "UPI",
-      checkinTime: "11:00",
-      checkoutTime: "10:00",
+      checkinTime: "11:00:00+05:30",
+      checkoutTime: "10:00:00+05:30",
       numberOfRooms: 2,
       amenityFeature: [
         amenity("Internet", "40–50 Mbps"),
@@ -119,6 +119,7 @@ export function breadcrumbLd(path: string, name: string) {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
+    "@id": `${site.domain}${path}#breadcrumb`,
     itemListElement: [
       { "@type": "ListItem", position: 1, name: site.name, item: `${site.domain}/` },
       { "@type": "ListItem", position: 2, name, item: `${site.domain}${path}` },
@@ -126,10 +127,11 @@ export function breadcrumbLd(path: string, name: string) {
   };
 }
 
-export function faqLd(qa: [string, string][]) {
+export function faqLd(path: string, qa: [string, string][]) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    "@id": `${site.domain}${path}#faq`,
     mainEntity: qa.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
   };
 }

@@ -5,17 +5,18 @@ import { pageMeta, breadcrumbLd } from "@/lib/seo";
 import Link from "next/link";
 import CloseBand from "@/components/CloseBand";
 import PageShell from "@/components/PageShell";
+import BuildStamp from "@/components/BuildStamp";
 import { mail, site, wa } from "@/lib/site";
 import "./page.css";
 
-export const metadata: Metadata = pageMeta("/stay/", "Dorm beds and a private room in Kalimpong · Zhilly", "Stay at Zhilly, a hostel and homestay-style cottage in Kalimpong: a mixed dorm (₹800 a bed with breakfast) and a private room with its own bathroom (₹1,500).");
+export const metadata: Metadata = pageMeta("/stay/", "Hostel dorm beds and a private room in Kalimpong · Zhilly", "Stay at Zhilly, a hostel and homestay-style cottage in Kalimpong: a mixed dorm (₹800 a bed with breakfast) and a private room with its own bathroom (₹1,500).");
 
 export default function StayPage() {
   return (
     <PageShell page="stay" nav="stay">
       <JsonLd data={breadcrumbLd("/stay/", "Stay")} />
       <section className="phero" aria-labelledby="h1" style={{ "--pos": "50% 34%" } as CSSProperties}>
-        <img src="/photos/cottage-angle.jpg" srcSet="/photos/cottage-angle-sm.jpg 720w, /photos/cottage-angle.jpg 1200w" sizes="100vw" width="1200" height="1600" fetchPriority="high" alt="The Zhilly cottage seen from the corner of the lawn: green tin roof, white lace trim along the eaves, a lattice gable and a wooden verandah rail, with tall trees behind." />
+        <img src="/photos/cottage-angle.jpg" srcSet="/photos/cottage-angle-sm.jpg 720w, /photos/cottage-angle-md.jpg 1080w, /photos/cottage-angle.jpg 1200w" sizes="100vw" width="1200" height="1600" fetchPriority="high" alt="The Zhilly cottage seen from the corner of the lawn: green tin roof, white lace trim along the eaves, a lattice gable and a wooden verandah rail, with tall trees behind." />
         <div className="wrap">
           <nav className="crumb" aria-label="Breadcrumb">
             <Link href="/">Zhilly</Link>
@@ -24,7 +25,7 @@ export default function StayPage() {
           </nav>
           <h1 id="h1">Eight beds. One private room. Tall trees.</h1>
           <p className="lead">
-            Eight dorm beds and one private room in a small social hostel in Kalimpong.
+            Eight dorm beds and one private room in a small social hostel in Kalimpong. Zhilly is a budget hostel in the Darjeeling hills; some guests would call it a homestay.
           </p>
           <p className="credit">
             The cottage from the corner of the lawn: lace trim on the eaves, lattice in the gable.
@@ -221,7 +222,7 @@ export default function StayPage() {
               <small>The rooms are being fitted out. We'd rather show you a drawing than someone else's dorm.</small>
             </h2>
             <figure className="s-blank">
-              <svg className="stamp" viewBox="0 0 200 200" aria-hidden="true"><use href="#stamp-build" /></svg>
+              <BuildStamp />
               <div className="frame">
                 <svg className="s-house" viewBox="0 0 440 244" role="img" aria-labelledby="housec" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round">
                   <title id="housec">

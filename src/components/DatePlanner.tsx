@@ -237,9 +237,9 @@ export function DatePlanner() {
         </div>
 
         <div className="sum" aria-live="polite">
-          <div><p className="lab">Arrive</p><p className={arrive ? "val" : "val none"}>{arrive ? short(arrive) : "—"}</p></div>
-          <div><p className="lab">Leave</p><p className={leave ? "val" : "val none"}>{leave ? short(leave) : "—"}</p></div>
-          <div><p className="lab">Nights</p><p className={nights ? "val" : "val none"}>{nights ?? "—"}</p></div>
+          <div><p className="lab">Arrive</p><p className={arrive ? "val" : "val none"}>{arrive ? short(arrive) : "-"}</p></div>
+          <div><p className="lab">Leave</p><p className={leave ? "val" : "val none"}>{leave ? short(leave) : "-"}</p></div>
+          <div><p className="lab">Nights</p><p className={nights ? "val" : "val none"}>{nights ?? "-"}</p></div>
         </div>
 
         <div className="foot">

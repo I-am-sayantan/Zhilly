@@ -16,7 +16,7 @@ export default function CafePage() {
       <JsonLd data={breadcrumbLd("/cafe/", "Café")} />
       <JsonLd data={cafeLd} />
       <section className="phero" aria-labelledby="h1" style={{ "--pos": "50% 30%" } as CSSProperties}>
-        <img src="/photos/dining-shed.jpg" srcSet="/photos/dining-shed-sm.jpg 720w, /photos/dining-shed.jpg 1200w" sizes="100vw" width="1200" height="1600" fetchPriority="high" alt="Inside the bamboo dining shed: a woven bamboo ceiling on pole rafters, bamboo-slat walls, chairs at a covered table and a turquoise-painted post in front." />
+        <img src="/photos/dining-shed.jpg" srcSet="/photos/dining-shed-sm.jpg 720w, /photos/dining-shed-md.jpg 1080w, /photos/dining-shed.jpg 1200w" sizes="100vw" width="1200" height="1600" fetchPriority="high" alt="Inside the bamboo dining shed: a woven bamboo ceiling on pole rafters, bamboo-slat walls, chairs at a covered table and a turquoise-painted post in front." />
         <div className="wrap">
           <nav className="crumb" aria-label="Breadcrumb">
             <Link href="/">Zhilly</Link>

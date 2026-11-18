@@ -55,7 +55,7 @@ export default function AroundPage() {
         </defs>
       </svg>
       <section className="phero" aria-labelledby="h1">
-        <img src="/photos/forest-slope.jpg" srcSet="/photos/forest-slope-sm.jpg 800w, /photos/forest-slope.jpg 1600w" sizes="100vw" width="1600" height="1200" fetchPriority="high" alt="Forest falling away down a slope at Zhilly: tall thin trunks, bamboo and ferns, with sunlight on the grass in front." />
+        <img src="/photos/forest-slope.jpg" srcSet="/photos/forest-slope-sm.jpg 800w, /photos/forest-slope-md.jpg 1080w, /photos/forest-slope.jpg 1600w" sizes="100vw" width="1600" height="1200" fetchPriority="high" alt="Forest falling away down a slope at Zhilly: tall thin trunks, bamboo and ferns, with sunlight on the grass in front." />
         <div className="wrap">
           <nav className="crumb" aria-label="Breadcrumb">
             <Link href="/">Zhilly</Link>
