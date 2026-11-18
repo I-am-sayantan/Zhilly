@@ -25,6 +25,8 @@ Commands below run in a terminal inside the repo folder unless they say `cd cale
 
 ## 2. The website on Cloudflare Pages
 
+*Live now (Nov 2026):* the Pages project **zhilly** was created by direct upload (`npx wrangler pages deploy out --project-name=zhilly --branch=main`), not Git-connected. Redeploy the same way, or connect Git later.
+
 1. **Workers & Pages → Create → Pages → Connect to Git.** Allow access to GitHub and pick the repo **I-am-sayantan/Zhilly**.
 2. Build settings:
    - Production branch: `main`
@@ -60,6 +62,8 @@ npx wrangler deploy
 ```
 
 Attach the address: dashboard → **Workers & Pages → zhilly-calendar → Settings → Domains & Routes → Add → Custom domain** → `cal.zhilly.life`.
+
+Then switch the website over: in `src/lib/site.ts` set `calendarApi` to `"https://cal.zhilly.life"` (it is `null` until then, which hides the enquiry form and shows an email button instead), commit and redeploy.
 
 Check it: https://cal.zhilly.life/availability should show `{"room":"all","rooms":["room-1"],...,"booked":[]}`.
 The admin page is **https://cal.zhilly.life/admin** (any username, your ADMIN_PASSWORD).
