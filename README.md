@@ -44,7 +44,7 @@ Every push and pull request runs the checks: install, type check, lint, build, a
 A push to `main` that passes the checks deploys automatically:
 
 - the site goes to Cloudflare Pages (`wrangler pages deploy out --project-name=zhilly --branch=main`), labelled with the commit;
-- the calendar Worker is redeployed too when anything under `calendar/` changed.
+- the calendar Worker is redeployed too, every time.
 
 Deploys run one at a time and are never cancelled half-way. They need two repository secrets: `CLOUDFLARE_API_TOKEN` (a Cloudflare API token with Workers and Pages edit rights) and `CLOUDFLARE_ACCOUNT_ID`.
 
