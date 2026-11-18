@@ -1,4 +1,4 @@
-# Checks on every push and pull request; on main, deploys the site (and the calendar Worker when calendar/ changed).
+# Checks on every push and pull request; on main, deploys the site and the calendar Worker.
 # Rollback: Cloudflare dashboard > Workers & Pages > zhilly > Deployments > "Rollback" on an older one,
 # or GitHub > Actions > an older successful run on main > "Re-run all jobs". See README.md.
 name: CI
@@ -50,13 +50,8 @@ jobs:
     environment:
       name: production
       url: https://zhilly.life
-    env:
-      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 24
@@ -71,22 +66,15 @@ jobs:
         run: npm ci
       - name: Deploy the site to Cloudflare Pages
         working-directory: calendar
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: >-
           npx wrangler pages deploy ../out --project-name=zhilly --branch=main
           --commit-hash="$GITHUB_SHA" --commit-message="${GITHUB_SHA::7} $(git log -1 --format=%s | head -c 300)"
-      - name: Did calendar/ change?
-        id: cal
-        env:
-          BEFORE: ${{ github.event.before }}
-        run: |
-          if [ "${{ github.event_name }}" != "push" ] || ! git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
-            echo "changed=true" >> "$GITHUB_OUTPUT"   # manual run or first push: deploy to be safe
-          elif git diff --quiet "$BEFORE" "$GITHUB_SHA" -- calendar/; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-          else
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-          fi
       - name: Deploy the calendar Worker
-        if: steps.cal.outputs.changed == 'true'
         working-directory: calendar
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: npx wrangler deploy --message="${GITHUB_SHA::7}"
