@@ -2,8 +2,8 @@
  * Business facts in one place.
  *
  * Anything set to `null` is still waiting on the owner (see research/09 Part B and the
- * decision log in research/10-executive-recommendations.md). Pending values render as the
- * dotted "[to confirm]" placeholder tags, so a missing fact is visible, never invented.
+ * decision log in research/10-executive-recommendations.md). Every fact the pages use is filled in
+ * now; a null would render as a dotted placeholder (Pending), so a missing fact is never invented.
  */
 
 export const site = {
@@ -23,8 +23,6 @@ export const site = {
   instagram: "@zhilly.life" as string | null,
   instagramUrl: "https://www.instagram.com/zhilly.life/",
   facebookUrl: "https://www.facebook.com/zhilly.life",
-  /** Google Form for the first guests, the fallback while the enquiry form below is off. */
-  firstGuestForm: "https://forms.gle/9Ka9GCFxQeLKeHir5",
   address: "Lower Bong Basti" as string | null,
   pin: "734301",
   town: "Kalimpong, West Bengal",

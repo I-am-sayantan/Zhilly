@@ -77,7 +77,7 @@ export default function PrivacyPage() {
               When you send the form, Cloudflare Turnstile first checks that you're a person and not a spam bot. Your enquiry then goes to our booking service at cal.zhilly.life, which runs on Cloudflare and stores it in a Cloudflare D1 database. Resend sends two emails: one to us, and a copy to you (without your message).
             </p>
             <p>
-              Some pages link to a Google Form for our first guests; what you enter there is held by Google. If you email us, that goes to Gmail (Google). If you message us on WhatsApp, that chat is run by Meta. Their own privacy policies apply as well as this one.
+              If you email us, that goes to Gmail (Google). If you message us on WhatsApp, that chat is run by Meta. Their own privacy policies apply as well as this one.
             </p>
           </section>
           <section id="keep" aria-labelledby="p3">
@@ -126,7 +126,7 @@ export default function PrivacyPage() {
               <li>Us.</li>
               <li>Cloudflare, which hosts the site, runs the enquiry form's service and database, and runs the Turnstile spam check.</li>
               <li>Resend, which sends the enquiry emails.</li>
-              <li>Google, for our Gmail inbox and the Google Form.</li>
+              <li>Google, for our Gmail inbox.</li>
               <li>WhatsApp (Meta), which carries our chats.</li>
               <li>Your UPI app and bank, for the advance.</li>
               <li>Government authorities, where the law requires it.</li>
