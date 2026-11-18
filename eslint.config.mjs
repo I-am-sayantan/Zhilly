@@ -20,6 +20,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // The calendar Worker has its own tests (calendar/, npm test).
+    "calendar/**",
+    "dist/**",
   ]),
 ]);
 

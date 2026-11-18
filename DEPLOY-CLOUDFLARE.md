@@ -25,7 +25,11 @@ Commands below run in a terminal inside the repo folder unless they say `cd cale
 
 ## 2. The website on Cloudflare Pages
 
-*Live now (Nov 2026):* the Pages project **zhilly** was created by direct upload (`npx wrangler pages deploy out --project-name=zhilly --branch=main`), not Git-connected. Redeploy the same way, or connect Git later.
+*How it runs now:* the Pages project **zhilly** is a direct-upload project (not Git-connected). GitHub Actions
+(`.github/workflows/ci.yml`) builds and uploads it on every push to `main`; see "Deploy and rollback" in `README.md`.
+By hand: `npm run build`, then `cd calendar && npx wrangler pages deploy ../out --project-name=zhilly --branch=main`.
+
+*Only if you ever start over with a Git-connected project instead:*
 
 1. **Workers & Pages → Create → Pages → Connect to Git.** Allow access to GitHub and pick the repo **I-am-sayantan/Zhilly**.
 2. Build settings:
@@ -37,7 +41,7 @@ Commands below run in a terminal inside the repo folder unless they say `cd cale
 3. **Save and Deploy.** You get a `*.pages.dev` address to check it. (If a build ever stops on Next's security warning, press **Retry deployment**.)
 4. In the Pages project: **Custom domains → Set up a custom domain** → `zhilly.life` → Activate. Do it once more for `www.zhilly.life`.
 
-From now on every push to `main` redeploys the site by itself.
+With a Git-connected project, Cloudflare itself redeploys on every push to `main` (then delete the deploy job in the workflow).
 
 ## 3. The calendar Worker
 
@@ -48,7 +52,7 @@ npx wrangler login                                   # opens the browser; allow 
 npx wrangler d1 create zhilly-calendar               # prints a database_id
 ```
 
-Open `calendar/wrangler.toml` and replace the `database_id = "00000000-..."` value with the id it printed. Then:
+Put the id it printed into `database_id` in `calendar/wrangler.toml` (done for the live database). Then:
 
 ```
 npx wrangler d1 execute zhilly-calendar --remote --file=schema.sql   # tables + the first room, room-1
@@ -61,14 +65,10 @@ npx wrangler secret put RESEND_API_KEY     # from step 5 below
 npx wrangler deploy
 ```
 
-Attach the address: dashboard → **Workers & Pages → zhilly-calendar → Settings → Domains & Routes → Add → Custom domain** → `cal.zhilly.life`.
-
-Then switch the website over: in `src/lib/site.ts` set `calendarApi` to `"https://cal.zhilly.life"` (it is `null` until then, which hides the enquiry form and shows an email button instead), commit and redeploy.
+`calendar/wrangler.toml` already routes `cal.zhilly.life` to the Worker (`custom_domain = true`), so `wrangler deploy` attaches it. The website reads `calendarApi` (`https://cal.zhilly.life`) from `src/lib/site.ts`.
 
 Check it: https://cal.zhilly.life/availability should show `{"room":"all","rooms":["room-1"],...,"booked":[]}`.
 The admin page is **https://cal.zhilly.life/admin** (any username, your ADMIN_PASSWORD).
-
-Commit the `database_id` change (`git commit -am "Set D1 id" && git push`). The id is not a secret.
 
 ### More rooms
 
@@ -83,11 +83,11 @@ booked only when **every** room is booked, and the enquiry form shows a room cho
 
 ## 4. Turnstile (spam check on the enquiry form)
 
-1. Dashboard → **Turnstile → Add widget**. Name `zhilly`, hostnames `zhilly.life` and `www.zhilly.life`, mode **Managed**.
-2. Copy the **Site key** into `src/lib/site.ts` → `turnstileSiteKey` (it is public; replaces the test key `1x00000000000000000000AA`), commit and push.
+1. Dashboard → **Turnstile → Add widget**. Name `zhilly booking form`, hostnames `zhilly.life` (covers `www`) and `zhilly.pages.dev`, mode **Managed**. (Done.)
+2. Copy the **Site key** into `src/lib/site.ts` → `turnstileSiteKey` (it is public), commit and push. For local testing set `NEXT_PUBLIC_TURNSTILE_SITE_KEY=1x00000000000000000000AA`, Cloudflare's always-pass test key.
 3. Put the **Secret key** in the Worker: `cd calendar && npx wrangler secret put TURNSTILE_SECRET`.
 
-Until both are set the form can't send (it fails closed, and says to use WhatsApp).
+Until both are set the form can't send (it fails closed, and points guests to WhatsApp and email).
 
 ## 5. Resend (enquiry emails)
 
@@ -111,7 +111,7 @@ On https://cal.zhilly.life/admin each room has:
 - an **export link** (`https://cal.zhilly.life/ical/room-1/<secret>.ics`). Paste it into **every** OTA. It holds all blocked nights:
   your direct bookings plus every other OTA's bookings. Keep it private; anyone with it can see which nights are taken (no names).
 - **import links**: paste each OTA's own export link here with a short name (`booking`, `airbnb`, `mmt`). They sync every 15 minutes; **Sync now** pulls at once.
-  If an OTA's link fails, its old bookings stay blocked and the row shows the error.
+  If an OTA's link fails, its old bookings stay blocked, the row shows the error, and you get one email (to OWNER_EMAIL) when it starts failing.
 
 Each OTA also gets its own bookings back in the export link. That's normal and standard for iCal sync; it doesn't double anything.
 
@@ -145,7 +145,7 @@ When a guest sends it:
 1. It's saved (admin page → **Booking enquiries**), you get an email (reply goes to the guest), and the guest gets an acknowledgement
    promising an answer **within 24 hours** (change `REPLY_HOURS` in `calendar/src/index.js` and the line in `src/components/BookingForm.tsx` together).
 2. You **Confirm + block** (pick the room) or **Decline** it on the admin page. Confirming blocks the nights, so every OTA sees them at its next sync.
-   Either way, tell the guest yourself (reply to the enquiry email, call or WhatsApp). The site never shows or emails a price.
+   If the nights have been booked elsewhere since the guest asked, Confirm refuses and says which night. Either way, tell the guest yourself (reply to the enquiry email, call or WhatsApp). The site never shows or emails a price.
 
 Spam guards: Turnstile, a hidden honeypot field, and at most 5 enquiries per IP per hour.
 
@@ -156,9 +156,9 @@ Workers: 100,000 requests/day. D1: 5 GB, 5 million row reads/day. Cron: the one 
 ## Local testing (optional)
 ```
 cd calendar
-npm install && npm test                                   # parser, merge, validation, escaping checks
+npm install && npm test                                   # helpers + the real Worker on in-memory SQLite (Node 22.5+)
 cp .dev.vars.example .dev.vars                            # test password + Turnstile always-pass test secret
 npx wrangler d1 execute zhilly-calendar --local --file=schema.sql
 npx wrangler dev                                          # http://127.0.0.1:8787/admin, emails are logged, not sent
 ```
-Website against the local Worker (second terminal, repo root): `NEXT_PUBLIC_CALENDAR_API=http://127.0.0.1:8787 npm run dev`, open http://localhost:3000.
+Website against the local Worker (second terminal, repo root): `NEXT_PUBLIC_CALENDAR_API=http://127.0.0.1:8787 NEXT_PUBLIC_TURNSTILE_SITE_KEY=1x00000000000000000000AA npm run dev`, open http://localhost:3000.
