@@ -57,7 +57,7 @@ export default function PoliciesPage() {
           <section id="short" aria-labelledby="p0">
             <h2 id="p0"><span className="no">00</span>The short version</h2>
             <p className="intro">
-              Book on WhatsApp, hold your beds with a UPI advance, bring your ID, keep the evenings friendly and not loud.
+              Book by email, hold your beds with a UPI advance, bring your ID, keep the evenings friendly and not loud.
             </p>
             <dl className="short">
               <dt>Advance</dt>
@@ -77,7 +77,7 @@ export default function PoliciesPage() {
           <section id="booking" aria-labelledby="p1">
             <h2 id="p1"><span className="no">01</span>Booking and the advance</h2>
             <p>
-              We take bookings on WhatsApp. You send your dates and how many of you are coming; we reply with a quote; you pay an advance by UPI to hold the beds; we confirm in the same chat. A booking is confirmed only when we've said so in writing.
+              We take bookings by email. You send your dates and how many of you are coming; we reply with a quote; you pay an advance by UPI to hold the beds; we confirm in the same email thread. A booking is confirmed only when we've said so in writing.
             </p>
             <h3>The advance</h3>
             <p>
@@ -103,7 +103,7 @@ export default function PoliciesPage() {
           <section id="cancel" aria-labelledby="p2">
             <h2 id="p2"><span className="no">02</span>Cancellation and refunds</h2>
             <p>
-              Plans change. Tell us in the same WhatsApp chat as soon as you know. The date you message us is the date we go by.
+              Plans change. Reply in the same email thread the moment you know. The date you message us is the date we go by.
             </p>
             <table className="terms">
               <thead><tr><th scope="col">If you cancel</th><th scope="col">What you get back</th></tr></thead>
@@ -136,7 +136,7 @@ export default function PoliciesPage() {
               Check-in from 11 am. Check-out by 10 am.
             </p>
             <p>
-              Arriving late, or early? Tell us roughly when in the chat. Late arrivals{" "}
+              Arriving late, or early? Tell us roughly when, by email. Late arrivals{" "}
               <span className="ph">[to confirm]</span>
               . Early check-in depends on occupancy: if your bed is free, you can have it early, at no charge. Late check-out{" "}
               <span className="ph">[to confirm]</span>
@@ -220,10 +220,8 @@ export default function PoliciesPage() {
             <dl className="short">
               <dt>Address</dt>
               <dd>Lower Bong Basti, Kalimpong, West Bengal 734301</dd>
-              <dt>WhatsApp</dt>
-              <dd>+91 82933 26469</dd>
               <dt>Email</dt>
-              <dd><span className="ph">[address]</span></dd>
+              <dd><a href="mailto:hello@zhilly.life">hello@zhilly.life</a></dd>
               <dt>Registration</dt>
               <dd><span className="ph">[shown once issued]</span></dd>
               <dt>Complaints</dt>

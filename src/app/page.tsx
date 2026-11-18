@@ -84,7 +84,7 @@ export default function HomePage() {
                 <dl className="field">
                   <dt>Good for</dt>
                   <dd>Backpackers and solo travellers</dd>
-                  <dd>People working remotely (Wi-Fi: 40–50 Mbps)</dd>
+                  <dd>People working remotely (internet: 40–50 Mbps)</dd>
                   <dd>Groups up for a hill weekend</dd>
                   <dt>Evenings</dt>
                   <dd>For talking. No set quiet hours yet.</dd>
@@ -119,23 +119,21 @@ export default function HomePage() {
               <div>
                 <table>
                   <thead>
-                    <tr><th scope="col">Room</th><th scope="col">Beds</th><th scope="col">₹ per night</th></tr>
+                    <tr><th scope="col">Room</th><th scope="col">Beds</th></tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>Mixed dorm</td>
-                      <td data-k="Beds">8, on four bunks</td>
-                      <td data-k="Per night">₹800 a bed, with breakfast</td>
+                      <td data-k="Beds">8, on four bunks, with breakfast</td>
                     </tr>
                     <tr>
                       <td>Private room</td>
                       <td data-k="Beds">1 queen bed, own bathroom</td>
-                      <td data-k="Per night">₹1,500 the room (₹1,700 with breakfast)</td>
                     </tr>
                   </tbody>
                 </table>
                 <p className="after">
-                  Breakfast with dorm beds · Facilities: Wi-Fi 40–50 Mbps, hot water, bed linen, blanket and towel · Lockers{" "}
+                  Breakfast with dorm beds · Facilities: internet 40–50 Mbps, hot water, bed linen, blanket and towel · Lockers{" "}
                   <span className="ph">[to confirm]</span>
                   {" "}· Check-in 11 am · Check-out 10 am
                 </p>
@@ -143,7 +141,7 @@ export default function HomePage() {
               <div className="nophoto">
                 <svg className="stamp" viewBox="0 0 200 200" aria-hidden="true"><use href="#stamp-build" /></svg>
                 <h3>Room photos after fit-out.</h3>
-                <p>We'd rather show you a blank than someone else's dorm. Ask on WhatsApp for a progress picture.</p>
+                <p>We'd rather show you a blank than someone else's dorm. Email us for a progress picture.</p>
               </div>
             </div>
           </div>
@@ -187,7 +185,7 @@ export default function HomePage() {
                   <dt>Hours</dt>
                   <dd>Every day, 12 pm to 11 pm</dd>
                   <dt>Menu</dt>
-                  <dd><span className="ph">[Menu and prices to confirm]</span></dd>
+                  <dd><span className="ph">[Menu to confirm]</span></dd>
                   <dt>Not staying?</dt>
                   <dd><span className="ph">[Non-guests welcome? To confirm]</span></dd>
                 </dl>
@@ -441,9 +439,9 @@ export default function HomePage() {
           </div>
           <div className="body">
             <p className="mono">Trail's end · Plan your stay</p>
-            <h2 id="wp7">Book a bed<small>It's a WhatsApp chat, in four short legs.</small></h2>
+            <h2 id="wp7">Book a bed<small>It's an email or two, in four short legs.</small></h2>
             <ol className="legs">
-              <li><h3>Send us your dates</h3><p>On WhatsApp, with how many of you are coming.</p></li>
+              <li><h3>Send us your dates</h3><p>By email, with how many of you are coming.</p></li>
               <li><h3>We reply with a quote</h3><p>What's free and what it costs.</p></li>
               <li>
                 <h3>Pay an advance by UPI</h3>
@@ -451,7 +449,7 @@ export default function HomePage() {
                   That holds the beds. Pay half the total, or all of it. Cancel 7 or more days ahead for a full refund.
                 </p>
               </li>
-              <li><h3>You're confirmed</h3><p>In the same chat.</p></li>
+              <li><h3>You're confirmed</h3><p>By email.</p></li>
             </ol>
             <p className="upi">
               <strong>We only take payment to the UPI ID listed on zhilly.life.</strong>

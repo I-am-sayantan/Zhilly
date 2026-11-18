@@ -3,12 +3,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CloseBand from "@/components/CloseBand";
 import PageShell from "@/components/PageShell";
-import { wa } from "@/lib/site";
+import { mail } from "@/lib/site";
 import "./page.css";
 
 export const metadata: Metadata = {
   title: "Stay · Zhilly, Kalimpong",
-  description: "Dorm beds at Zhilly, a small social hostel with a café in Kalimpong (eight dorm beds and a private room): who it suits, the beds and prices, the shared spaces, and check-in. Concept draft.",
+  description: "Dorm beds at Zhilly, a small social hostel with a café in Kalimpong (eight dorm beds and a private room): who it suits, the beds, the shared spaces, and check-in. Concept draft.",
 };
 
 export default function StayPage() {
@@ -57,7 +57,7 @@ export default function StayPage() {
                 </dd>
                 <dd>
                   People working remotely
-                  <span className="cap">Wi-Fi 40–50 Mbps</span>
+                  <span className="cap">Internet 40–50 Mbps</span>
                 </dd>
                 <dd>
                   Groups up for a hill weekend
@@ -89,10 +89,10 @@ export default function StayPage() {
             </div>
           </div>
           <div className="body">
-            <p className="mono">Waypoint 02 · Beds and prices</p>
+            <p className="mono">Waypoint 02 · Beds</p>
             <h2 id="w2">
               The beds
-              <small>Per night, in rupees: dorm beds by the bed, the private room by the room.</small>
+              <small>Dorm beds by the bed, the private room by the room.</small>
             </h2>
             <table className="s-ledger">
               <thead>
@@ -100,7 +100,6 @@ export default function StayPage() {
                   <th scope="col">Room</th>
                   <th scope="col">Beds</th>
                   <th scope="col">Bed type</th>
-                  <th scope="col">Per night</th>
                   <th scope="col">Bathroom</th>
                 </tr>
               </thead>
@@ -109,14 +108,12 @@ export default function StayPage() {
                   <td>Mixed dorm</td>
                   <td data-k="Beds">8</td>
                   <td data-k="Type">4 bunk beds</td>
-                  <td className="rate" data-k="Per night">₹800/night</td>
                   <td data-k="Bathroom">One, inside the dorm</td>
                 </tr>
                 <tr>
                   <td>Private room</td>
                   <td data-k="Beds">1</td>
                   <td data-k="Type">Queen bed</td>
-                  <td className="rate" data-k="Per night">₹1,500/night</td>
                   <td data-k="Bathroom">Its own</td>
                 </tr>
               </tbody>
@@ -124,7 +121,7 @@ export default function StayPage() {
                 <tr>
                   <th scope="row">All rooms</th>
                   <td>9 beds</td>
-                  <td colSpan={3} className="cap">Breakfast comes with dorm beds. The private room is ₹1,700 a night with breakfast for two.</td>
+                  <td colSpan={2} className="cap">Breakfast comes with dorm beds, and is available with the private room.</td>
                 </tr>
               </tfoot>
             </table>
@@ -139,7 +136,7 @@ export default function StayPage() {
                   <li><span>Towel</span><i /><span>Included</span></li>
                   <li><span>Plug point</span><i /><span>Yes</span></li>
                   <li><span>Hot water</span><i /><span>Geyser in the bathroom</span></li>
-                  <li><span>Wi-Fi</span><i /><span>40–50 Mbps</span></li>
+                  <li><span>Internet</span><i /><span>40–50 Mbps</span></li>
                 </ul>
               </div>
               <figure className="s-plan">
@@ -304,7 +301,7 @@ export default function StayPage() {
                   Plate 2 · Where the dorm photo will go. For now, a drawing from our own photos of the front.
                 </span>
                 {" "}
-                <a href={wa.checkDates}>Ask for a progress picture on WhatsApp</a>
+                <a href={mail.checkDates}>Email us for a progress picture</a>
               </figcaption>
             </figure>
           </div>
@@ -389,7 +386,7 @@ export default function StayPage() {
                 <div className="s-next">
                   <p className="mono">Next on the trail</p>
                   <Link className="go" href="/plan-your-stay/">Plan your stay <span aria-hidden="true">→</span></Link>
-                  <p>How booking works: send us a booking enquiry with your dates, we confirm by email or phone, a UPI advance holds the beds.</p>
+                  <p>How booking works: send us a booking enquiry with your dates, we confirm by email, a UPI advance holds the beds.</p>
                   <a className="btn" href="#book">Send a booking enquiry</a>
                 </div>
               </div>

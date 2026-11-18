@@ -273,7 +273,7 @@ td:first-child{font-weight:700;font-size:20px;font-variation-settings:"wdth" 90}
 .close p{margin:0 0 28px;max-width:26rem;color:var(--ink-2)}
 .close .btn{background:var(--pine)}
 .close .btn:hover{background:#22382B}
-/* the date planner (Figma: Components › Date planner): pick arrival and departure, then send them on WhatsApp */
+/* the date planner (Figma: Components › Date planner): pick arrival and departure, then send them by email */
 .planner{position:relative;justify-self:center;width:min(100%,460px)}
 .planner::before{content:"";position:absolute;inset:26px -26px -26px 26px;background:#E9A23B;border:2px solid var(--ink)}
 .planner .sheet{position:relative;background:#FBF8F1;border:2px solid var(--ink)}

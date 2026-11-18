@@ -12,9 +12,9 @@ export default function SiteFooter() {
         </div>
         <div>
           <h3>Contact</h3>
-          <p>WhatsApp <Pending value={site.whatsappNumber && site.phoneDisplay} label="verified number" /></p>
-          <p>Email <Pending value={site.email} label="address" /></p>
-          <p>Instagram <Pending value={site.instagram} label="@handle" /></p>
+          <p>Email <a href={`mailto:${site.email}`}>{site.email}</a></p>
+          <p>Instagram <a href={site.instagramUrl}>{site.instagram}</a></p>
+          <p><a href={site.facebookUrl}>Facebook</a></p>
         </div>
         <div>
           <h3>Address</h3>

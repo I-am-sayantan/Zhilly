@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CloseBand from "@/components/CloseBand";
 import PageShell from "@/components/PageShell";
-import { site, wa } from "@/lib/site";
+import { mail, site } from "@/lib/site";
 import "./page.css";
 
 export const metadata: Metadata = {
@@ -192,11 +192,8 @@ export default function FindUsPage() {
                 <p>
                   When NH10 has shut before, traffic went the long way round via Lava and Gorubathan (NH717A). That road can slip too.
                 </p>
-                <a className="fu-day" href={wa.roadQuestion}>
+                <a className="fu-day" href={mail.roadQuestion}>
                   {" "}
-                  <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
-                    <path d="M12 2.2A9.8 9.8 0 0 0 3.6 17l-1.3 4.8 4.9-1.3A9.8 9.8 0 1 0 12 2.2Zm0 17.9a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8.1 8.1 0 1 1 12 20.1Z" />
-                  </svg>
                   {" "}Message us the day before you travel{" "}
                 </a>
               </div>
@@ -439,7 +436,7 @@ export default function FindUsPage() {
           </div>
           <div className="body">
             <p className="mono">Waypoint 04 · Contact</p>
-            <h2 id="wp4">Write to us<small>WhatsApp is quickest. The rest work too.</small></h2>
+            <h2 id="wp4">Write to us<small>Email is quickest. Instagram and Facebook work too.</small></h2>
             <div className="fu-letter">
               <svg className="fu-pm" viewBox="0 0 160 110" aria-hidden="true">
                 <defs><path id="fupm" d="M55 55 m-40 0 a40 40 0 1 1 80 0 a40 40 0 1 1 -80 0" /></defs>
@@ -460,16 +457,14 @@ export default function FindUsPage() {
               </svg>
               <dl className="fu-ledger">
                 <div className="wa">
-                  <dt>WhatsApp</dt>
+                  <dt>Email</dt>
                   <dd>
-                    +91 82933 26469{" "}
-                    <a href={wa.checkDates}>Open a chat</a>
+                    <a href={mail.checkDates}>{site.email}</a>
                     <small>Dates, questions, what the road is doing.</small>
                   </dd>
                 </div>
-                <div><dt>Phone</dt><dd><a href="tel:+918293326469">+91 82933 26469</a></dd></div>
-                <div><dt>Email</dt><dd><span className="ph">[address]</span></dd></div>
-                <div><dt>Instagram</dt><dd><span className="ph">[@handle]</span></dd></div>
+                <div><dt>Instagram</dt><dd><a href={site.instagramUrl}>{site.instagram}</a></dd></div>
+                <div><dt>Facebook</dt><dd><a href={site.facebookUrl}>Zhilly on Facebook</a></dd></div>
                 <div>
                   <dt>Post</dt>
                   <dd>

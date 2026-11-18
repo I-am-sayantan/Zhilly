@@ -139,7 +139,7 @@ export default function CafePage() {
             <p className="mono">Waypoint 03 · The menu</p>
             <h2 id="w3">
               On the menu
-              <small>Laid out the way it will be printed. The dishes and prices come later.</small>
+              <small>Laid out the way it will be printed. The dishes come later.</small>
             </h2>
             <div className="c-menu">
               <article className="c-card" aria-labelledby="menu-h">
@@ -156,18 +156,12 @@ export default function CafePage() {
                     <ul>
                       <li>
                         <span className="ph">[Dish to confirm]</span>
-                        <i />
-                        <span className="pr">₹<span className="ph">[ ]</span></span>
                       </li>
                       <li>
                         <span className="ph">[Dish to confirm]</span>
-                        <i />
-                        <span className="pr">₹<span className="ph">[ ]</span></span>
                       </li>
                       <li>
                         <span className="ph">[Dish to confirm]</span>
-                        <i />
-                        <span className="pr">₹<span className="ph">[ ]</span></span>
                       </li>
                     </ul>
                   </section>
@@ -176,23 +170,15 @@ export default function CafePage() {
                     <ul>
                       <li>
                         <span className="ph">[Dish to confirm]</span>
-                        <i />
-                        <span className="pr">₹<span className="ph">[ ]</span></span>
                       </li>
                       <li>
                         <span className="ph">[Dish to confirm]</span>
-                        <i />
-                        <span className="pr">₹<span className="ph">[ ]</span></span>
                       </li>
                       <li>
                         <span className="ph">[Dish to confirm]</span>
-                        <i />
-                        <span className="pr">₹<span className="ph">[ ]</span></span>
                       </li>
                       <li>
                         <span className="ph">[Dish to confirm]</span>
-                        <i />
-                        <span className="pr">₹<span className="ph">[ ]</span></span>
                       </li>
                     </ul>
                   </section>
@@ -201,18 +187,12 @@ export default function CafePage() {
                     <ul>
                       <li>
                         <span className="ph">[Drink to confirm]</span>
-                        <i />
-                        <span className="pr">₹<span className="ph">[ ]</span></span>
                       </li>
                       <li>
                         <span className="ph">[Drink to confirm]</span>
-                        <i />
-                        <span className="pr">₹<span className="ph">[ ]</span></span>
                       </li>
                       <li>
                         <span className="ph">[Drink to confirm]</span>
-                        <i />
-                        <span className="pr">₹<span className="ph">[ ]</span></span>
                       </li>
                     </ul>
                   </section>
@@ -221,21 +201,15 @@ export default function CafePage() {
                     <ul>
                       <li>
                         <span className="ph">[Dish to confirm]</span>
-                        <i />
-                        <span className="pr">₹<span className="ph">[ ]</span></span>
                       </li>
                       <li>
                         <span className="ph">[Dish to confirm]</span>
-                        <i />
-                        <span className="pr">₹<span className="ph">[ ]</span></span>
                       </li>
                     </ul>
                   </section>
                 </div>
                 <p className="foot cap">
-                  Prices in ₹ · Taxes{" "}
-                  <span className="ph">[to confirm]</span>
-                  {" "}· Veg / non-veg marks{" "}
+                  Veg / non-veg marks{" "}
                   <span className="ph">[to confirm]</span>
                 </p>
                 <svg className="c-stamp" viewBox="0 0 240 112" aria-hidden="true">
@@ -257,8 +231,8 @@ export default function CafePage() {
                 <p>Try them in town. Ask us where.</p>
                 <h3>Eating preferences</h3>
                 <p>We can do veg and vegan. The kitchen is very small, so we can't rule out cross-contamination: if you have an allergy, tell us before you order.</p>
-                <h3>Prices</h3>
-                <p>In rupees, on the menu, once it's set. Café bills are paid at the time, not added to your room bill.</p>
+                <h3>Paying</h3>
+                <p>Café bills are paid at the time, not added to your room bill.</p>
               </aside>
             </div>
           </div>

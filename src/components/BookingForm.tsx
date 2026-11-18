@@ -2,12 +2,12 @@
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { site } from "@/lib/site";
-import { fromIso, hitsBooked, iso, key, nightsBetween, usePlan, WhatsAppDatesLink } from "./DatePlanner";
+import { fromIso, hitsBooked, iso, key, nightsBetween, usePlan, EmailDatesLink } from "./DatePlanner";
 
 /*
  * The booking enquiry form, beside the date planner in the closing band. It posts to the calendar
  * Worker's /enquiry (Turnstile-checked, emailed to us and acknowledged to the guest). It is an
- * enquiry, not a booking: we confirm by hand. WhatsApp stays as a small secondary link.
+ * enquiry, not a booking: we confirm by hand. An email link with the dates stays as a small secondary link.
  */
 
 const MAX_GUESTS = 20;
@@ -123,9 +123,9 @@ export default function BookingForm() {
       if (out.errors) {
         setErrors(out.errors);
         focusFirst(out.errors);
-      } else setGeneral(out.error ?? "Something went wrong. Please try again, or message us on WhatsApp.");
+      } else setGeneral(out.error ?? "Something went wrong. Please try again, or email us.");
     } catch {
-      setGeneral("We couldn't send that just now. Please try again, or message us on WhatsApp.");
+      setGeneral("We couldn't send that just now. Please try again, or email us.");
     } finally {
       setSending(false);
       setToken("");
@@ -214,9 +214,24 @@ export default function BookingForm() {
       {general && <p className="err general" role="alert">{general}</p>}
       <div className="go">
         <button className="btn" type="submit" disabled={sending}>{sending ? "Sending…" : "Send booking enquiry"}</button>
-        <WhatsAppDatesLink className="wa-alt">Or send these dates on WhatsApp</WhatsAppDatesLink>
+        <EmailDatesLink className="wa-alt">Or email us these dates</EmailDatesLink>
       </div>
       <p className="fine">We reply within 24 hours. Nothing is charged or held until we confirm.</p>
     </form>
+  );
+}
+
+/** Stands in for the form while the calendar Worker isn't deployed (site.calendarApi is null): email, or the first-guest form. */
+export function EmailEnquiry() {
+  return (
+    <div className="enq">
+      <h3>Booking enquiry</h3>
+      <p>Pick your dates on the calendar, then email them to us with how many of you are coming. We check every date by hand and reply by email.</p>
+      <div className="go">
+        <EmailDatesLink className="btn">Email us your dates</EmailDatesLink>
+        <a className="wa-alt" href={site.firstGuestForm}>Or fill in the first-guest form</a>
+      </div>
+      <p className="fine">{site.email} · Nothing is charged or held until we confirm.</p>
+    </div>
   );
 }

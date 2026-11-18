@@ -22,7 +22,7 @@ export default function PlanPage() {
           </nav>
           <h1 id="h1">Plan your stay</h1>
           <p className="lead">
-            Booking starts with a short enquiry: pick your dates at the bottom of this page and we confirm by email or phone (WhatsApp works too). Here's how it goes, what to ask, when to come and what to pack.
+            Booking starts with a short enquiry: pick your dates at the bottom of this page and we confirm by email. Here's how it goes, what to ask, when to come and what to pack.
           </p>
           <p className="credit">The eaves, from the verandah steps.</p>
         </div>
@@ -44,7 +44,7 @@ export default function PlanPage() {
             <p className="mono">Waypoint 01 · How booking works</p>
             <h2 id="wp1">
               Four legs
-              <small>Dates, a quote, an advance, done. A person at the other end, by email, phone or WhatsApp.</small>
+              <small>Dates, a quote, an advance, done. A person at the other end, by email.</small>
             </h2>
             <ol className="route">
               <li>
@@ -73,7 +73,7 @@ export default function PlanPage() {
                 <dl className="field">
                   <dt>The quote tells you</dt>
                   <dd>Which beds are free for your dates</dd>
-                  <dd>Price per night, times your nights: ₹800 a dorm bed with breakfast, or ₹1,500 for the private room (₹1,700 with breakfast for two)</dd>
+                  <dd>The price per night, times your nights</dd>
                   <dd>What's included: breakfast with dorm beds</dd>
                   <dd>Taxes: GST included</dd>
                   <dd>The advance that holds your beds: half the total, or all of it</dd>
@@ -137,48 +137,39 @@ export default function PlanPage() {
             </div>
           </div>
           <div className="body">
-            <p className="mono">Waypoint 02 · Prices</p>
+            <p className="mono">Waypoint 02 · What it costs</p>
             <h2 id="wp2">
               What it costs
               <small>
-                Per night, in rupees. The same numbers here, in your quote and at the gate.
+                Your quote has the price per night, in rupees. The same numbers in your quote and at the gate.
               </small>
             </h2>
-            <div className="tariff">
-              <figure className="bigfig">
-                <span className="n">₹800</span>
-                <figcaption className="cap">Field note: one bed, one night, breakfast included.</figcaption>
-              </figure>
+            <div>
               <div>
                 <p className="mono tcap">Tariff · draft</p>
                 <table className="ledger">
                   <thead>
-                    <tr><th scope="col">Item</th><th scope="col" className="amt">₹</th><th scope="col">Note</th></tr>
+                    <tr><th scope="col">Item</th><th scope="col">Note</th></tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>Bed, mixed dorm</td>
-                      <td className="amt" data-k="Price">₹800</td>
                       <td data-k="Note">per bed, per night, breakfast included</td>
                     </tr>
                     <tr>
                       <td>Private room, queen bed</td>
-                      <td className="amt" data-k="Price">₹1,500</td>
-                      <td data-k="Note">the room, per night, up to two; its own bathroom. ₹1,700 with breakfast for two</td>
+                      <td data-k="Note">the room, per night, up to two; its own bathroom. Breakfast for two on request</td>
                     </tr>
                     <tr className="sub">
                       <td>Taxes</td>
-                      <td className="amt" data-k="Price">Incl.</td>
                       <td data-k="Note">GST is included in every price</td>
                     </tr>
                     <tr className="sub">
                       <td>Advance to hold</td>
-                      <td className="amt" data-k="Price">Half or all</td>
                       <td data-k="Note">by UPI, only to the ID on zhilly.life</td>
                     </tr>
                     <tr className="sub">
                       <td>Café</td>
-                      <td className="amt" data-k="Price"><span className="ph">[—]</span></td>
                       <td data-k="Note">Breakfast comes with dorm beds</td>
                     </tr>
                   </tbody>
@@ -361,8 +352,8 @@ export default function PlanPage() {
                   </div>
                 </details>
                 <details>
-                  <summary>Can I book without WhatsApp?</summary>
-                  <div className="a"><p>Yes. Pick your dates in the calendar at the <a href="#book">bottom of this page</a> and send the booking enquiry form. We confirm by email or phone.</p></div>
+                  <summary>How do I book?</summary>
+                  <div className="a"><p>Yes. Pick your dates in the calendar at the <a href="#book">bottom of this page</a> and email them to us. We confirm by email.</p></div>
                 </details>
                 <details>
                   <summary>How much is the advance, and when do I pay the rest?</summary>
@@ -449,10 +440,10 @@ export default function PlanPage() {
                   <div className="a"><p>Not at the moment. There's one mixed dorm with four bunk beds, and one private room with a queen bed and its own bathroom.</p></div>
                 </details>
                 <details>
-                  <summary>Can I work from there? How's the Wi-Fi?</summary>
+                  <summary>Can I work from there? How's the internet?</summary>
                   <div className="a">
                     <p>
-                      Wi-Fi runs at 40–50 Mbps. Power backup covers basic lighting and the Wi-Fi.
+                      The internet runs at 40–50 Mbps. Power backup covers basic lighting and the internet.
                     </p>
                   </div>
                 </details>

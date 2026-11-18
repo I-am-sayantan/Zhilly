@@ -360,7 +360,7 @@ export default function AroundPage() {
                   Foreign nationals need a Restricted Area Permit for Sikkim. Check the current process before you go.
                 </dd>
               </div>
-              <div><dt>Ask us</dt><dd>How to get to any of these. On WhatsApp, before you head out.</dd></div>
+              <div><dt>Ask us</dt><dd>How to get to any of these. Email us before you head out.</dd></div>
             </dl>
           </div>
         </section>

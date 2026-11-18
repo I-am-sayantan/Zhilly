@@ -84,7 +84,7 @@ export default function PrivacyPage() {
               .
             </p>
             <p>
-              When you tap a WhatsApp button you leave this site for WhatsApp, which is run by Meta. What you send there is covered by WhatsApp's own privacy policy as well as this one.
+              If you message us on WhatsApp, that chat is run by Meta. What you send there is covered by WhatsApp's own privacy policy as well as this one.
             </p>
           </section>
           <section id="keep" aria-labelledby="p3">
@@ -192,10 +192,8 @@ export default function PrivacyPage() {
           <section id="contact" aria-labelledby="p8">
             <h2 id="p8"><span className="no">08</span>Contact and complaints</h2>
             <dl className="short">
-              <dt>WhatsApp</dt>
-              <dd>+91 82933 26469</dd>
               <dt>Email</dt>
-              <dd><span className="ph">[address]</span></dd>
+              <dd><a href="mailto:hello@zhilly.life">hello@zhilly.life</a></dd>
               <dt>Grievance contact</dt>
               <dd><span className="ph">[name, and how fast we respond: to confirm]</span></dd>
             </dl>

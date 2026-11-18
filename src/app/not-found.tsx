@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageShell from "@/components/PageShell";
-import { wa } from "@/lib/site";
+import { mail } from "@/lib/site";
 import "./not-found.css";
 
 export const metadata: Metadata = {
   title: "Off the map · Zhilly",
-  description: "This page doesn't exist. Head back to the Zhilly homepage, the beds, or directions, or ask us on WhatsApp.",
+  description: "This page doesn't exist. Head back to the Zhilly homepage, the beds, or directions, or email us.",
 };
 
 export default function NotFound() {
@@ -26,13 +26,7 @@ export default function NotFound() {
               <li><Link href="/stay/"><b>Stay</b><span>Eight beds and a private room</span></Link></li>
               <li><Link href="/find-us/"><b>Find us</b><span>The road up from NJP</span></Link></li>
             </ol>
-            <a className="btn" href={wa.checkDates}>
-              {" "}
-              <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
-                <path d="M12 2.2A9.8 9.8 0 0 0 3.6 17l-1.3 4.8 4.9-1.3A9.8 9.8 0 1 0 12 2.2Zm0 17.9a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8.1 8.1 0 1 1 12 20.1Zm4.5-6c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z" />
-              </svg>
-              {" "}Or just ask us on WhatsApp{" "}
-            </a>
+            <a className="btn" href={mail.checkDates}>Or just email us</a>
           </div>
         </div>
         <div className="mapfrag" aria-hidden="true">

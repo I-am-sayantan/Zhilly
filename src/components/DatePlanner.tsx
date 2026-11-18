@@ -1,12 +1,12 @@
 "use client";
 
 import { createContext, useContext, useEffect, useMemo, useRef, useState, type KeyboardEvent, type ReactNode } from "react";
-import { site, wa, whatsappUrl } from "@/lib/site";
+import { site, mail, mailUrl } from "@/lib/site";
 
 /*
  * The "Send us your dates" planner (Figma: Components › Date planner).
  * Pick the day you arrive, then the day you leave; the booking enquiry form (BookingForm) and the
- * small WhatsApp link pick those dates up. Nights already booked come from the calendar Worker
+ * email link pick those dates up. Nights already booked come from the calendar Worker
  * (site.calendarApi /availability) and can't be chosen. If the Worker can't be reached the planner
  * still works, it just shows nothing as booked; every enquiry is checked by hand anyway.
  */
@@ -54,6 +54,7 @@ export function PlannerProvider({ children }: { children: ReactNode }) {
   const [booked, setBooked] = useState<Set<number>>(() => new Set());
   const [rooms, setRooms] = useState<string[]>([]);
   useEffect(() => {
+    if (!site.calendarApi) return;
     fetch(`${site.calendarApi}/availability`)
       .then((r) => (r.ok ? r.json() : null))
       .then((a: { booked?: string[]; rooms?: string[] } | null) => {
@@ -84,12 +85,12 @@ function message({ arrive, leave }: Plan) {
   return lines.join("\n");
 }
 
-/** WhatsApp chat with the chosen dates filled in: the secondary path, handy on phones. */
-export function WhatsAppDatesLink({ className, children }: { className?: string; children: ReactNode }) {
+/** An email with the chosen dates filled in. */
+export function EmailDatesLink({ className, children }: { className?: string; children: ReactNode }) {
   const plan = usePlan();
   const text = message(plan);
   return (
-    <a className={className} href={text ? whatsappUrl(text) : wa.checkDates}>
+    <a className={className} href={text ? mailUrl("Checking dates", text) : mail.checkDates}>
       {children}
     </a>
   );
@@ -232,7 +233,7 @@ export function DatePlanner() {
         </div>
 
         <div className="foot">
-          <p>{arrive && !leave ? "Now tap the day you leave." : arrive ? "Now fill in the enquiry form. We check every date by hand." : "Tap the day you arrive, then the day you leave."}{booked.size > 0 && <><br /><span className="key-booked">12</span> = already booked</>}</p>
+          <p>{arrive && !leave ? "Now tap the day you leave." : arrive ? "Now send us these dates. We check every date by hand." : "Tap the day you arrive, then the day you leave."}{booked.size > 0 && <><br /><span className="key-booked">12</span> = already booked</>}</p>
           {arrive && <button type="button" className="clear" onClick={() => { setArrive(null); setLeave(null); }}>Clear</button>}
         </div>
       </div>
