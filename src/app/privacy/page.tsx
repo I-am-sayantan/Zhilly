@@ -74,7 +74,7 @@ export default function PrivacyPage() {
               When you send the form, Cloudflare Turnstile first checks that you're a person and not a spam bot. Your enquiry then goes to our booking service at cal.zhilly.life, which runs on Cloudflare and stores it in a Cloudflare D1 database. Resend sends two emails: one to us, and a copy to you (without your message).
             </p>
             <p>
-              We use Google Tag Manager and Google Analytics to count visits and see how the pages are used, such as which pages people read and which links they tap. That data goes to Google.
+              We use Google Tag Manager and Google Analytics to count visits and see how the pages are used, such as which pages people read and which links they tap. That data goes to Google. Google Analytics sets cookies in your browser to tell visits apart. What you type in the enquiry form is not sent to Google.
             </p>
             <p>
               If you email us, that goes to Gmail (Google). If you message us on WhatsApp, that chat is run by Meta. Their own privacy policies apply as well as this one.

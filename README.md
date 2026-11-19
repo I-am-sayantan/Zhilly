@@ -46,7 +46,7 @@ A push to `main` that passes the checks deploys automatically:
 - the site goes to Cloudflare Pages (`wrangler pages deploy out --project-name=zhilly --branch=main`), labelled with the commit;
 - the calendar Worker is redeployed too, every time.
 
-Deploys run one at a time and are never cancelled half-way. They need two repository secrets: `CLOUDFLARE_API_TOKEN` (a Cloudflare API token with Workers and Pages edit rights) and `CLOUDFLARE_ACCOUNT_ID`.
+Deploys run one at a time and are never cancelled half-way. They need the repository secrets listed under [Secrets and variables](#secrets-and-variables).
 
 **Rolling back the site** (either way works):
 
@@ -59,7 +59,7 @@ To undo a change for good, `git revert` the commit and push; the pipeline deploy
 
 ## Secrets and variables
 
-The repository is public, so no ID or key is written in it. They live in GitHub and CI puts them in at build or deploy time. A "leak check" job (`scripts/leak-check.sh`) fails the build if one turns up in a tracked file.
+The repository is public, so no ID or key is written in the current files (older commits still hold them; none is a credential). They live in GitHub and CI puts them in at build or deploy time. A "leak check" job (`scripts/leak-check.sh`) fails the build if one turns up in a tracked file.
 
 | Name (GitHub Actions secret) | What it is for | Used in |
 |---|---|---|
@@ -92,7 +92,6 @@ Full setup, OTA instructions and the limits of iCal sync: [DEPLOY-CLOUDFLARE.md]
 - Page copy: `src/app/<page>/page.tsx`. Shared parts: `src/components/`.
 - Photos: `public/photos/`, each as `name.jpg` and a smaller `name-sm.jpg`.
 - Facts the owner hasn't supplied yet (UPI ID, café menu, directions, policies) are simply left out rather than shown as blanks.
-- `launched: false` in `src/lib/site.ts` keeps every page `noindex`. Set it to `true` when the content is signed off.
 
 Design source: the Figma file https://www.figma.com/design/O1iYJns6jOzX4ArTniLqWo.
 
