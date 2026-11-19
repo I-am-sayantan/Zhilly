@@ -28,6 +28,7 @@ declare global {
 function useTurnstile(el: React.RefObject<HTMLDivElement | null>, onToken: (t: string) => void) {
   const id = useRef<string | undefined>(undefined);
   useEffect(() => {
+    if (!site.turnstileSiteKey) return;
     const render = () => {
       if (!el.current || !window.turnstile || id.current !== undefined) return;
       id.current = window.turnstile.render(el.current, {
@@ -141,6 +142,20 @@ export default function BookingForm() {
         <h3>Thanks, {done.name}. We've got your dates.</h3>
         <p>We'll confirm within {done.hours} hours by email or WhatsApp.</p>
         <p>This isn't a booking yet: nothing is held until we confirm.</p>
+      </div>
+    );
+  }
+
+  // no Turnstile site key in this build (local dev): the Worker would refuse the enquiry, so offer the direct links
+  if (!site.turnstileSiteKey) {
+    return (
+      <div className="enq">
+        <h3>Booking enquiry</h3>
+        <p>Send us your dates and we'll reply within 24 hours. Nothing is charged or held until we confirm.</p>
+        <div className="go">
+          <WhatsAppDatesLink className="btn">Send these dates on WhatsApp</WhatsAppDatesLink>
+          <EmailDatesLink className="wa-alt">or by email</EmailDatesLink>
+        </div>
       </div>
     );
   }

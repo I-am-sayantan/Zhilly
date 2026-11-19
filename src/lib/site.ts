@@ -33,8 +33,8 @@ export const site = {
    * The calendar Worker (calendar/ folder): availability JSON and booking enquiries. Local dev: set NEXT_PUBLIC_CALENDAR_API.
    */
   calendarApi: process.env.NEXT_PUBLIC_CALENDAR_API ?? "https://cal.zhilly.life",
-  /** Cloudflare Turnstile site key (public). For local dev, Cloudflare's always-pass test key is 1x00000000000000000000AA. */
-  turnstileSiteKey: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "0x4AAAAAAGHr6R1pq7hA5ONB",
+  /** Cloudflare Turnstile site key, set at build time from the TURNSTILE_SITE_KEY secret. Unset: the form shows WhatsApp/email links instead. Local dev: Cloudflare's always-pass test key 1x00000000000000000000AA. */
+  turnstileSiteKey: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "",
 } as const;
 
 export const nav = [

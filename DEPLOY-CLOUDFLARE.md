@@ -52,7 +52,7 @@ npx wrangler login                                   # opens the browser; allow 
 npx wrangler d1 create zhilly-calendar               # prints a database_id
 ```
 
-Put the id it printed into `database_id` in `calendar/wrangler.toml` (done for the live database). Then:
+Save the id it printed as the GitHub secret `D1_DATABASE_ID` (done for the live database; CI writes it into `wrangler.toml` at deploy). For the commands below, copy `wrangler.toml` to `wrangler.local.toml` (git-ignored), put the id in it and add `-c wrangler.local.toml`. Then:
 
 ```
 npx wrangler d1 execute zhilly-calendar --remote --file=schema.sql   # tables + the first room, room-1
@@ -84,7 +84,7 @@ booked only when **every** room is booked, and the enquiry form shows a room cho
 ## 4. Turnstile (spam check on the enquiry form)
 
 1. Dashboard → **Turnstile → Add widget**. Name `zhilly booking form`, hostnames `zhilly.life` (covers `www`) and `zhilly.pages.dev`, mode **Managed**. (Done.)
-2. Copy the **Site key** into `src/lib/site.ts` → `turnstileSiteKey` (it is public), commit and push. For local testing set `NEXT_PUBLIC_TURNSTILE_SITE_KEY=1x00000000000000000000AA`, Cloudflare's always-pass test key.
+2. Save the **Site key** as the GitHub secret `TURNSTILE_SITE_KEY` (README "Secrets and variables"); CI builds it in. For local testing set `NEXT_PUBLIC_TURNSTILE_SITE_KEY=1x00000000000000000000AA`, Cloudflare's always-pass test key.
 3. Put the **Secret key** in the Worker: `cd calendar && npx wrangler secret put TURNSTILE_SECRET`.
 
 Until both are set the form can't send (it fails closed, and points guests to WhatsApp and email).

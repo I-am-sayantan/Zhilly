@@ -7,7 +7,7 @@
 https://zhilly.pages.dev/*
   X-Robots-Tag: noindex
 
-# Next's page data files (/index.txt, /stay/index.txt...) stay out of search; the three real text files don't
+# Next's page data files (/index.txt, /stay/index.txt...) stay out of search; the real text files don't (CI adds the IndexNow key file's exception at deploy)
 /*.txt
   X-Robots-Tag: noindex
 
@@ -15,7 +15,4 @@ https://zhilly.pages.dev/*
   ! X-Robots-Tag
 
 /llms.txt
-  ! X-Robots-Tag
-
-/9f4900b5a4644b0fb0b5c9fb5aad29a6.txt
   ! X-Robots-Tag

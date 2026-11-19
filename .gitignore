@@ -47,3 +47,6 @@ desktop.ini
 .eslintcache
 /_review/
 .wrangler/
+
+# real Cloudflare ids for remote wrangler commands from this machine
+calendar/wrangler.local.toml

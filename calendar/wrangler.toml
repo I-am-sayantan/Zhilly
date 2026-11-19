@@ -21,7 +21,8 @@ FROM_EMAIL = "onboarding@resend.dev"
 [[d1_databases]]
 binding = "DB"
 database_name = "zhilly-calendar"
-database_id = "281cbb59-5eec-47c4-bcfa-128cf2c3d697"
+# Real id is the GitHub secret D1_DATABASE_ID; CI writes it in before `wrangler deploy` (README "Secrets and variables").
+database_id = "D1_DATABASE_ID"
 
 # Worker logs in the dashboard (Observability), so failed enquiry emails can be seen.
 [observability]

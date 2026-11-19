@@ -13,7 +13,7 @@ It is a static site (no server) plus one small Cloudflare Worker that runs the a
 | Site | Next.js 16 (App Router) + TypeScript, static export to `out/` | `src/`, `public/` |
 | Hosting | Cloudflare Pages, project `zhilly` (direct upload) | zhilly.life, www.zhilly.life |
 | Calendar + enquiries | Cloudflare Worker `zhilly-calendar` + D1 database | `calendar/`, cal.zhilly.life |
-| Spam check | Cloudflare Turnstile | site key in `src/lib/site.ts` |
+| Spam check | Cloudflare Turnstile | site key: GitHub secret `TURNSTILE_SITE_KEY` |
 | Enquiry emails | Resend | `calendar/src/enquiry.js` |
 | CI/CD | GitHub Actions | `.github/workflows/ci.yml` |
 
@@ -56,6 +56,25 @@ Deploys run one at a time and are never cancelled half-way. They need two reposi
 **Rolling back the Worker:** Cloudflare dashboard → **Workers & Pages → zhilly-calendar → Deployments** → pick an older version → **Deploy**. Or `cd calendar && npx wrangler rollback`.
 
 To undo a change for good, `git revert` the commit and push; the pipeline deploys the result.
+
+## Secrets and variables
+
+The repository is public, so no ID or key is written in it. They live in GitHub and CI puts them in at build or deploy time. A "leak check" job (`scripts/leak-check.sh`) fails the build if one turns up in a tracked file.
+
+| Name (GitHub Actions secret) | What it is for | Used in |
+|---|---|---|
+| `CLOUDFLARE_API_TOKEN` | Deploys the site and the Worker | deploy |
+| `CLOUDFLARE_ACCOUNT_ID` | The Cloudflare account to deploy to | deploy |
+| `D1_DATABASE_ID` | The live D1 database; written into `calendar/wrangler.toml` before `wrangler deploy` | deploy |
+| `TURNSTILE_SITE_KEY` | Turnstile widget on the booking form (`NEXT_PUBLIC_TURNSTILE_SITE_KEY`) | build |
+| `GTM_ID` | Google Tag Manager container (`NEXT_PUBLIC_GTM_ID`) | build |
+| `INDEXNOW_KEY` | IndexNow key; CI writes `out/<key>.txt` and its `_headers` exception | deploy |
+
+To add or change one: GitHub → the repository → **Settings → Secrets and variables → Actions → New repository secret** (or the pencil on an existing one), or `gh secret set NAME -R I-am-sayantan/Zhilly` and paste the value. Then re-run the last CI run on `main` or push.
+
+Without them (local dev) the site still builds: no GTM snippet, and the booking form shows the WhatsApp and email links instead of the form. To try the form locally use Cloudflare's test key: `NEXT_PUBLIC_TURNSTILE_SITE_KEY=1x00000000000000000000AA npm run dev`.
+
+For remote `wrangler` commands from your machine (for example `d1 execute --remote`), copy `calendar/wrangler.toml` to `calendar/wrangler.local.toml` (git-ignored), put the real database id in it and add `-c wrangler.local.toml`. `wrangler dev` and the tests work with the placeholder.
 
 ## Booking setup
 
