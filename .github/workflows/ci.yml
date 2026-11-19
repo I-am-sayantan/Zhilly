@@ -72,11 +72,22 @@ jobs:
         with:
           name: site
           path: out
+      # fail before anything deploys, naming each missing secret (values are never printed)
+      - name: Check the secrets and the built site
+        env:
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+          D1_DATABASE_ID: ${{ secrets.D1_DATABASE_ID }}
+        run: |
+          fail=0
+          [ -n "$INDEXNOW_KEY" ] || { echo "The INDEXNOW_KEY secret is missing or empty." >&2; fail=1; }
+          [ -n "$D1_DATABASE_ID" ] || { echo "The D1_DATABASE_ID secret is missing or empty." >&2; fail=1; }
+          grep -q googletagmanager out/index.html || { echo "The built site has no GTM snippet: the GTM_ID secret is missing or empty." >&2; fail=1; }
+          grep -rqE '0x4A{3}' out/_next/static || { echo "The built site has no Turnstile key: the TURNSTILE_SITE_KEY secret is missing or empty." >&2; fail=1; }
+          exit $fail
       - name: Add the IndexNow key file
         env:
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
         run: |
-          test -n "$INDEXNOW_KEY"
           printf '%s' "$INDEXNOW_KEY" > "out/$INDEXNOW_KEY.txt"
           { echo; echo "/$INDEXNOW_KEY.txt"; echo "  ! X-Robots-Tag"; } >> out/_headers
       - name: Install wrangler
@@ -97,6 +108,6 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           D1_DATABASE_ID: ${{ secrets.D1_DATABASE_ID }}
         run: |
-          test -n "$D1_DATABASE_ID"
           sed -i "s/^database_id = .*/database_id = \"$D1_DATABASE_ID\"/" wrangler.toml
+          grep -qF "$D1_DATABASE_ID" wrangler.toml || { echo "D1_DATABASE_ID was not written into wrangler.toml (did the database_id line change?)." >&2; exit 1; }
           npx wrangler deploy --message="${GITHUB_SHA::7}"
