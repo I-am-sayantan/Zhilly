@@ -117,6 +117,8 @@ export default function BookingForm() {
       });
       const out = await res.json().catch(() => ({}));
       if (res.ok && out.ok) {
+        // GTM lead event; no form data goes in the push
+        (window as Window & { dataLayer?: object[] }).dataLayer?.push({ event: "booking_enquiry_sent" });
         setDone({ name: String(body.name).trim().split(/\s+/)[0], hours: out.replyHours ?? 24 });
         return;
       }
